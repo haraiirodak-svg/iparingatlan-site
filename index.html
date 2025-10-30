@@ -5,13 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>iparingatlan.com – Rail‑Ready Industrial & Logistics</title>
   <meta name="description" content="Ipari és logisztikai ingatlanok Magyarországon – közvetlen vasúti kapcsolattal. Rail‑Ready fejlesztések, eladó/bérelhető csarnokok.">
+  <link rel="icon" href="/logoip.jpg" type="image/jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta property="og:title" content="Rail‑Ready Industrial & Logistics – iparingatlan.com">
+  <meta property="og:description" content="Magyarországi ipari és logisztikai ingatlanok vasúti kapcsolattal.">
+  <meta property="og:image" content="/shutterstock_281683199.jpeg">
+  <meta property="og:type" content="website">
   <style>
     :root{
       --bg:#0b0e13; --panel:#0f1624; --muted:#9fb0c7; --text:#e9f0fa;
-      --brand:#f0b429; --brand2:#d19a1a; --radius:18px;
+      --brand:#f0b429; --brand2:#d19a1a; --radius:18px; --rail:#0ad18e;
       --shadow:0 10px 30px rgba(0,0,0,.35);
     }
     *{box-sizing:border-box}
@@ -29,12 +34,12 @@
     .lang{display:flex;gap:8px}
     .lang button{padding:8px 10px;border-radius:10px;border:1px solid #26344c;background:#0f1624;color:var(--text);cursor:pointer}
     .lang button.active{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#041018;border:none}
-    .hero{position:relative;min-height:68vh;display:flex;align-items:center}
-    .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1000px 1000px at 70% 60%, rgba(16,33,62,.4), rgba(5,9,16,.85)), linear-gradient(180deg, rgba(8,12,20,.4), rgba(5,9,16,.9));z-index:0}
-    .hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%;filter:brightness(.72) saturate(1.1)}
+    .hero{position:relative;min-height:70vh;display:flex;align-items:center}
+    .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1000px 900px at 70% 60%, rgba(16,33,62,.55), rgba(5,9,16,.9)), linear-gradient(180deg, rgba(8,12,20,.35), rgba(5,9,16,.9));z-index:0}
+    .hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%;filter:brightness(.68) saturate(1.1)}
     .hero .inner{position:relative;z-index:1}
     .chip{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;background:#0f1624;border:1px solid #21334d;color:var(--muted);font-size:14px}
-    h1{font-size:42px;line-height:1.08;margin:14px 0 10px}
+    h1{font-size:44px;line-height:1.08;margin:14px 0 10px}
     p.lead{color:var(--muted);font-size:18px;max-width:68ch}
     .cta{display:flex;gap:12px;margin-top:20px}
     .btn{padding:12px 16px;border-radius:12px;border:1px solid #26344c;background:#101827;color:var(--text);font-weight:600}
@@ -45,9 +50,14 @@
     .parallax{position:relative;background-image:url('/shutterstock_2192389653.jpeg');background-size:cover;background-position:center;background-attachment:fixed}
     .parallax::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)}
     .parallax .inner{position:relative;z-index:1;padding:88px 0}
-    @media (max-width:1024px){.parallax{background-attachment:scroll} h1{font-size:34px}}
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-    @media (max-width:900px){.grid-2{grid-template-columns:1fr} nav ul{display:none}}
+    .grid-2 img{border-radius:14px}
+    .badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:6px 8px;border:1px solid #1f374f;border-radius:999px;background:#0f1624;color:var(--muted)}
+    .badge.rail{border-color:#155a43;background:#0a1f19;color:#9ff2d1}
+    .card{background:linear-gradient(180deg,#0e1523,#0b0e13);border:1px solid #1e2a3f;border-radius:16px;padding:16px}
+    footer{padding:28px 0;border-top:1px solid #111722;color:#9fb0c7}
+    @media (max-width:1024px){.parallax{background-attachment:scroll} h1{font-size:34px}.hero{min-height:64vh}}
+    @media (max-width:720px){h1{font-size:28px}.cta{flex-wrap:wrap}}
   </style>
 </head>
 <body>
@@ -71,14 +81,13 @@
     </div>
   </header>
 
+  <!-- HERO -->
   <section class="hero">
     <img class="bg" src="/shutterstock_281683199.jpeg" alt="Multimodális rail-logisztikai jelenet – konténer, vasút, daru, repülő">
     <div class="container inner">
       <span class="chip" data-i18n="chip">Rail‑Ready ingatlanok</span>
       <h1 data-i18n="headline">A jövő logisztikája – vasútra építve</h1>
-      <p class="lead" data-i18n="sub">
-        Magyarországi ipari és logisztikai ingatlanok közvetlen vasúti kapcsolattal. Fenntartható, intermodális megoldások az EU 2030-as vasúti céljaihoz igazodva.
-      </p>
+      <p class="lead" data-i18n="sub">Magyarországi ipari és logisztikai ingatlanok közvetlen vasúti kapcsolattal. Fenntartható, intermodális megoldások az EU 2030-as vasúti céljaihoz igazodva.</p>
       <div class="cta">
         <a class="btn primary" href="#portfolio" data-i18n="cta1">🚆 Vasúti fejlesztéseink</a>
         <a class="btn" href="#portfolio" data-i18n="cta2">📦 Teljes portfólió</a>
@@ -86,29 +95,37 @@
     </div>
   </section>
 
+  <!-- WHY RAIL -->
   <section id="railwhy" class="parallax">
     <div class="container inner">
       <h2 data-i18n="whyTitle">Miért a vasút a jövő?</h2>
       <div class="grid-2">
-        <p class="muted" data-i18n="whyCol1">
-          <strong>Fenntarthatóság:</strong> jelentősen alacsonyabb CO₂-kibocsátás a közúthoz képest.
-          <strong>Kapacitás:</strong> nagy volumenű, kiszámítható szállítás.
-          <strong>Intermodalitás:</strong> közvetlen kapcsolat a tengeri- és légi folyosókkal.
-        </p>
-        <p class="muted" data-i18n="whyCol2">
-          Portfóliónkban azok a területek élveznek elsőbbséget, amelyek <em>ipari vágánnyal</em> vagy <em>közvetlen vasúti bekötéssel</em> rendelkeznek – az azonnali fejlesztés és üzemindítás érdekében.
-        </p>
+        <p class="muted" data-i18n="whyCol1"><strong>Fenntarthatóság:</strong> jelentősen alacsonyabb CO₂-kibocsátás a közúthoz képest. <strong>Kapacitás:</strong> nagy volumenű, kiszámítható szállítás. <strong>Intermodalitás:</strong> közvetlen kapcsolat a tengeri- és légi folyosókkal.</p>
+        <p class="muted" data-i18n="whyCol2">Portfóliónkban azok a területek élveznek elsőbbséget, amelyek <em>ipari vágánnyal</em> vagy <em>közvetlen vasúti bekötéssel</em> rendelkeznek – az azonnali fejlesztés és üzemindítás érdekében.</p>
       </div>
     </div>
   </section>
 
+  <!-- PORTFOLIO PREVIEW -->
   <section id="portfolio">
     <div class="container">
       <h2 data-i18n="portTitle">Rail‑Ready portfólió</h2>
       <p class="muted" data-i18n="portLead">Fejlesztésre kész telkek, eladó/bérelhető csarnokok – vasúti kapcsolattal.</p>
       <div class="grid-2">
-        <img src="/shutterstock_2226373739.jpeg" alt="Konténervonat ipari környezetben">
-        <img src="/shutterstock_251633041.jpeg" alt="Intermodális rakodás ipari terminálon">
+        <div class="card">
+          <img loading="lazy" src="/shutterstock_2226373739.jpeg" alt="Konténervonat ipari környezetben">
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <span class="badge">Gyöngyös</span>
+            <span class="badge rail">🚂 Rail‑Ready</span>
+          </div>
+        </div>
+        <div class="card">
+          <img loading="lazy" src="/shutterstock_251633041.jpeg" alt="Intermodális rakodás ipari terminálon">
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <span class="badge">Mohács</span>
+            <span class="badge rail">🚂 Rail‑Ready</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -120,38 +137,19 @@
     </div>
   </section>
 
-  <footer style="padding:28px 0;border-top:1px solid #111722;color:#9fb0c7">
+  <footer>
     <div class="container">© <span id="year"></span> iparingatlan.com · Rail‑Ready Industrial & Logistics</div>
   </footer>
 
   <script>
+    // Minimal JSON-LD for Organization (SEO)
+    const ld = {"@context":"https://schema.org","@type":"Organization","name":"iparingatlan.com","url":window.location.origin,"logo":"/logoip.jpg","contactPoint":[{"@type":"ContactPoint","contactType":"sales","email":"harai.tamas@harai.hu","telephone":"+36309713836"}]};
+    const s=document.createElement('script'); s.type='application/ld+json'; s.textContent=JSON.stringify(ld); document.head.appendChild(s);
+
+    // Simple i18n HU/EN
     const dict = {
-      hu: {
-        chip: "Rail‑Ready ingatlanok",
-        headline: "A jövő logisztikája – vasútra építve",
-        sub: "Magyarországi ipari és logisztikai ingatlanok közvetlen vasúti kapcsolattal. Fenntartható, intermodális megoldások az EU 2030-as vasúti céljaihoz igazodva.",
-        cta1: "🚆 Vasúti fejlesztéseink",
-        cta2: "📦 Teljes portfólió",
-        whyTitle: "Miért a vasút a jövő?",
-        whyCol1: "Fenntarthatóság: jelentősen alacsonyabb CO₂-kibocsátás a közúthoz képest. Kapacitás: nagy volumenű, kiszámítható szállítás. Intermodalitás: közvetlen kapcsolat a tengeri- és légi folyosókkal.",
-        whyCol2: "Portfóliónkban azok a területek élveznek elsőbbséget, amelyek ipari vágánnyal vagy közvetlen vasúti bekötéssel rendelkeznek – az azonnali fejlesztés és üzemindítás érdekében.",
-        portTitle: "Rail‑Ready portfólió",
-        portLead: "Fejlesztésre kész telkek, eladó/bérelhető csarnokok – vasúti kapcsolattal.",
-        contactTitle: "Kapcsolat"
-      },
-      en: {
-        chip: "Rail‑Ready properties",
-        headline: "The Future of Logistics is on Rails",
-        sub: "Industrial & logistics properties in Hungary with direct rail access. Sustainable, intermodal solutions aligned with the EU’s 2030 rail objectives.",
-        cta1: "🚆 Rail‑connected developments",
-        cta2: "📦 Explore portfolio",
-        whyTitle: "Why rail is the future",
-        whyCol1: "Sustainability: substantially lower CO₂ emissions than road. Capacity: high‑volume and predictable. Intermodality: direct links to sea and air corridors.",
-        whyCol2: "Our portfolio prioritizes sites with private sidings or direct rail connection to enable immediate development and operations.",
-        portTitle: "Rail‑Ready portfolio",
-        portLead: "Shovel‑ready plots and sale/lease warehouses — with rail access.",
-        contactTitle: "Contact"
-      }
+      hu:{chip:"Rail‑Ready ingatlanok",headline:"A jövő logisztikája – vasútra építve",sub:"Magyarországi ipari és logisztikai ingatlanok közvetlen vasúti kapcsolattal. Fenntartható, intermodális megoldások az EU 2030-as vasúti céljaihoz igazodva.",cta1:"🚆 Vasúti fejlesztéseink",cta2:"📦 Teljes portfólió",whyTitle:"Miért a vasút a jövő?",whyCol1:"Fenntarthatóság: jelentősen alacsonyabb CO₂-kibocsátás a közúthoz képest. Kapacitás: nagy volumenű, kiszámítható szállítás. Intermodalitás: közvetlen kapcsolat a tengeri- és légi folyosókkal.",whyCol2:"Portfóliónkban azok a területek élveznek elsőbbséget, amelyek ipari vágánnyal vagy közvetlen vasúti bekötéssel rendelkeznek – az azonnali fejlesztés és üzemindítás érdekében.",portTitle:"Rail‑Ready portfólió",portLead:"Fejlesztésre kész telkek, eladó/bérelhető csarnokok – vasúti kapcsolattal.",contactTitle:"Kapcsolat"},
+      en:{chip:"Rail‑Ready properties",headline:"The Future of Logistics is on Rails",sub:"Industrial & logistics properties in Hungary with direct rail access. Sustainable, intermodal solutions aligned with the EU’s 2030 rail objectives.",cta1:"🚆 Rail‑connected developments",cta2:"📦 Explore portfolio",whyTitle:"Why rail is the future",whyCol1:"Sustainability: substantially lower CO₂ emissions than road. Capacity: high‑volume and predictable. Intermodality: direct links to sea and air corridors.",whyCol2:"Our portfolio prioritizes sites with private sidings or direct rail connection to enable immediate development and operations.",portTitle:"Rail‑Ready portfolio",portLead:"Shovel‑ready plots and sale/lease warehouses — with rail access.",contactTitle:"Contact"}
     };
     const applyLang = (lang) => {
       document.querySelectorAll("[data-i18n]").forEach(el=>{
