@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>iparingatlan.com – Ipari és logisztikai ingatlanok</title>
+  <meta name="description" content="Ipari és logisztikai ingatlanok – Magyarországon. Fejlesztés, adásvétel, bérbeadás.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{ --bg:#0b0e13; --panel:#121824; --muted:#8b97a7; --text:#e8eef6; --brand:#f0b429; --brand-2:#d9a928; --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.35); }
+    *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+    a{color:var(--brand);text-decoration:none}
+    img{max-width:100%;display:block;border-radius:calc(var(--radius) - 6px)}
+    .container{max-width:1200px;margin:0 auto;padding:0 24px}
+    header{position:sticky;top:0;backdrop-filter:saturate(140%) blur(8px);background:rgba(11,14,19,.65);border-bottom:1px solid #1c2636;z-index:20}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo-img{height:36px;width:auto;border-radius:6px;display:block}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{padding:8px 12px;border-radius:10px;color:var(--text)} nav a:hover{background:#162033}
+    .lang{display:flex;gap:8px;align-items:center}
+    .lang button{padding:8px 10px;border-radius:10px;border:1px solid #243247;background:#0f1624;color:var(--text);cursor:pointer}
+    .lang button.active{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#041018;border:none}
+    .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:64px 0}
+    .chip{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;background:#0f1624;border:1px solid #1d2a43;color:var(--muted);font-size:14px}
+    h1{font-size:40px;line-height:1.1;margin:16px 0 14px} p.lead{color:var(--muted);font-size:18px;max-width:62ch}
+    .cta{display:flex;gap:12px;margin-top:22px}
+    .btn{padding:12px 16px;border-radius:12px;border:1px solid #243247;background:#111827;color:var(--text);font-weight:600}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#06202e;border:none}
+    .hero-card{position:relative;overflow:hidden;background:#0f1624;border:1px solid #1e2a3f;border-radius:var(--radius);box-shadow:var(--shadow);min-height:320px}
+    .hero-card::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45);pointer-events:none}
+    .hero-card img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+    .stat{background:#0e1522;border:1px solid #1d2a43;border-radius:14px;padding:14px}.stat b{font-size:22px}
+    section{padding:56px 0;border-top:1px solid #111722} h2{font-size:28px;margin:0 0 18px}.muted{color:var(--muted)}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:linear-gradient(180deg,#0d1421,#0b0e13);border:1px solid #1e2a3f;border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)} .card h3{margin:6px 0 6px}
+    .toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 16px} .filter{padding:8px 12px;border-radius:999px;border:1px solid #26344e;background:#0f1624;color:var(--text);cursor:pointer}
+    .filter.active{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#041018;border:none}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .property{display:flex;flex-direction:column;gap:10px}
+    .meta{display:flex;gap:8px;flex-wrap:wrap}
+    .badge{font-size:12px;padding:6px 8px;border-radius:8px;background:#111a2a;border:1px solid #1f2a40;color:var(--muted)} .badge.good{color:#0ad18e;border-color:#133d2f;background:#0b1f19}
+    .prop-footer{display:flex;align-items:center;justify-content:space-between}.prop-footer small{color:var(--muted)}
+    footer{padding:30px 0;border-top:1px solid #111722;color:var(--muted)} .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:18px} .credits{display:flex;gap:8px;flex-wrap:wrap}
+    @media (max-width:1024px){.hero-inner{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr 1fr}.grid-4{grid-template-columns:1fr 1fr 1fr}}
+    @media (max-width:680px){nav ul{display:none}h1{font-size:32px}.grid-3{grid-template-columns:1fr}.grid-4{grid-template-columns:1fr}form{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}}
+    .parallax{position:relative;background-image:url('/shutterstock_2332840463.jpg');background-size:cover;background-position:center 60%;background-attachment:fixed}
+    .parallax::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.4)} .parallax .inner{position:relative;z-index:1;padding:80px 0}
+    @media (max-width:1024px){.parallax{background-attachment:scroll}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <img class="logo-img" src="/logoip.jpg" alt="Harai Ingatlan – Industrial & Logistics" onerror="this.style.display='none'">
+        <strong>iparingatlan<span style="color:var(--brand)">.com</span></strong>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#rolunk">Rólunk</a></li>
+          <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
+          <li><a href="#portfolio">Portfólió</a></li>
+          <li><a href="#kapcsolat">Kapcsolat</a></li>
+        </ul>
+      </nav>
+      <div class="lang" aria-label="Language switcher">
+        <button id="btn-hu" class="active">HU</button>
+        <button id="btn-en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <span class="chip">🏭 Ipari & Logisztikai ingatlanok</span>
+          <h1>Ipari és logisztikai ingatlanok – Magyarországon</h1>
+          <p class="lead">1994 óta aktívak vagyunk az ingatlanpiacon. Az idő pénz – különösen az ipari fejlesztéseknél. Portfóliónkban olyan, azonnal beépíthető, ipari és logisztikai célra alkalmas, jó elhelyezkedésű és megfelelő energiakapacitású területeket gyűjtöttünk össze, amelyek gyors döntést tesznek lehetővé.</p>
+          <div class="cta">
+            <a class="btn primary" href="#portfolio">Nézze meg a portfóliónkat</a>
+            <a class="btn" href="#kapcsolat">Kérjen ajánlatot</a>
+          </div>
+          <div class="stats">
+            <div class="stat"><div class="muted">Kezelt terület</div><b id="stat-area">200 000 m²</b></div>
+            <div class="stat"><div class="muted">Kihasználtság</div><b id="stat-occupancy">97%</b></div>
+            <div class="stat"><div class="muted">Ügyfélelégedettség</div><b>4.9/5</b></div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <img src="/shutterstock_2163010975.jpg" alt="Építkezés ipari fejlesztésen – Harai Ingatlan Industrial and Logistics">
+        </div>
+      </div>
+    </section>
+
+    <section class="parallax" id="featured">
+      <div class="container inner">
+        <h2 style="margin:0 0 8px">Kiemelt fejlesztéseink</h2>
+        <p class="muted">Vasúti és energetikai infrastruktúrával rendelkező, azonnal fejleszthető területek.</p>
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <div class="container">
+        <h2>Aktuális portfólió</h2>
+        <p class="muted">Az alábbi válogatás szerkeszthető a <code>properties</code> listában. Szűrjön típusra és státuszra.</p>
+        <div class="toolbar">
+          <button class="filter active" data-filter="all">Összes</button>
+          <button class="filter" data-filter="logisztika">Logisztika</button>
+          <button class="filter" data-filter="ipari">Ipari</button>
+          <button class="filter" data-filter="kiado">Kiadó</button>
+          <button class="filter" data-filter="elado">Eladó</button>
+          <button class="filter" data-filter="fejlesztes">Fejlesztés alatt</button>
+        </div>
+        <div class="grid-4" id="portfolio-grid"></div>
+      </div>
+    </section>
+
+    <section id="kapcsolat">
+      <div class="container">
+        <h2>Lépjen kapcsolatba velünk</h2>
+        <p class="muted">Töltse ki az űrlapot, vagy írjon közvetlenül: <a href="mailto:harai.tamas@harai.hu">harai.tamas@harai.hu</a> · <a href="tel:+36309713836">+36 30 971 3836</a></p>
+        <form id="contact-form" action="https://formspree.io/f/your-id" method="POST">
+          <input name="name" placeholder="Név" required>
+          <input name="email" type="email" placeholder="Email" required>
+          <select name="topic">
+            <option>Általános érdeklődés</option>
+            <option>Bérbeadás</option>
+            <option>Eladás</option>
+            <option>BTS / fejlesztés</option>
+          </select>
+          <input name="phone" placeholder="Telefon / Phone">
+          <textarea name="message" placeholder="Üzenet"></textarea>
+          <div class="form-footer">
+            <span class="notice">Az űrlap a Formspree szolgáltatást használja. A küldéssel elfogadja az adatkezelést.</span>
+            <button class="btn primary" type="submit">Küldés</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:8px">
+          <img class="logo-img" src="/logoip.jpg" alt="Harai Ingatlan – Industrial & Logistics" onerror="this.style.display='none'">
+          <strong>iparingatlan.com</strong>
+        </div>
+        <div class="muted">© <span id="year"></span> iparingatlan.com · Minden jog fenntartva.</div>
+        <div class="credits"><small>Impresszum</small> · <small>Adatkezelés</small> · <small>Süti beállítások</small></div>
+      </div>
+      <div>
+        <strong>Iroda</strong>
+        <div class="muted">Budapest, Hungary (üzleti cím kérésre)</div>
+      </div>
+      <div>
+        <strong>Elérhetőség</strong>
+        <div class="muted">harai.tamas@harai.hu<br>+36 30 971 3836</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Portfolio data (edit here)
+    var properties = [
+      { title: "Gyöngyös – Ipari park fejlesztési terület (74 ha)", city: "Gyöngyös", size: 74, unit: "ha", type: "ipari", status: "elado", image: "/shutterstock_2163010975.jpg", features: ["164 ha parcból 74 ha szabad", "50 MW energia", "új bekötőutak, közművek", "1,7 km vasút", "7 részre osztható (22–27 ha)", "azonnal fejleszthető"], link: "#" },
+      { title: "Mohács – Nehézipari telek (25 ha)", city: "Mohács", size: 25, unit: "ha", type: "ipari", status: "elado", image: "/shutterstock_2332840463.jpg", features: ["700 m ipari vágány", "50–80 MW kapacitás", "nehéziparra alkalmas"], link: "#" },
+      { title: "Szekszárd (M6) – Fejlesztési terület (9 ha)", city: "Szekszárd", size: 9, unit: "ha", type: "ipari", status: "elado", image: "/shutterstock_2163010975.jpg", features: ["25 MW azonnal + 25 MW 6 hónapon belül", "40% beépíthetőség"], link: "#" },
+      { title: "Budapest XV., M0 – Telek (20 ha)", city: "Budapest XV.", size: 20, unit: "ha", type: "logisztika", status: "elado", image: "/shutterstock_2163010975.jpg", features: ["GKSZ-12", "50% beépíthetőség", "12,5 m építménymagasság", "közvetlen M0"], link: "#" }
+    ];
+
+    var totalArea = properties.reduce(function(s,p){ return s + (p.status!=="fejlesztes"? p.size : 0); }, 0);
+    document.getElementById('stat-area').textContent = new Intl.NumberFormat('hu-HU').format(totalArea) + ' m²';
+
+    var grid = document.getElementById('portfolio-grid');
+    function render(list){
+      grid.innerHTML = '';
+      list.forEach(function(p){
+        var el = document.createElement('div');
+        el.className = 'card property';
+        var typeText = (p.type === 'logisztika') ? 'Logisztika' : 'Ipari';
+        var statusText = (p.status==='kiado') ? 'Kiadó' : (p.status==='elado' ? 'Eladó' : 'Fejlesztés');
+        el.innerHTML =
+          '<img src="'+p.image+'" alt="'+p.title+'">' +
+          '<div class="meta">' +
+            '<span class="badge">'+p.city+'</span>' +
+            '<span class="badge">'+typeText+'</span>' +
+            '<span class="badge '+(p.status==='kiado'?'good':'')+'">'+statusText+'</span>' +
+          '</div>' +
+          '<h3>'+p.title+'</h3>' +
+          '<small class="muted">Méret: <strong>'+ new Intl.NumberFormat('hu-HU').format(p.size) +'</strong> '+(p.unit||'m²')+'</small>' +
+          '<ul class="muted" style="margin:6px 0 10px; padding-left:18px">' +
+            p.features.map(function(f){return '<li>'+f+'</li>';}).join('') +
+          '</ul>' +
+          '<div class="prop-footer">' +
+            '<small>'+(p.status==='elado'?'Értékesítés':(p.status==='kiado'?'Bérbeadás':'Fejlesztés'))+'</small>' +
+            '<a class="btn" href="'+p.link+'">Érdekel</a>' +
+          '</div>';
+        grid.appendChild(el);
+      });
+    }
+    render(properties);
+
+    var filters = document.querySelectorAll('.filter');
+    filters.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        filters.forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        var f = btn.getAttribute('data-filter');
+        if (f==='all') { render(properties); return; }
+        var filtered = properties.filter(function(p){ return [p.type, p.status].indexOf(f)!==-1; });
+        render(filtered);
+      });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    var form = document.getElementById('contact-form');
+    if (form){
+      form.addEventListener('submit', function(e){
+        if(form.action.indexOf('your-id')>-1){
+          e.preventDefault();
+          alert('Demó mód: adja meg a saját Formspree azonosítóját az action URL-ben.');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
