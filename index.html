@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iparingatlan.com – Rail-Ready Industrial & Logistics</title>
+  <link rel="icon" href="/logoip.jpg" type="image/jpeg">
+  <style>
+    body { margin:0; font-family: Inter, Arial, sans-serif; background:#0b0e13; color:#fff; }
+    header { position:sticky; top:0; background:#0f1624; display:flex; justify-content:space-between; align-items:center; padding:12px 20px; border-bottom:1px solid #1b2637; z-index:10; }
+    header img { height:36px; border-radius:6px; }
+    nav a { color:#fff; margin-left:16px; text-decoration:none; font-weight:500; }
+    nav a:hover { color:#f0b429; }
+    .lang button { margin-left:8px; padding:6px 10px; border:none; border-radius:8px; cursor:pointer; background:#1b2637; color:#fff; }
+    .lang button.active { background:linear-gradient(135deg,#f0b429,#d19a1a); color:#041018; }
+    .hero { position:relative; min-height:70vh; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; }
+    .hero img { position:absolute; width:100%; height:100%; object-fit:cover; filter:brightness(.6); }
+    .hero .inner { position:relative; z-index:2; max-width:800px; }
+    .hero h1 { font-size:42px; margin-bottom:12px; }
+    .hero p { color:#9fb0c7; font-size:18px; margin-bottom:20px; }
+    .btn { display:inline-block; padding:12px 18px; border-radius:10px; background:linear-gradient(135deg,#f0b429,#d19a1a); color:#041018; font-weight:600; text-decoration:none; }
+    .btn:hover { opacity:.9; }
+    section { padding:60px 20px; max-width:1200px; margin:auto; }
+    h2 { font-size:28px; margin-bottom:20px; color:#f0b429; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+    .card { background:#111827; border:1px solid #1f2a3a; border-radius:12px; padding:16px; }
+    .card img { width:100%; border-radius:8px; margin-bottom:10px; }
+    .badge { display:inline-block; background:#155a43; color:#9ff2d1; padding:4px 8px; border-radius:6px; font-size:12px; margin-right:6px; }
+    footer { background:#0f1624; text-align:center; padding:20px; border-top:1px solid #1b2637; color:#9fb0c7; font-size:14px; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="brand"><img src="/logoip.jpg" alt="iparingatlan.com logo"></div>
+  <nav>
+    <a href="#portfolio">Portfólió</a>
+    <a href="#contact">Kapcsolat</a>
+  </nav>
+  <div class="lang">
+    <button id="huBtn" class="active">HU</button>
+    <button id="enBtn">EN</button>
+  </div>
+</header>
+
+<section class="hero">
+  <img src="/shutterstock_281683199.jpeg" alt="Rail logistics night view">
+  <div class="inner">
+    <h1 data-hu="A jövő logisztikája – vasútra építve" data-en="The Future of Logistics is on Rails">A jövő logisztikája – vasútra építve</h1>
+    <p data-hu="Magyarországi ipari és logisztikai ingatlanok közvetlen vasúti kapcsolattal."
+       data-en="Industrial and logistics properties in Hungary with direct rail access.">
+       Magyarországi ipari és logisztikai ingatlanok közvetlen vasúti kapcsolattal.
+    </p>
+    <a href="#portfolio" class="btn" data-hu="🚆 Vasúti fejlesztéseink" data-en="🚆 Our Rail Developments">🚆 Vasúti fejlesztéseink</a>
+  </div>
+</section>
+
+<section id="portfolio">
+  <h2 data-hu="Rail-Ready portfólió" data-en="Rail-Ready Portfolio">Rail-Ready portfólió</h2>
+  <!-- IDE jön a portfólió grid -->
+  [IDE MÁSOLD BE a teljes grid-kódot, amit az előző üzenetben küldtem]
+</section>
+
+<section id="contact">
+  <h2 data-hu="Kapcsolat" data-en="Contact">Kapcsolat</h2>
+  <p>Harai Tamás – <a href="mailto:harai.tamas@harai.hu">harai.tamas@harai.hu</a> – <a href="tel:+36309713836">+36 30 971 3836</a></p>
+  <form action="https://formspree.io/f/your-id" method="POST" style="max-width:500px;margin-top:20px">
+    <input type="text" name="name" placeholder="Név / Name" required style="width:100%;padding:10px;margin:5px 0;border-radius:8px;border:1px solid #2c3a50;background:#101827;color:#fff">
+    <input type="email" name="_replyto" placeholder="Email" required style="width:100%;padding:10px;margin:5px 0;border-radius:8px;border:1px solid #2c3a50;background:#101827;color:#fff">
+    <textarea name="message" placeholder="Üzenet / Message" rows="5" required style="width:100%;padding:10px;margin:5px 0;border-radius:8px;border:1px solid #2c3a50;background:#101827;color:#fff"></textarea>
+    <button type="submit" class="btn" style="width:100%">Küldés / Send</button>
+  </form>
+</section>
+
+<footer>© <span id="year"></span> iparingatlan.com</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const huBtn=document.getElementById('huBtn');
+  const enBtn=document.getElementById('enBtn');
+  const transEls=document.querySelectorAll('[data-hu]');
+  function setLang(lang){
+    transEls.forEach(el=>el.textContent=el.getAttribute('data-'+lang));
+    if(lang==='hu'){huBtn.classList.add('active');enBtn.classList.remove('active');}
+    else{enBtn.classList.add('active');huBtn.classList.remove('active');}
+  }
+  huBtn.onclick=()=>setLang('hu');
+  enBtn.onclick=()=>setLang('en');
+</script>
+</body>
+</html>
