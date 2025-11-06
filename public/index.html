@@ -54,189 +54,83 @@ p {
     </div>
   </div>
 
- <!-- HERO – TELJES KÉPERNYŐ, ZOOM-IN, ANIMÁLT LEFELÉ NYÍLLAL -->
+<!-- HERO – FOTÓ + ZOOM + FELSŐ SÁRGA FUTÓSOR -->
 <section id="hero" style="
-  position: relative;
-  width: 100%;
-  height: 100vh; /* teljes képernyőmagasság */
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
+  position: relative; width: 100%; height: 100vh; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; text-align: center; color: white;
 ">
-  <!-- Háttérkép + zoom-in animáció -->
+  <!-- háttérkép + lassú zoom -->
   <div style="
-    position:absolute;
-    inset:0;
-    background-image: url('hero-rail.jpg'); /* A nyitókép neve */
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    transform: scale(1);
-    animation: zoomInHero 20s ease-in-out infinite alternate;
+    position:absolute; inset:0;
+    background-image:url('hero-rail.jpg'); background-size:cover; background-position:center;
+    transform:scale(1); animation:zoomInHero 20s ease-in-out infinite alternate;
   "></div>
 
-  <!-- Sötét áttetsző réteg -->
-  <div style="
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.45);
-  "></div>
+  <!-- felső sárga futósor -->
+  <div id="hero-ticker" style="
+    position:absolute; left:0; right:0; top:0; z-index:3;
+    overflow:hidden; background:linear-gradient(to bottom, rgba(0,0,0,.6), rgba(0,0,0,0));
+    padding:10px 0;
+  ">
+    <div class="ticker-track" style="
+      display:flex; gap:40px; white-space:nowrap; will-change:transform;
+      animation:heroTicker 35s linear infinite; padding:6px 0;
+      font-size:16px; letter-spacing:.3px; color:#FFD700; text-shadow:0 1px 3px rgba(0,0,0,.4); font-weight:500;
+    "></div>
+  </div>
 
-  <!-- Szöveg -->
-  <div style="position:relative; z-index:2;">
-    <h1 style="font-size:56px; margin-bottom:12px; letter-spacing:1px; text-shadow:0 2px 6px rgba(0,0,0,0.6);">
-      Ipari és logisztikái telkek Magyarországon
+  <!-- sötét overlay a jobb olvashatóságért -->
+  <div style="position:absolute; inset:0; background:rgba(0,0,0,.45)"></div>
+
+  <!-- szöveg + CTA -->
+  <div style="position:relative; z-index:2; padding:0 20px;">
+    <h1 style="font-size:56px; margin-bottom:12px; letter-spacing:1px; text-shadow:0 2px 6px rgba(0,0,0,.6);">
+      A jövő ipari logisztikája
     </h1>
-    <p style="font-size:24px; text-shadow:0 2px 6px rgba(0,0,0,0.6); margin-bottom:50px;">
-      Vasúti szállításra optimalizálva
+    <p style="font-size:24px; margin:0 0 28px; text-shadow:0 2px 6px rgba(0,0,0,.6);">
+      Vasútra optimalizálva
     </p>
-
-    <!-- Lefelé mutató nyíl -->
-    <div style="animation: arrowBounce 2s infinite; cursor:pointer;" onclick="document.getElementById('intro').scrollIntoView({ behavior: 'smooth' });">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" style="width:40px; height:40px; opacity:0.8;">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+    <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+      <a href="#portfolio" style="background:#DAA520;color:#111;padding:12px 18px;border-radius:10px;font-weight:700">Portfólió megtekintése</a>
+      <a href="#contact" style="border:1px solid rgba(255,255,255,.8);color:#fff;padding:12px 18px;border-radius:10px;font-weight:600">Kapcsolat</a>
+    </div>
+    <!-- lefelé nyíl (görget az introhoz) -->
+    <div style="margin-top:36px; animation:arrowBounce 2s infinite; cursor:pointer;"
+         onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})" aria-label="Görgess le">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+           stroke-width="2" stroke="white" style="width:40px;height:40px;opacity:.85">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
       </svg>
     </div>
   </div>
 
-  <!-- Animációk -->
   <style>
-    @keyframes zoomInHero {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.1); }
-    }
-
-    @keyframes arrowBounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(10px); }
+    @keyframes zoomInHero { 0% {transform:scale(1)} 100%{transform:scale(1.1)} }
+    @keyframes arrowBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(10px)} }
+    @keyframes heroTicker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    @media (max-width:640px){
+      #hero .ticker-track{ font-size:14px !important; gap:28px !important; animation-duration:45s !important; }
+      #hero h1{ font-size:40px !important; }
+      #hero p{ font-size:18px !important; }
     }
   </style>
- <!-- HERO kulcsszó-szalag – FELÜL FUTÓ, SÁRGA SZÖVEGGEL -->
-<div id="hero-ticker" style="
-  position:absolute;
-  left:0; right:0; top:0;
-  overflow:hidden;
-  background:linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0));
-  padding:10px 0;
-  z-index:3;
-">
-  <div class="ticker-track" style="
-    display:flex;
-    gap:40px;
-    white-space:nowrap;
-    will-change: transform;
-    animation: heroTicker 35s linear infinite;
-    padding:6px 0;
-    font-size:16px;
-    letter-spacing:0.3px;
-    color:#FFD700; /* sárga szöveg */
-    text-shadow:0 1px 3px rgba(0,0,0,.4);
-    font-weight:500;
-  ">
-    <!-- A sor tartalmát JS tölti meg -->
-  </div>
-</div>
 
-<style>
-@keyframes heroTicker {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-</style>
-
-<script>
-(function() {
-  const keywords = [
-    "Adatközpontnak kiváló terület",
-    "Fejlesztési terület",
-    "Európai optikai gerinchálózat közelében",
-    "Vasúti iparvágánnyal rendelkező telkek",
-    "M0 körgyűrű melletti logisztikai zónák",
-    "Autópálya-lehajtónál fekvő területek",
-    "Intermodális kapacitás",
-    "Ipari áram (MW) elérhető",
-    "Bővíthető, egybenyitható telkek",
-    "Kelet–nyugati elosztó pozíció",
-    "TEN-T kapcsolódás",
-    "Gyors kivitelezési lehetőség"
-  ];
-
-  // Véletlen sorrend
-  for (let i = keywords.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [keywords[i], keywords[j]] = [keywords[j], keywords[i]];
-  }
-
-  const track = document.querySelector('#hero-ticker .ticker-track');
-  const buildRow = arr => arr.map(k => `<span>${k}</span>`).join('<span style="opacity:.4;">•</span>');
-  track.innerHTML = buildRow(keywords) + '<span style="opacity:.4;">•</span>' + buildRow(keywords);
-
-  // Reszponzív finomhangolás
-  const mq = window.matchMedia('(max-width: 640px)');
-  const applyMobile = () => {
-    track.style.animationDuration = mq.matches ? '45s' : '35s';
-    track.style.fontSize = mq.matches ? '14px' : '16px';
-    track.style.gap = mq.matches ? '28px' : '40px';
-  };
-  applyMobile();
-  mq.addEventListener?.('change', applyMobile);
-})();
-</script>
-  </div>
-</div>
-
-<style>
-@keyframes heroTicker {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* a tartalom felét „elhúzzuk”, mert duplán töltjük fel */
-}
-</style>
-
-<script>
-(function() {
-  // Itt tudod szerkeszteni a kulcsszavakat — vesszővel elválasztva
-  const keywords = [
-    "Adatközpontnak kiváló terület",
-    "Fejlesztési terület",
-    "Európai optikai gerinchálózat közelében",
-    "Vasúti iparvágánnyal rendelkező telkek",
-    "M0 körgyűrű melletti logisztikai zónák",
-    "Autópálya-lehajtónál fekvő területek",
-    "Intermodális kapacitás",
-    "Ipari áram (MW) elérhető",
-    "Bővíthető, egybenyitható telkek",
-    "Kelet–nyugati elosztó pozíció",
-    "TEN-T kapcsolódás",
-    "Gyors kivitelezési lehetőség"
-  ];
-
-  // Véletlen sorrend (Fisher–Yates shuffle)
-  for (let i = keywords.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [keywords[i], keywords[j]] = [keywords[j], keywords[i]];
-  }
-
-  // Elem felépítése: egy sor kétszer egymás után, hogy végtelen legyen a görgés
-  const track = document.querySelector('#hero-ticker .ticker-track');
-  const buildRow = (arr) => arr.map(k => `<span style="opacity:.95;">${k}</span>`).join('<span style="opacity:.5;">•</span>');
-  track.innerHTML = buildRow(keywords) + '<span style="opacity:.5;">•</span>' + buildRow(keywords);
-
-  // Reszponzív finomhangolás: mobilon lassabb mozgás, kisebb betű
-  const mq = window.matchMedia('(max-width: 640px)');
-  const applyMobile = () => {
-    track.style.animationDuration = mq.matches ? '45s' : '35s';
-    track.style.fontSize = mq.matches ? '14px' : '16px';
-    track.style.gap = mq.matches ? '28px' : '40px';
-  };
-  applyMobile();
-  mq.addEventListener?.('change', applyMobile);
-})();
-</script>
+  <script>
+    (function(){
+      const keywords=[
+        "Adatközpontnak kiváló terület","Fejlesztési terület","Európai optikai gerinchálózat közelében",
+        "Vasúti iparvágánnyal rendelkező telkek","M0 körgyűrű melletti logisztikai zónák",
+        "Autópálya-lehajtónál fekvő területek","Intermodális kapacitás","Ipari áram (MW) elérhető",
+        "Bővíthető, egybenyitható telkek","Kelet–nyugati elosztó pozíció","TEN-T kapcsolódás","Gyors kivitelezési lehetőség"
+      ];
+      for(let i=keywords.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [keywords[i],keywords[j]]=[keywords[j],keywords[i]]}
+      const track=document.querySelector('#hero-ticker .ticker-track');
+      const row=arr=>arr.map(k=>`<span>${k}</span>`).join('<span style="opacity:.4;">•</span>');
+      track.innerHTML=row(keywords)+'<span style="opacity:.4;">•</span>'+row(keywords);
+    })();
+  </script>
 </section>
-  
+
   </section>
 <!-- MAGYARORSZÁG – KELET–NYUGATI HÍD (COVER + PARALLAX, RÉGI STÍLUS) -->
 <section id="intro" style="
