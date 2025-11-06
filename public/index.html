@@ -53,7 +53,6 @@ p {
       <a href="#contact">Kapcsolat</a>
     </div>
   </div>
-
 <!-- HERO – FOTÓ + ZOOM + FELSŐ SÁRGA FUTÓSOR -->
 <section id="hero" style="
   position: relative; width: 100%; height: 100vh; overflow: hidden;
@@ -85,15 +84,16 @@ p {
   <!-- szöveg + CTA -->
   <div style="position:relative; z-index:2; padding:0 20px;">
     <h1 style="font-size:56px; margin-bottom:12px; letter-spacing:1px; text-shadow:0 2px 6px rgba(0,0,0,.6);">
-      Azonnal beépíthető ipari és logisztikai telkek Magyarországon
+      Ipari területek Magyarországon
     </h1>
     <p style="font-size:24px; margin:0 0 28px; text-shadow:0 2px 6px rgba(0,0,0,.6);">
-      Vasúti szállításra optimalizálva
+      Vasúti szállításra is optimalizálva
     </p>
     <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
       <a href="#portfolio" style="background:#DAA520;color:#111;padding:12px 18px;border-radius:10px;font-weight:700">Portfólió megtekintése</a>
       <a href="#contact" style="border:1px solid rgba(255,255,255,.8);color:#fff;padding:12px 18px;border-radius:10px;font-weight:600">Kapcsolat</a>
     </div>
+
     <!-- lefelé nyíl (görget az introhoz) -->
     <div style="margin-top:36px; animation:arrowBounce 2s infinite; cursor:pointer;"
          onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})" aria-label="Görgess le">
@@ -104,6 +104,7 @@ p {
     </div>
   </div>
 
+  <!-- animációk -->
   <style>
     @keyframes zoomInHero { 0% {transform:scale(1)} 100%{transform:scale(1.1)} }
     @keyframes arrowBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(10px)} }
@@ -115,6 +116,7 @@ p {
     }
   </style>
 
+  <!-- kulcsszó-szalag tartalom JS -->
   <script>
     (function(){
       const keywords=[
@@ -131,60 +133,6 @@ p {
   </script>
 </section>
 
-  </section>
-<!-- MAGYARORSZÁG – KELET–NYUGATI HÍD (COVER + PARALLAX, RÉGI STÍLUS) -->
-<section id="intro" style="
-  background-image: url('gallery-rail-1.jpg');
-  background-size: cover;          /* TELJES sávot kitölti, nincs fekete sáv */
-  background-position: center;     /* középre igazítva */
-  background-attachment: fixed;    /* finom parallax hatás */
-  position: relative;
-  color: white;
-  overflow: hidden;
-">
-  <div style="
-    position:absolute;
-    inset:0;
-    background:linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)); /* olvashatóság */
-  "></div>
-
-  <div class="container" style="position:relative; z-index:2; padding:90px 20px; text-align:left;">
-    <h2 style="
-      font-size:36px;
-      margin-bottom:22px;
-      color:#DAA520;
-      letter-spacing:0.5px;
-      text-shadow:0 0 10px rgba(0,0,0,0.5);
-      text-align:center;
-    ">
-      Magyarország: a kelet–nyugati logisztika kapuja
-    </h2>
-
-    <div style="max-width:950px; margin:0 auto;">
-      <p style="font-size:18px; line-height:1.8; text-align:justify;">
-        Magyarország földrajzi helyzete és fejlesztési politikája révén egyre inkább
-        <strong style="color:#FFD700;">kereskedelmi hídként</strong> köti össze Keletet és Nyugatot.
-        Az Európai Unió célja, hogy 2030-ig a 300 km-nél hosszabb közúti áruszállítás legalább
-        <strong style="color:#FFD700;">30%-át vasútra vagy vízre</strong> terelje – ez a tendencia
-        <strong style="color:#FFD700;">vasúti-logisztikai beruházási hullámot</strong> indított el hazánkban.
-      </p>
-
-      <p style="font-size:18px; line-height:1.8; text-align:justify;">
-        A megvalósuló <strong style="color:#FFD700;">Budapest–Belgrád vasútvonal</strong>,
-        a <strong style="color:#FFD700;">fényeslitkei East-West Gate</strong> intermodális terminál,
-        valamint a <strong style="color:#FFD700;">debreceni ipari és akkumulátor-beruházások</strong>
-        új szintre emelik Magyarország logisztikai infrastruktúráját.
-      </p>
-
-      <p style="font-size:18px; line-height:1.8; text-align:justify; margin-bottom:0;">
-        Célunk: a keleti árufolyamok
-        <strong style="color:#FFD700;">átrakása, feldolgozása és nyugati elosztása</strong>
-        Magyarországon keresztül – és viszont. Az ipari-logisztikai portfóliónk ehhez kínál
-        <strong style="color:#FFD700;">vasúti bekötéssel és autópálya-kapcsolattal</strong>
-        rendelkező fejlesztési területeket – a jövő ipari logisztikai központjait.
-      </p>
-    </div>
-  </div>
 </section>
 
 </section>
