@@ -114,6 +114,76 @@ p {
       50% { transform: translateY(10px); }
     }
   </style>
+  <!-- HERO kulcsszó-szalag -->
+<div id="hero-ticker" style="
+  position:absolute;
+  left:0; right:0; bottom:0;
+  overflow:hidden;
+  background:linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0)); 
+  padding:12px 0;
+">
+  <div class="ticker-track" style="
+    display:flex; gap:40px; 
+    white-space:nowrap; 
+    will-change: transform;
+    animation: heroTicker 35s linear infinite;
+    padding:6px 0;
+    font-size:16px;
+    letter-spacing:.2px;
+    color:rgba(255,255,255,.95);
+    text-shadow:0 1px 3px rgba(0,0,0,.35);
+  ">
+    <!-- A sor tartalmát JS tölti meg (véletlen sorrend + duplikáció a végtelen görgéshez) -->
+  </div>
+</div>
+
+<style>
+@keyframes heroTicker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* a tartalom felét „elhúzzuk”, mert duplán töltjük fel */
+}
+</style>
+
+<script>
+(function() {
+  // Itt tudod szerkeszteni a kulcsszavakat — vesszővel elválasztva
+  const keywords = [
+    "Adatközpontnak kiváló terület",
+    "Fejlesztési terület",
+    "Európai optikai gerinchálózat közelében",
+    "Vasúti iparvágánnyal rendelkező telkek",
+    "M0 körgyűrű melletti logisztikai zónák",
+    "Autópálya-lehajtónál fekvő területek",
+    "Intermodális kapacitás",
+    "Ipari áram (MW) elérhető",
+    "Bővíthető, egybenyitható telkek",
+    "Kelet–nyugati elosztó pozíció",
+    "TEN-T kapcsolódás",
+    "Gyors kivitelezési lehetőség"
+  ];
+
+  // Véletlen sorrend (Fisher–Yates shuffle)
+  for (let i = keywords.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [keywords[i], keywords[j]] = [keywords[j], keywords[i]];
+  }
+
+  // Elem felépítése: egy sor kétszer egymás után, hogy végtelen legyen a görgés
+  const track = document.querySelector('#hero-ticker .ticker-track');
+  const buildRow = (arr) => arr.map(k => `<span style="opacity:.95;">${k}</span>`).join('<span style="opacity:.5;">•</span>');
+  track.innerHTML = buildRow(keywords) + '<span style="opacity:.5;">•</span>' + buildRow(keywords);
+
+  // Reszponzív finomhangolás: mobilon lassabb mozgás, kisebb betű
+  const mq = window.matchMedia('(max-width: 640px)');
+  const applyMobile = () => {
+    track.style.animationDuration = mq.matches ? '45s' : '35s';
+    track.style.fontSize = mq.matches ? '14px' : '16px';
+    track.style.gap = mq.matches ? '28px' : '40px';
+  };
+  applyMobile();
+  mq.addEventListener?.('change', applyMobile);
+})();
+</script>
 </section>
   
   </section>
