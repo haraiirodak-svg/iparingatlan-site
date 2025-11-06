@@ -151,6 +151,43 @@
       <a href="#">Vissza az elejére ↑</a>
     </div>
   </footer>
+<script>
+(async function loadPortfolio() {
+  try {
+    const res = await fetch('portfolio.hu.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('Nem elérhető a portfolio.hu.json');
+    const items = await res.json();
 
+    const grid = document.getElementById('portfolio-grid');
+    grid.innerHTML = '';
+
+    items.forEach((p) => {
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${p.image}" alt="${p.title}">
+        <div class="body">
+          <h3 style="margin:4px 0 8px;font-size:18px">${p.title}</h3>
+          ${p.city ? `<p style="margin:4px 0"><strong>Város:</strong> ${p.city}</p>` : ''}
+          ${p.rail_access
+            ? `<p style="margin:4px 0"><strong>Vasút:</strong> ${p.rail_notes || 'kapcsolat elérhető'}</p>`
+            : `<p style="margin:4px 0"><strong>Vasút:</strong> nincs kapcsolat</p>`}
+          ${p.size_ha ? `<p style="margin:4px 0"><strong>Terület:</strong> ${p.size_ha} ha</p>` : ''}
+          ${p.energy_mw ? `<p style="margin:4px 0"><strong>Energia:</strong> ${p.energy_mw} MW</p>` : ''}
+          ${p.zoning ? `<p style="margin:4px 0"><strong>Övezeti besorolás:</strong> ${p.zoning}</p>` : ''}
+          <div>
+            ${Array.isArray(p.features)
+              ? p.features.map(f => `<span class="badge">${f}</span>`).join('')
+              : ''}
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  } catch (err) {
+    console.error('Portfólió betöltési hiba:', err);
+  }
+})();
+</script>
 </body>
 </html>
