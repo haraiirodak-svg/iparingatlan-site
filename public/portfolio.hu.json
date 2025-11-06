@@ -1,1 +1,338 @@
-
+[
+  {
+    "id": "gyongyos-74ha",
+    "title": "Gyöngyös – Ipari park fejlesztési terület (74 ha szabad)",
+    "city": "Gyöngyös",
+    "size_ha": 74,
+    "type": "ipari",
+    "status": "elado",
+    "rail_access": true,
+    "rail_notes": "1,7 km ipari vágány, 7 részre osztható (22–27 ha)",
+    "energy_mw": 50,
+    "build_ratio": null,
+    "height_m": null,
+    "zoning": null,
+    "features": [
+      "164 ha parcból 74 ha elérhető",
+      "új bekötőutak, közművek",
+      "azonnal fejleszthető",
+      "60 ha + 30 ha due diligence alatt"
+    ],
+    "image": "shutterstock_2226373739.jpeg",
+    "link": "#"
+  },
+  {
+    "id": "mohacs-25ha",
+    "title": "Mohács – Nehézipari telek (25 ha)",
+    "city": "Mohács",
+    "size_ha": 25,
+    "type": "ipari",
+    "status": "elado",
+    "rail_access": true,
+    "rail_notes": "700 m ipari vágány",
+    "energy_mw": "50–80",
+    "build_ratio": 0.5,
+    "height_m": null,
+    "zoning": null,
+    "features": [
+      "nehéziparra is alkalmas"
+    ],
+    "image": "shutterstock_251633041.jpeg",
+    "link": "#"
+  },
+  {
+    "id": "szekszard-9ha",
+    "title": "Szekszárd (M6) – Fejlesztési terület (9 ha)",
+    "city": "Szekszárd",
+    "size_ha": 9,
+    "type": "ipari",
+    "status": "elado",
+    "rail_access": false,
+    "rail_notes": null,
+    "energy_mw": "25+25",
+    "build_ratio": 0.4,
+    "height_m": 10,
+    "zoning": null,
+    "features": [
+      "25 MW azonnal + 25 MW 6 hónapon belül",
+      "40% beépíthetőség",
+      "magasság módosítható"
+    ],
+    "image": "shutterstock_2226373739.jpeg",
+    "link": "#"
+  },
+  {
+    "id": "bp-xv-m0-20ha",
+    "title": "Budapest XV., M0 – Telek (20 ha)",
+    "city": "Budapest XV.",
+    "size_ha": 20,
+    "type": "logisztika",
+    "status": "elado",
+    "rail_access": false,
+    "rail_notes": null,
+    "energy_mw": null,
+    "build_ratio": 0.5,
+    "height_m": 12.5,
+    "zoning": "GKSZ-12",
+    "features": [
+      "közvetlen M0 kapcsolat"
+    ],
+    "image": "shutterstock_281683199.jpeg",
+    "link": "#"
+  },
+  {
+    "id": "veresegyhaz-4ha-high",
+    "title": "Veresegyház (GE mellett) – Telek (4 ha)",
+    "city": "Veresegyház",
+    "size_ha": 4,
+    "type": "logisztika",
+    "status": "elado",
+    "rail_access": false,
+    "rail_notes": null,
+    "energy_mw": null,
+    "build_ratio": null,
+    "height_m": 30,
+    "zoning": null,
+    "features": [
+      "akár 30 m magas raktár",
+      "~20 000 m² kiépíthető"
+    ],
+    "image": "shutterstock_281683199.jpeg",
+    "link": "#"
+  },
+  {
+    "id": "kal-m3-10ha",
+    "title": "Kál (M3) – Saroktelek (10 ha, GKSZ)",
+    "city": "Kál",
+    "size_ha": 10,
+    "type": "ipari",
+    "status": "elado",
+    "rail_access": false,
+    "rail_notes": null,
+    "energy_mw": null,
+    "build_ratio": null,
+    "height_m": null,
+    "zoning": "GKSZ",
+    "features": [
+      "közművek a telekhatáron"
+    ],
+    "image": "shutterstock_2226373739.jpeg",
+    "link": "#"
+  },
+  {
+    "id": "dunakeszi-43_5ha",
+    "title": "Dunakeszi – Fejlesztési terület (43,5 ha, Gá/1)",
+    "city": "Dunakeszi",
+    "size_ha": 43.5,
+    "type": "logisztika",
+    "status": "elado",
+    "rail_access": false,
+    "rail_notes": null,
+    "energy_mw": null,
+    "build_ratio": 0.4,
+    "height_m": 15,
+    "zoning": "Gá/1",
+    "features": [
+      "min. 25% zöldfelület",
+      "tervezett M3–M2 (301) kapcsolat"
+    ],
+    "image": "shutterstock_281683199.jpeg",
+    "link": "#"
+  },
+  {
+    "id": "gyor-20ha-rail",
+    "title": "Győr térsége – Telek (20 ha)",
+    "city": "Győr térsége",
+    "size_ha": 20,
+    "type": "ipari",
+    "status": "elado",
+    "rail_access": true,
+    "rail_notes": "ipari vágány a telekhatáron",
+    "energy_mw": null,
+    "build_ratio": 0.5,
+    "height_m": 16,
+    "zoning": null,
+    "features": [],
+    "image": "shutterstock_2226373739.jpeg",
+    "link": "#"
+  },
+  {
+    "id": "bataszek-20ha-rail-hall",
+    "title": "Bátaszék (M6) – Ipari ingatlan (20 ha + csarnok)",
+    "city": "Bátaszék",
+    "size_ha": 20,
+    "type": "ipari",
+    "status": "elado",
+    "rail_access": true,
+    "rail_notes": "dupla iparvágány",
+    "energy_mw": null,
+    "build_ratio": null,
+    "height_m": null,
+    "zoning": null,
+    "features": [
+      "23 000 m² csarnok (8 400 m² 2023-ban felújítva)",
+      "~5 ha térbeton",
+      "60 t hídmérleg"
+    ],
+    "image": "shutterstock_251633041.jpeg",
+    "link": "#"
+  },
+  {
+    "id": "ullo-2ha-permit",
+    "title": "Üllő (M0–M4) – 2 ha telek (érvényes engedéllyel)",
+    "city": "Üllő",
+    "size_ha": 2,
+    "type": "logisztika",
+    "status": "elado",
+    "rail_access": false,
+    "rail_notes": null,
+    "energy_mw": null,
+    "build_ratio": 0.4,
+    "height_m": null,
+    "zoning": null,
+    "features": [
+      "érvényes eng. 3 000 m² csarnokra",
+      "kétoldali megközelítés"
+    ],
+    "image": "shutterstock_281683199.jpeg",
+    "link": "#"
+  },
+  {
+    "id": "fot-1500m2-hall",
+    "title": "Fót – Új csarnok + irodák (1 500 m²)",
+    "city": "Fót",
+    "size_plot_m2": 4000,
+    "built_m2": 1500,
+    "type": "logisztika",
+    "status": "elado",
+    "rail_access": false,
+    "rail_notes": null,
+    "energy_mw": null,
+    "build_ratio": null,
+    "height_m": 6,
+    "zoning": null,
+    "features": [
+      "új csarnok + irodák"
+    ],
+    "image": "shutterstock_281683199.jpeg",
+    "link": "#"
+  },
+  {
+    "id": "kecskemet-14ha",
+    "title": "Kecskemét (M5) – Telek (14 ha)",
+    "city": "Kecskemét",
+    "size_ha": 14,
+    "type": "ipari",
+    "status": "elado",
+    "rail_access": false,
+    "rail_notes": null,
+    "energy_mw": null,
+    "build_ratio": null,
+    "height_m": null,
+    "zoning": null,
+    "features": [
+      "Mercedes-gyár közelében",
+      "beszállítói lokáció"
+    ],
+    "image": "shutterstock_2226373739.jpeg",
+    "link": "#"
+  },
+  {
+    "id": "veresegyhaz-4ha-gip",
+    "title": "Veresegyház – Telek (4 ha, GIP)",
+    "city": "Veresegyház",
+    "size_ha": 4,
+    "type": "ipari",
+    "status": "elado",
+    "rail_access": false,
+    "rail_notes": null,
+    "energy_mw": null,
+    "build_ratio": null,
+    "height_m": 30,
+    "zoning": "GIP",
+    "features": [
+      "trafó a telek mellett"
+    ],
+    "image": "shutterstock_281683199.jpeg",
+    "link": "#"
+  },
+  {
+    "id": "fot-2_6ha-gksz",
+    "title": "Fót – GKSZ telek (2,6 ha)",
+    "city": "Fót",
+    "size_ha": 2.6,
+    "type": "logisztika",
+    "status": "elado",
+    "rail_access": false,
+    "rail_notes": null,
+    "energy_mw": null,
+    "build_ratio": null,
+    "height_m": null,
+    "zoning": "GKSZ",
+    "features": [
+      "East Gate Pro mellett"
+    ],
+    "image": "shutterstock_281683199.jpeg",
+    "link": "#"
+  },
+  {
+    "id": "dunakeszi-8_5ha-rc",
+    "title": "Dunakeszi (M2) – 8,5 ha, vasbeton épület",
+    "city": "Dunakeszi",
+    "size_ha": 8.5,
+    "type": "logisztika",
+    "status": "elado",
+    "rail_access": false,
+    "rail_notes": null,
+    "energy_mw": null,
+    "build_ratio": null,
+    "height_m": null,
+    "zoning": null,
+    "features": [
+      "6 000 m² vasbeton épület (3–5 m) – menthető/bővíthető",
+      "due diligence alatt"
+    ],
+    "image": "shutterstock_281683199.jpeg",
+    "link": "#"
+  },
+  {
+    "id": "veresegyhaz-1ha-park",
+    "title": "Veresegyház ipari park – Telek (1 ha)",
+    "city": "Veresegyház",
+    "size_ha": 1,
+    "type": "ipari",
+    "status": "elado",
+    "rail_access": false,
+    "rail_notes": null,
+    "energy_mw": null,
+    "build_ratio": 0.4,
+    "height_m": null,
+    "zoning": null,
+    "features": [
+      "összközmű a telek előtt"
+    ],
+    "image": "shutterstock_2226373739.jpeg",
+    "link": "#"
+  },
+  {
+    "id": "kalocsa-10-40ha-rail",
+    "title": "Kalocsa – 10–40 ha fejlesztési terület",
+    "city": "Kalocsa",
+    "size_ha": 10,
+    "size_range_ha": [
+      10,
+      40
+    ],
+    "type": "ipari",
+    "status": "elado",
+    "rail_access": true,
+    "rail_notes": "ipari vágány összeköttetés, Tomori Pál híd kapcsolata",
+    "energy_mw": null,
+    "build_ratio": null,
+    "height_m": null,
+    "zoning": null,
+    "features": [],
+    "image": "shutterstock_251633041.jpeg",
+    "link": "#"
+  }
+]
