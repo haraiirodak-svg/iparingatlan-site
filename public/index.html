@@ -54,22 +54,37 @@ p {
     </div>
   </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-overlay">
-      <div class="container hero-inner">
-        <p style="margin:0;opacity:.9">Rail-Ready ingatlanok</p>
-        <h1>A jövő ipari logisztikája – vasútra optimalizálva</h1>
-        <p style="max-width:720px;font-size:18px;opacity:.95">
-          Magyarországi ipari és logisztikai ingatlanok közvetlen vasúti kapcsolat­tal és autópálya-közelséggel – a
-          Kelet–Nyugat folyosók európai kapujában.
-        </p>
-        <div style="margin-top:14px;display:flex;gap:12px;flex-wrap:wrap">
-          <a class="btn btn-gold" href="#portfolio">Vasúti fejlesztéseink</a>
-          <a class="btn btn-ghost" href="#routes" style="color:#fff;border-color:rgba(255,255,255,.8)">Útvonalak & folyosók</a>
-        </div>
-      </div>
-    </div>
+  <!-- HERO – TELJES KÉPERNYŐS NYITÓKÉP -->
+<section id="hero" style="
+  position: relative;
+  width: 100%;
+  height: 100vh; /* teljes képernyőmagasság */
+  background-image: url('hero-rail.jpg'); /* vagy a kívánt nyitókép neve */
+  background-size: cover; /* teljes képernyő lefedése */
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+">
+  <div style="
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.45); /* finom sötétítés a szöveg mögött */
+  "></div>
+
+  <div style="position:relative; z-index:2;">
+    <h1 style="font-size:56px; margin-bottom:12px; letter-spacing:1px; text-shadow:0 2px 6px rgba(0,0,0,0.6);">
+      A jövő ipari logisztikája
+    </h1>
+    <p style="font-size:24px; text-shadow:0 2px 6px rgba(0,0,0,0.6);">
+      Vasútra optimalizálva
+    </p>
+  </div>
+</section>
   </section>
 <!-- MAGYARORSZÁG – KELET–NYUGATI HÍD (COVER + PARALLAX, RÉGI STÍLUS) -->
 <section id="intro" style="
