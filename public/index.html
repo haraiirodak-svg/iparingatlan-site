@@ -1,90 +1,131 @@
 <!doctype html>
 <html lang="hu">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>iparingatlan.com – Rail-Ready Industrial & Logistics</title>
-  <link rel="icon" href="/logoip.jpg" type="image/jpeg">
+  <meta charset="utf-8" />
+  <title>Ipari & vasúti logisztikai portfólió – Rail-Ready</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Rail-Ready ipari ingatlanok Magyarországon – vasúti kapcsolat és autópálya-közelség, kelet–nyugat logisztikai folyosók." />
   <style>
-    body { margin:0; font-family: Inter, Arial, sans-serif; background:#0b0e13; color:#fff; }
-    header { position:sticky; top:0; background:#0f1624; display:flex; justify-content:space-between; align-items:center; padding:12px 20px; border-bottom:1px solid #1b2637; z-index:10; }
-    header img { height:36px; border-radius:6px; }
-    nav a { color:#fff; margin-left:16px; text-decoration:none; font-weight:500; }
-    nav a:hover { color:#f0b429; }
-    .lang button { margin-left:8px; padding:6px 10px; border:none; border-radius:8px; cursor:pointer; background:#1b2637; color:#fff; }
-    .lang button.active { background:linear-gradient(135deg,#f0b429,#d19a1a); color:#041018; }
-    .hero { position:relative; min-height:70vh; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; }
-    .hero img { position:absolute; width:100%; height:100%; object-fit:cover; filter:brightness(.6); }
-    .hero .inner { position:relative; z-index:2; max-width:800px; }
-    .hero h1 { font-size:42px; margin-bottom:12px; }
-    .hero p { color:#9fb0c7; font-size:18px; margin-bottom:20px; }
-    .btn { display:inline-block; padding:12px 18px; border-radius:10px; background:linear-gradient(135deg,#f0b429,#d19a1a); color:#041018; font-weight:600; text-decoration:none; }
-    .btn:hover { opacity:.9; }
-    section { padding:60px 20px; max-width:1200px; margin:auto; }
-    h2 { font-size:28px; margin-bottom:20px; color:#f0b429; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
-    .card { background:#111827; border:1px solid #1f2a3a; border-radius:12px; padding:16px; }
-    .card img { width:100%; border-radius:8px; margin-bottom:10px; }
-    .badge { display:inline-block; background:#155a43; color:#9ff2d1; padding:4px 8px; border-radius:6px; font-size:12px; margin-right:6px; }
-    footer { background:#0f1624; text-align:center; padding:20px; border-top:1px solid #1b2637; color:#9fb0c7; font-size:14px; }
+    :root { --gold:#DAA520; --ink:#111; --muted:#6b7280; }
+    *{box-sizing:border-box} body{margin:0;font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;color:var(--ink);background:#fff}
+    a{text-decoration:none;color:inherit}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    .nav{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid #eee}
+    .nav img{height:36px}
+    .nav-right{margin-left:auto;display:flex;gap:16px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;font-weight:600}
+    .btn-gold{background:var(--gold);color:#111}
+    .btn-ghost{border:1px solid rgba(0,0,0,.3)}
+    .hero{color:#fff;background-image:url('hero-rail.jpg');background-size:cover;background-position:center}
+    .hero-overlay{background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.25))}
+    .hero-inner{padding:72px 0}
+    .hero h1{font-size:40px;line-height:1.1;margin:8px 0 10px}
+    .muted{color:var(--muted)}
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit, minmax(260px,1fr))}
+    .card{border:1px solid #eee;border-radius:14px;overflow:hidden;background:#fff}
+    .card img{width:100%;height:160px;object-fit:cover}
+    .card .body{padding:14px}
+    .badge{display:inline-block;background:#f3f4f6;border-radius:999px;padding:4px 10px;font-size:12px;margin-right:8px;margin-top:6px}
+    .section{padding:40px 0}
+    .footer{border-top:1px solid #eee;color:#666}
+    .footer-inner{display:flex;justify-content:space-between;gap:10px;padding:16px 0}
+    @media (max-width:640px){ .hero h1{font-size:30px} }
   </style>
 </head>
 <body>
-<header>
-  <div class="brand"><img src="/logoip.jpg" alt="iparingatlan.com logo"></div>
-  <nav>
-    <a href="#portfolio">Portfólió</a>
-    <a href="#contact">Kapcsolat</a>
-  </nav>
-  <div class="lang">
-    <button id="huBtn" class="active">HU</button>
-    <button id="enBtn">EN</button>
+
+  <!-- NAV -->
+  <div class="container nav">
+    <img src="logoip.jpg" alt="Industrial & Logistics" />
+    <div class="nav-right">
+      <a href="#portfolio">Portfólió</a>
+      <a href="#contact">Kapcsolat</a>
+    </div>
   </div>
-</header>
 
-<section class="hero">
-  <img src="/shutterstock_281683199.jpeg" alt="Rail logistics night view">
-  <div class="inner">
-    <h1 data-hu="A jövő logisztikája – vasútra építve" data-en="The Future of Logistics is on Rails">A jövő logisztikája – vasútra építve</h1>
-    <p data-hu="Magyarországi ipari és logisztikai ingatlanok közvetlen vasúti kapcsolattal."
-       data-en="Industrial and logistics properties in Hungary with direct rail access.">
-       Magyarországi ipari és logisztikai ingatlanok közvetlen vasúti kapcsolattal.
-    </p>
-    <a href="#portfolio" class="btn" data-hu="🚆 Vasúti fejlesztéseink" data-en="🚆 Our Rail Developments">🚆 Vasúti fejlesztéseink</a>
-  </div>
-</section>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-overlay">
+      <div class="container hero-inner">
+        <p style="margin:0;opacity:.9">Rail-Ready ingatlanok</p>
+        <h1>A jövő logisztikája – vasútra építve</h1>
+        <p style="max-width:720px;font-size:18px;opacity:.95">
+          Magyarországi ipari és logisztikai ingatlanok közvetlen vasúti kapcsolattal
+          és autópálya-közelséggel, a kelet–nyugat folyosók metszéspontjában.
+        </p>
+        <div style="margin-top:14px;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-gold" href="#portfolio">Vasúti fejlesztéseink</a>
+          <a class="btn btn-ghost" href="#contact" style="color:#fff;border-color:rgba(255,255,255,.8)">Kapcsolat</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="portfolio">
-  <h2 data-hu="Rail-Ready portfólió" data-en="Rail-Ready Portfolio">Rail-Ready portfólió</h2>
-  <!-- IDE jön a portfólió grid -->
-  [IDE MÁSOLD BE a teljes grid-kódot, amit az előző üzenetben küldtem]
-</section>
+  <!-- PORTFÓLIÓ (a három képedre kötve) -->
+  <section id="portfolio" class="section">
+    <div class="container">
+      <h2 style="font-size:28px;margin:0 0 12px">Rail-Ready portfólió</h2>
+      <p class="muted" style="margin:0 0 16px">Vasúti bekötéssel és autópálya-kapcsolattal rendelkező ipari területek.</p>
 
-<section id="contact">
-  <h2 data-hu="Kapcsolat" data-en="Contact">Kapcsolat</h2>
-  <p>Harai Tamás – <a href="mailto:harai.tamas@harai.hu">harai.tamas@harai.hu</a> – <a href="tel:+36309713836">+36 30 971 3836</a></p>
-  <form action="https://formspree.io/f/your-id" method="POST" style="max-width:500px;margin-top:20px">
-    <input type="text" name="name" placeholder="Név / Name" required style="width:100%;padding:10px;margin:5px 0;border-radius:8px;border:1px solid #2c3a50;background:#101827;color:#fff">
-    <input type="email" name="_replyto" placeholder="Email" required style="width:100%;padding:10px;margin:5px 0;border-radius:8px;border:1px solid #2c3a50;background:#101827;color:#fff">
-    <textarea name="message" placeholder="Üzenet / Message" rows="5" required style="width:100%;padding:10px;margin:5px 0;border-radius:8px;border:1px solid #2c3a50;background:#101827;color:#fff"></textarea>
-    <button type="submit" class="btn" style="width:100%">Küldés / Send</button>
-  </form>
-</section>
+      <div class="grid">
+        <!-- 1 -->
+        <article class="card">
+          <img src="gallery-rail-1.jpg" alt="Debrecen Intermodális Logisztikai Park">
+          <div class="body">
+            <h3 style="margin:4px 0 8px;font-size:18px">Debrecen Intermodális Logisztikai Park</h3>
+            <p style="margin:4px 0"><strong>Vasút:</strong> MÁV 108, RO/UA kerülő kapcsolatok</p>
+            <p style="margin:4px 0"><strong>Közút:</strong> M35 · M3</p>
+            <p style="margin:4px 0"><strong>Terület:</strong> 42 ha</p>
+            <span class="badge">Vasúti bekötés</span>
+            <span class="badge">Autópálya 5 km</span>
+          </div>
+        </article>
 
-<footer>© <span id="year"></span> iparingatlan.com</footer>
+        <!-- 2 -->
+        <article class="card">
+          <img src="gallery-rail-2.jpg" alt="Győr Rail Hub – Nyugat-európai folyosó">
+          <div class="body">
+            <h3 style="margin:4px 0 8px;font-size:18px">Győr Rail Hub – Nyugat-európai folyosó</h3>
+            <p style="margin:4px 0"><strong>Vasút:</strong> TEN-T Orient/East-Med (Bécs/Passau)</p>
+            <p style="margin:4px 0"><strong>Közút:</strong> M1 · E60/E75</p>
+            <p style="margin:4px 0"><strong>Terület:</strong> 27 ha</p>
+            <span class="badge">Ro-La kompatibilis</span>
+            <span class="badge">FTZ opció</span>
+          </div>
+        </article>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-  const huBtn=document.getElementById('huBtn');
-  const enBtn=document.getElementById('enBtn');
-  const transEls=document.querySelectorAll('[data-hu]');
-  function setLang(lang){
-    transEls.forEach(el=>el.textContent=el.getAttribute('data-'+lang));
-    if(lang==='hu'){huBtn.classList.add('active');enBtn.classList.remove('active');}
-    else{enBtn.classList.add('active');huBtn.classList.remove('active');}
-  }
-  huBtn.onclick=()=>setLang('hu');
-  enBtn.onclick=()=>setLang('en');
-</script>
+        <!-- 3 -->
+        <article class="card">
+          <img src="gallery-rail-3.jpg" alt="Szeged – Türk Tanács folyosó kapu">
+          <div class="body">
+            <h3 style="margin:4px 0 8px;font-size:18px">Szeged – Türk Tanács folyosó kapu</h3>
+            <p style="margin:4px 0"><strong>Vasút:</strong> TEN-T – Balkán/Türkiye irány (UA/RU kerülő)</p>
+            <p style="margin:4px 0"><strong>Közút:</strong> M5 · M43 · E75</p>
+            <p style="margin:4px 0"><strong>Terület:</strong> 35 ha</p>
+            <span class="badge">Intermodális</span>
+            <span class="badge">Bővíthető</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- KAPCSOLAT -->
+  <section id="contact" class="section" style="background:#fafafa;border-top:1px solid #eee">
+    <div class="container">
+      <h2 style="font-size:28px;margin:0 0 8px">Kapcsolat</h2>
+      <p style="margin:6px 0">Harai Tamás · <a href="mailto:harai.tamas@harai.hu">harai.tamas@harai.hu</a> · +36 30 971 3836</p>
+      <a class="btn" href="mailto:harai.tamas@harai.hu?subject=Rail-Ready%20ingatlan%20érdeklődés" style="background:#111;color:#fff">Írj üzenetet</a>
+    </div>
+  </section>
+
+  <!-- LÁBLÉC -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© iparingatlan.com</span>
+      <a href="#">Vissza az elejére ↑</a>
+    </div>
+  </footer>
+
 </body>
 </html>
