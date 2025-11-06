@@ -54,7 +54,7 @@ p {
     </div>
   </div>
 
- <!-- HERO – TELJES KÉPERNYŐS NYITÓKÉP ZOOM-IN EFFEKTEL -->
+ <!-- HERO – TELJES KÉPERNYŐ, ZOOM-IN, ANIMÁLT LEFELÉ NYÍLLAL -->
 <section id="hero" style="
   position: relative;
   width: 100%;
@@ -66,10 +66,11 @@ p {
   text-align: center;
   color: white;
 ">
+  <!-- Háttérkép + zoom-in animáció -->
   <div style="
     position:absolute;
     inset:0;
-    background-image: url('hero-rail.jpg'); /* a nyitókép neve */
+    background-image: url('hero-rail.jpg'); /* A nyitókép neve */
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -77,10 +78,43 @@ p {
     animation: zoomInHero 20s ease-in-out infinite alternate;
   "></div>
 
+  <!-- Sötét áttetsző réteg -->
   <div style="
     position:absolute;
     inset:0;
     background:rgba(0,0,0,0.45);
+  "></div>
+
+  <!-- Szöveg -->
+  <div style="position:relative; z-index:2;">
+    <h1 style="font-size:56px; margin-bottom:12px; letter-spacing:1px; text-shadow:0 2px 6px rgba(0,0,0,0.6);">
+      Ipari és logisztikái telkek Magyarországon
+    </h1>
+    <p style="font-size:24px; text-shadow:0 2px 6px rgba(0,0,0,0.6); margin-bottom:50px;">
+      Vasúti szállításra optimalizálva
+    </p>
+
+    <!-- Lefelé mutató nyíl -->
+    <div style="animation: arrowBounce 2s infinite; cursor:pointer;" onclick="document.getElementById('intro').scrollIntoView({ behavior: 'smooth' });">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" style="width:40px; height:40px; opacity:0.8;">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- Animációk -->
+  <style>
+    @keyframes zoomInHero {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+
+    @keyframes arrowBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+  </style>
+</section>
   "></div>
 
   <div style="position:relative; z-index:2;">
