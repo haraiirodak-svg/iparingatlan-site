@@ -71,13 +71,12 @@ p {
       </div>
     </div>
   </section>
-<!-- MAGYARORSZÁG – KELET–NYUGATI HÍD (EGYHASÁBOS, SORKIZÁRT) -->
+<!-- MAGYARORSZÁG – KELET–NYUGATI HÍD (COVER + PARALLAX, RÉGI STÍLUS) -->
 <section id="intro" style="
   background-image: url('gallery-rail-1.jpg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  background-color: #000; /* a kép mögötti háttér, ha marad szél */
+  background-size: cover;          /* TELJES sávot kitölti, nincs fekete sáv */
+  background-position: center;     /* középre igazítva */
+  background-attachment: fixed;    /* finom parallax hatás */
   position: relative;
   color: white;
   overflow: hidden;
@@ -85,7 +84,7 @@ p {
   <div style="
     position:absolute;
     inset:0;
-    background:linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55));
+    background:linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)); /* olvashatóság */
   "></div>
 
   <div class="container" style="position:relative; z-index:2; padding:90px 20px; text-align:left;">
@@ -101,7 +100,7 @@ p {
     </h2>
 
     <div style="max-width:950px; margin:0 auto;">
-      <p>
+      <p style="font-size:18px; line-height:1.8; text-align:justify;">
         Magyarország földrajzi helyzete és fejlesztési politikája révén egyre inkább
         <strong style="color:#FFD700;">kereskedelmi hídként</strong> köti össze Keletet és Nyugatot.
         Az Európai Unió célja, hogy 2030-ig a 300 km-nél hosszabb közúti áruszállítás legalább
@@ -109,14 +108,14 @@ p {
         <strong style="color:#FFD700;">vasúti-logisztikai beruházási hullámot</strong> indított el hazánkban.
       </p>
 
-      <p>
+      <p style="font-size:18px; line-height:1.8; text-align:justify;">
         A megvalósuló <strong style="color:#FFD700;">Budapest–Belgrád vasútvonal</strong>,
         a <strong style="color:#FFD700;">fényeslitkei East-West Gate</strong> intermodális terminál,
         valamint a <strong style="color:#FFD700;">debreceni ipari és akkumulátor-beruházások</strong>
         új szintre emelik Magyarország logisztikai infrastruktúráját.
       </p>
 
-      <p style="margin-bottom:0;">
+      <p style="font-size:18px; line-height:1.8; text-align:justify; margin-bottom:0;">
         Célunk: a keleti árufolyamok
         <strong style="color:#FFD700;">átrakása, feldolgozása és nyugati elosztása</strong>
         Magyarországon keresztül – és viszont. Az ipari-logisztikai portfóliónk ehhez kínál
