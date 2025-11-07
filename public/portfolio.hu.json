@@ -9,16 +9,18 @@
     "rail_access": true,
     "rail_notes": "1,7 km ipari vágány, 7 részre osztható (22–27 ha)",
     "energy_mw": 50,
-    "build_ratio": null,
-    "height_m": null,
-    "zoning": null,
     "features": [
       "164 ha parcból 74 ha elérhető",
       "új bekötőutak, közművek",
       "azonnal fejleszthető",
       "60 ha + 30 ha due diligence alatt"
     ],
-    "image": "shutterstock_2226373739.jpeg",
+    "image": "gyongyos-1.jpg",
+    "gallery": [
+      "gyongyos-1.jpg",
+      "gyongyos-2.jpg",
+      "gyongyos-3.jpg"
+    ],
     "link": "#"
   },
   {
@@ -32,12 +34,16 @@
     "rail_notes": "700 m ipari vágány",
     "energy_mw": "50–80",
     "build_ratio": 0.5,
-    "height_m": null,
-    "zoning": null,
     "features": [
-      "nehéziparra is alkalmas"
+      "nehéziparra is alkalmas",
+      "ipari vasúti kapcsolat",
+      "nagy energiaigényű tevékenységre alkalmas"
     ],
-    "image": "shutterstock_251633041.jpeg",
+    "image": "mohacs-1.jpg",
+    "gallery": [
+      "mohacs-1.jpg",
+      "mohacs-2.jpg"
+    ],
     "link": "#"
   },
   {
@@ -48,20 +54,23 @@
     "type": "ipari",
     "status": "elado",
     "rail_access": false,
-    "rail_notes": null,
     "energy_mw": "25+25",
     "build_ratio": 0.4,
     "height_m": 10,
-    "zoning": null,
     "features": [
       "25 MW azonnal + 25 MW 6 hónapon belül",
       "40% beépíthetőség",
-      "magasság módosítható"
+      "magasság módosítható",
+      "autópálya lehajtó közvetlen közelében"
     ],
-    "image": "shutterstock_2226373739.jpeg",
+    "image": "szekszard-1.jpg",
+    "gallery": [
+      "szekszard-1.jpg",
+      "szekszard-2.jpg"
+    ],
     "link": "#"
-  },
-  {
+  }
+]
     "id": "bp-xv-m0-20ha",
     "title": "Budapest XV., M0 – Telek (20 ha)",
     "city": "Budapest XV.",
