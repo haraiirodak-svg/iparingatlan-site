@@ -338,19 +338,39 @@ Telefon:
       );
       const mailto = `mailto:${email}?subject=${subject}&body=${body}`;
 
+      // gallery: ha van gallery tömb használjuk, különben fallback az image-re
+      const gallery = Array.isArray(p.gallery) && p.gallery.length
+        ? p.gallery
+        : (p.image ? [p.image] : ['gallery-rail-1.jpg']);
+
+      const mainImg = gallery[0];
+      const extraThumbs = gallery.slice(1); // a 2. és 3. kép
+
       const card = document.createElement('article');
       card.className = 'card';
       card.innerHTML = `
-        <img src="${p.image || 'gallery-rail-1.jpg'}" alt="${title}">
+        <img src="${mainImg}" alt="${title}" class="main-img" style="width:100%;height:180px;object-fit:cover;border-radius:10px 10px 0 0;">
         <div class="body">
           <h3 style="margin:4px 0 8px;font-size:18px">${title}</h3>
           ${p.city ? `<p style="margin:4px 0"><strong>Város:</strong> ${p.city}</p>` : ''}
-          ${p.rail_access
+          ${p.rail_access === true
             ? `<p style="margin:4px 0"><strong>Vasút:</strong> ${p.rail_notes || 'iparvágány / vasúti kapcsolat elérhető'}</p>`
-            : `<p style="margin:4px 0"><strong>Vasút:</strong> nincs közvetlen iparvágány</p>`}
+            : (p.rail_access === false
+                ? `<p style="margin:4px 0"><strong>Vasút:</strong> nincs közvetlen iparvágány</p>`
+                : '')}
           ${p.size_ha ? `<p style="margin:4px 0"><strong>Terület:</strong> ${p.size_ha} ha</p>` : ''}
           ${p.energy_mw ? `<p style="margin:4px 0"><strong>Energia:</strong> ${p.energy_mw} MW</p>` : ''}
           ${p.zoning ? `<p style="margin:4px 0"><strong>Övezeti besorolás:</strong> ${p.zoning}</p>` : ''}
+
+          ${extraThumbs.length ? `
+            <div style="display:flex;gap:6px;margin:6px 0 4px;">
+              ${extraThumbs.map(img => `
+                <img src="${img}" alt="${title}"
+                  style="width:56px;height:40px;object-fit:cover;cursor:pointer;border-radius:4px;border:1px solid rgba(255,255,255,0.7);opacity:0.9;"
+                  onclick="this.closest('article').querySelector('.main-img').src='${img}'">
+              `).join('')}
+            </div>
+          ` : ''}
 
           <div>
             ${
