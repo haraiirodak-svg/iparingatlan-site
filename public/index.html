@@ -307,29 +307,63 @@ p {
   try {
     const res = await fetch('portfolio.hu.json', { cache: 'no-store' });
     if (!res.ok) throw new Error('Nem elérhető a portfolio.hu.json');
-    const items = await res.json();
 
+    const items = await res.json();
     const grid = document.getElementById('portfolio-grid');
+    if (!grid) return;
+
     grid.innerHTML = '';
+    const email = 'harai.tamas@harai.hu';
 
     items.forEach((p) => {
+      const title = p.title || 'Ismeretlen ingatlan';
+      const id = p.id || '';
+      const subject = encodeURIComponent(`Érdeklődés – ${title}`);
+      const body = encodeURIComponent(
+`Tisztelt Cím!
+
+Az alábbi ingatlan iránt érdeklődöm:
+
+${title}
+Azonosító: ${id}
+
+Kérem, vegyék fel velem a kapcsolatot további információkkal.
+
+Név:
+Cég:
+Telefon:
+
+Üdvözlettel,
+`
+      );
+      const mailto = `mailto:${email}?subject=${subject}&body=${body}`;
+
       const card = document.createElement('article');
       card.className = 'card';
       card.innerHTML = `
-        <img src="${p.image}" alt="${p.title}">
+        <img src="${p.image || 'gallery-rail-1.jpg'}" alt="${title}">
         <div class="body">
-          <h3 style="margin:4px 0 8px;font-size:18px">${p.title}</h3>
+          <h3 style="margin:4px 0 8px;font-size:18px">${title}</h3>
           ${p.city ? `<p style="margin:4px 0"><strong>Város:</strong> ${p.city}</p>` : ''}
           ${p.rail_access
-            ? `<p style="margin:4px 0"><strong>Vasút:</strong> ${p.rail_notes || 'kapcsolat elérhető'}</p>`
-            : `<p style="margin:4px 0"><strong>Vasút:</strong> nincs kapcsolat</p>`}
+            ? `<p style="margin:4px 0"><strong>Vasút:</strong> ${p.rail_notes || 'iparvágány / vasúti kapcsolat elérhető'}</p>`
+            : `<p style="margin:4px 0"><strong>Vasút:</strong> nincs közvetlen iparvágány</p>`}
           ${p.size_ha ? `<p style="margin:4px 0"><strong>Terület:</strong> ${p.size_ha} ha</p>` : ''}
           ${p.energy_mw ? `<p style="margin:4px 0"><strong>Energia:</strong> ${p.energy_mw} MW</p>` : ''}
           ${p.zoning ? `<p style="margin:4px 0"><strong>Övezeti besorolás:</strong> ${p.zoning}</p>` : ''}
+
           <div>
-            ${Array.isArray(p.features)
-              ? p.features.map(f => `<span class="badge">${f}</span>`).join('')
-              : ''}
+            ${
+              Array.isArray(p.features)
+                ? p.features.map(f => `<span class="badge">${f}</span>`).join('')
+                : ''
+            }
+          </div>
+
+          <div style="margin-top:10px;">
+            <a href="${mailto}" class="btn btn-gold" style="padding:8px 12px;font-size:14px;">
+              Érdekel az ingatlan
+            </a>
           </div>
         </div>
       `;
