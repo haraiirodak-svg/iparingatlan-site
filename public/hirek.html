@@ -1,1 +1,123 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ipari hírek és elemzések – iparingatlan.com</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #111;
+      color: #eee;
+      line-height: 1.7;
+    }
+    header {
+      background-color: #000;
+      color: #d4af37;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+    .articles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    .article {
+      background-color: #1b1b1b;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+    .article:hover {
+      transform: translateY(-5px);
+    }
+    .article img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .article-content {
+      padding: 25px;
+    }
+    .article-content h2 {
+      font-size: 1.4rem;
+      color: #d4af37;
+      margin-bottom: 10px;
+    }
+    .article-content p {
+      color: #ccc;
+      font-size: 1rem;
+    }
+    .article-content a {
+      display: inline-block;
+      margin-top: 15px;
+      color: #d4af37;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    footer {
+      background-color: #000;
+      text-align: center;
+      padding: 40px;
+      color: #888;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
 
+<body>
+  <header>
+    <h1>Hírek és elemzések</h1>
+    <p>Naprakész információk az ipari és logisztikai fejlesztésekről Magyarországon</p>
+  </header>
+
+  <section class="articles">
+    <div class="article">
+      <img src="shutterstock_2192389653.jpeg" alt="Rail Logistics">
+      <div class="article-content">
+        <h2>Új vasúti árufolyosó köti össze Kínát és Magyarországot</h2>
+        <p>A Türk Tanács országai és Magyarország között új vasúti áruszállítási folyosó nyílt meg, 
+        amely közvetlen kapcsolatot biztosít Kína és az Európai Unió között. A fejlesztés stratégiai előnyt jelent az ország logisztikai szerepének erősítésében.</p>
+        <a href="#">További részletek →</a>
+      </div>
+    </div>
+
+    <div class="article">
+      <img src="shutterstock_2226373739.jpeg" alt="Industrial Development">
+      <div class="article-content">
+        <h2>Debrecen: Európa új ipari központja</h2>
+        <p>A BMW és a CATL gyárainak építése Debrecenben új szintre emeli Magyarország ipari fejlesztéseit. 
+        A beruházások több ezer munkahelyet teremtenek és erősítik az elektromobilitási értékláncot.</p>
+        <a href="#">További részletek →</a>
+      </div>
+    </div>
+
+    <div class="article">
+      <img src="shutterstock_251633041.jpeg" alt="Logistics Hub">
+      <div class="article-content">
+        <h2>Kecskemét és Szeged logisztikai fejlesztései</h2>
+        <p>Az M5 és M43 autópályák mentén új logisztikai központok jönnek létre vasúti kapcsolattal. 
+        A térség stratégiai helyzete lehetővé teszi, hogy Magyarország a dél-európai áruszállítási lánc egyik fő szereplője legyen.</p>
+        <a href="#">További részletek →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 iparingatlan.com – Minden jog fenntartva.
+  </footer>
+</body>
+</html>
