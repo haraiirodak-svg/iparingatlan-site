@@ -7,91 +7,161 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Montserrat', sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background-color: #111;
       color: #eee;
       line-height: 1.7;
     }
-    header {
-      background-color: #000;
-      color: #d4af37;
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 60px 20px;
+      color: #fff;
+      overflow: hidden;
     }
-    header h1 {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('hero-rail.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.45);
+      transform: scale(1.05);
     }
-    header p {
-      font-size: 1.1rem;
-      color: #ccc;
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 20px;
     }
+    .hero h1 {
+      font-size: 2.3rem;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+      color: #ffd700;
+    }
+    .hero p {
+      font-size: 1.05rem;
+      color: #f0f0f0;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* LISTA – CIKKKÁRTYÁK */
     .articles {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
       max-width: 1100px;
-      margin: 60px auto;
+      margin: 50px auto 40px;
       padding: 0 20px;
     }
     .article {
       background-color: #1b1b1b;
       border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.35);
       overflow: hidden;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-align: left;
     }
     .article:hover {
-      transform: translateY(-5px);
+      transform: translateY(-4px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
     }
     .article img {
       width: 100%;
-      height: 220px;
+      height: 200px;
       object-fit: cover;
     }
     .article-content {
-      padding: 25px;
+      padding: 22px;
     }
     .article-content h2 {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       color: #d4af37;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .article-content p {
       color: #ccc;
-      font-size: 1rem;
+      font-size: 0.98rem;
+      margin: 0 0 10px;
     }
     .article-content a {
       display: inline-block;
-      margin-top: 15px;
+      margin-top: 6px;
       color: #d4af37;
       text-decoration: none;
       font-weight: 600;
+      font-size: 0.95rem;
     }
+
+    /* RÉSZLETES BLOKKOK (ANCHOR CÉLOK) */
+    .details {
+      max-width: 900px;
+      margin: 30px auto 50px;
+      padding: 0 20px 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .details h2 {
+      font-size: 1.6rem;
+      color: #ffd700;
+      margin-top:40px;
+      margin-bottom: 8px;
+    }
+    .details small {
+      display:block;
+      color:#888;
+      margin-bottom:14px;
+      font-size:0.85rem;
+    }
+    .details p {
+      color: #ddd;
+      margin-bottom: 10px;
+      font-size: 0.98rem;
+    }
+
     footer {
       background-color: #000;
       text-align: center;
-      padding: 40px;
+      padding: 30px;
       color: #888;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 640px) {
+      .hero { height: 220px; }
+      .hero h1 { font-size: 1.8rem; }
+      .hero p { font-size: 0.95rem; }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>Hírek és elemzések</h1>
-    <p>Naprakész információk az ipari és logisztikai fejlesztésekről Magyarországon</p>
-  </header>
+  <!-- HERO NYITÓSÁV -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Hírek és elemzések</h1>
+      <p>
+        Aktuális fejlesztések, vasúti-logisztikai trendek és ipari beruházások Magyarországon –
+        összegyűjtve befektetőknek és döntéshozóknak.
+      </p>
+    </div>
+  </section>
 
+  <!-- HÍRKÁRTYÁK (RÖVID ÖSSZEFOGLALÓK) -->
   <section class="articles">
     <div class="article">
       <img src="shutterstock_2192389653.jpeg" alt="Rail Logistics">
       <div class="article-content">
         <h2>Új vasúti árufolyosó köti össze Kínát és Magyarországot</h2>
-        <p>A Türk Tanács országai és Magyarország között új vasúti áruszállítási folyosó nyílt meg, 
-        amely közvetlen kapcsolatot biztosít Kína és az Európai Unió között. A fejlesztés stratégiai előnyt jelent az ország logisztikai szerepének erősítésében.</p>
-        <a href="#">További részletek →</a>
+        <p>A Türk Tanács országain és Magyarországon áthaladó vasúti útvonalak erősítik az Európa–Ázsia kapcsolatot.</p>
+        <a href="#cikk-kinamagyarorszag">További részletek →</a>
       </div>
     </div>
 
@@ -99,9 +169,8 @@
       <img src="shutterstock_2226373739.jpeg" alt="Industrial Development">
       <div class="article-content">
         <h2>Debrecen: Európa új ipari központja</h2>
-        <p>A BMW és a CATL gyárainak építése Debrecenben új szintre emeli Magyarország ipari fejlesztéseit. 
-        A beruházások több ezer munkahelyet teremtenek és erősítik az elektromobilitási értékláncot.</p>
-        <a href="#">További részletek →</a>
+        <p>A BMW, a CATL és kapcsolódó beruházások Debrecent kiemelt ipari-innovációs csomóponttá teszik.</p>
+        <a href="#cikk-debrecen">További részletek →</a>
       </div>
     </div>
 
@@ -109,10 +178,58 @@
       <img src="shutterstock_251633041.jpeg" alt="Logistics Hub">
       <div class="article-content">
         <h2>Kecskemét és Szeged logisztikai fejlesztései</h2>
-        <p>Az M5 és M43 autópályák mentén új logisztikai központok jönnek létre vasúti kapcsolattal. 
-        A térség stratégiai helyzete lehetővé teszi, hogy Magyarország a dél-európai áruszállítási lánc egyik fő szereplője legyen.</p>
-        <a href="#">További részletek →</a>
+        <p>Új logisztikai terek az M5/M43 tengelyen: autópálya-kapcsolat, vasút, ipari infrastruktúra.</p>
+        <a href="#cikk-kecskemet-szeged">További részletek →</a>
       </div>
+    </div>
+  </section>
+
+  <!-- RÉSZLETES CIKKEK (ANCHOR CÉLOK) -->
+  <section class="details">
+    <div id="cikk-kinamagyarorszag">
+      <h2>Új vasúti árufolyosó köti össze Kínát és Magyarországot</h2>
+      <small>Témák: Türk Tanács, vasúti logisztika, kelet–nyugat folyosó</small>
+      <p>
+        Az elmúlt években egyre hangsúlyosabbá váltak azok a vasúti útvonalak, amelyek Kínát és
+        Közép-Európát kötik össze, Oroszország és Ukrajna kikerülésével. Magyarország ebben a
+        struktúrában olyan elosztóponttá válik, ahol a keleti irányból érkező áruk átrakása,
+        raktározása és továbbszállítása történik nyugat felé.
+      </p>
+      <p>
+        A Türk Tanács országai, a balkáni útvonalak és a hazai intermodális terminálok (pl. Fényeslitke)
+        mind hozzájárulnak ahhoz, hogy vasúti-logisztikai fejlesztések szempontjából kiemelt értéke legyen
+        azoknak a területeknek, amelyek vasúti iparvágánnyal, autópálya-kapcsolattal és jelentős
+        energetikai kapacitással rendelkeznek.
+      </p>
+    </div>
+
+    <div id="cikk-debrecen">
+      <h2>Debrecen: Európa új ipari központja</h2>
+      <small>Témák: autóipar, akkumulátorgyártás, munkahelyteremtés</small>
+      <p>
+        Debrecen az elmúlt időszakban stratégiai jelentőségű ipari központtá vált:
+        a BMW gyár, az akkumulátorgyártási beruházások és a kapcsolódó beszállítói hálózat
+        nemcsak munkahelyeket teremtenek, hanem jelentősen növelik a térség logisztikai terhelését és
+        infrastruktúra-igényét.
+      </p>
+      <p>
+        Ezek a fejlesztések közvetlen hatással vannak az ipari és logisztikai területek iránti keresletre,
+        különösen a vasúti kapcsolattal, nagy energiaigénnyel és gyors kivitelezési lehetőséggel rendelkező telkek esetében.
+      </p>
+    </div>
+
+    <div id="cikk-kecskemet-szeged">
+      <h2>Kecskemét és Szeged logisztikai fejlesztései</h2>
+      <small>Témák: autópálya-kapcsolat, dél-alföldi logisztika, ipari területek</small>
+      <p>
+        Kecskemét a Mercedes beruházás révén, Szeged az M5–M43–Szerbia irányú tengely miatt vált kiemelt logisztikai csomóponttá.
+        Az új fejlesztések célja, hogy az itt elérhető ipari területek komplex megoldást nyújtsanak azoknak a szereplőknek,
+        akik gyors autópálya- és vasúti elérést keresnek dél-kelet-európai irányokba.
+      </p>
+      <p>
+        A megfelelően előkészített, közművesített és jogilag rendezett területek versenyelőnyt jelentenek a befektetők számára,
+        különösen akkor, ha hosszú távú, fenntartható logisztikai vagy gyártási kapacitásban gondolkodnak.
+      </p>
     </div>
   </section>
 
