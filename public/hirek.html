@@ -192,14 +192,15 @@
           // Felső kártya
           const card = document.createElement('article');
           card.className = 'article';
-          card.innerHTML = `
-            <img src="${img}" alt="${title}">
-            <div class="article-content">
-              <h2>${title}</h2>
-              <p>${excerpt}</p>
-              <a href="#${id}">További részletek →</a>
-            </div>
-          `;
+         card.innerHTML = `
+  <img src="${img}" alt="${title}"
+       onerror="this.onerror=null;this.src='hero-rail.jpg';">
+  <div class="article-content">
+    <h2>${title}</h2>
+    <p>${excerpt}</p>
+    <a href="#${id}">További részletek →</a>
+  </div>
+`;
           listEl.appendChild(card);
 
           // Alsó részletes blokk
