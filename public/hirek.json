@@ -1,1 +1,41 @@
-
+[
+  {
+    "id": "kina-magyarorszag-vasuti-folyoso",
+    "title": "Új vasúti árufolyosó köti össze Kínát és Magyarországot",
+    "image": "shutterstock_2192389653.jpeg",
+    "tags": ["Türk Tanács", "vasúti logisztika", "kelet–nyugat folyosó"],
+    "excerpt": "A Türk Tanács országain és Magyarországon áthaladó vasúti útvonalak erősítik az Európa–Ázsia kapcsolatot, Oroszország és Ukrajna kikerülésével.",
+    "body": [
+      "Az elmúlt években egyre nagyobb hangsúlyt kapnak azok a vasúti útvonalak, amelyek Kínát és Közép-Európát kötik össze, elkerülve az orosz–ukrán tranzitfüggőséget.",
+      "Magyarország ebben a rendszerben olyan elosztóponttá válik, ahol a keleti irányból érkező áruk átrakása, raktározása és továbbszállítása történik nyugat felé.",
+      "A Türk Tanács országai, a balkáni irány, a hazai intermodális terminálok és a vasúti iparvágánnyal rendelkező ipari területek mind növelik az ország stratégiai szerepét.",
+      "Az olyan fejlesztések, amelyek kombinálják a vasúti iparvágányt, az autópálya-csatlakozást és a jelentős energetikai kapacitást, közvetlenül profitálnak ezekből a folyosókból."
+    ]
+  },
+  {
+    "id": "debrecen-ipari-kozpont",
+    "title": "Debrecen: Európa új ipari központja",
+    "image": "shutterstock_2226373739.jpeg",
+    "tags": ["BMW", "CATL", "elektromobilitás", "akkumulátorgyártás"],
+    "excerpt": "A BMW és a CATL beruházásai Debrecent stratégiai ipari csomóponttá teszik az elektromobilitási értékláncban.",
+    "body": [
+      "Debrecen az elmúlt évtizedben Magyarország egyik legfontosabb ipari célpontjává vált. A BMW gyár és az akkumulátorgyártó beruházások több ezer új munkahelyet hoznak létre.",
+      "A beruházások közvetett hatásaként nő az igény a környező logisztikai, ipari és beszállítói területek iránt – különösen azokért, amelyek kiemelt infrastruktúrával rendelkeznek.",
+      "A vasúti kapcsolat, az autópálya-összeköttetés, az ipari áramkapacitás és az engedélyezési folyamatok gyorsítása mind kulcstényezők Debrecen térségében.",
+      "Az ilyen típusú fejlesztésekhez hasonlóan más magyarországi lokációk (pl. Gyöngyös, Kecskemét, Győr térsége) is versenyképes alternatívát nyújtanak a befektetőknek."
+    ]
+  },
+  {
+    "id": "kecskemet-szeged-logisztika",
+    "title": "Kecskemét és Szeged logisztikai fejlesztései",
+    "image": "shutterstock_251633041.jpeg",
+    "tags": ["M5", "M43", "logisztikai csomópont", "ipari területek"],
+    "excerpt": "Új logisztikai kapacitások épülnek az M5 és M43 autópályák mentén, vasúti kapcsolatokkal és ipari infrastruktúrával.",
+    "body": [
+      "Kecskemét a Mercedes jelenléte miatt a dél-alföldi régió meghatározó autóipari központja, míg Szeged az M5–M43–Szerbia irányú folyosó miatt kulcsfontosságú logisztikai helyszín.",
+      "A térségben növekvő az igény a nagy méretű, jól megközelíthető, vasútkapcsolattal vagy ipari áramkapacitással rendelkező fejlesztési területekre.",
+      "Az ipari és logisztikai projektek számára előnyt jelent, ha a telek jogilag rendezett, közművesített, és közel található a fő közlekedési tengelyekhez.",
+      "Az ilyen ingatlanok hosszú távú, fenntartható működést biztosítanak a nemzetközi beszállítói lánc szereplői számára."
+    ]
+  }
+]
