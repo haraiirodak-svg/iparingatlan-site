@@ -52,7 +52,7 @@
       margin: 0 auto;
     }
 
-    /* LISTA – CIKKKÁRTYÁK */
+    /* HÍRKÁRTYÁK LISTA */
     .articles {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -100,26 +100,28 @@
       font-size: 0.95rem;
     }
 
-    /* RÉSZLETES BLOKKOK (ANCHOR CÉLOK) */
+    /* RÉSZLETES CIKKEK */
     .details {
       max-width: 900px;
       margin: 30px auto 50px;
       padding: 0 20px 30px;
       border-top: 1px solid rgba(255,255,255,0.1);
     }
-    .details h2 {
+    .details-article {
+      margin-top: 40px;
+    }
+    .details-article h2 {
       font-size: 1.6rem;
       color: #ffd700;
-      margin-top:40px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
-    .details small {
-      display:block;
-      color:#888;
-      margin-bottom:14px;
-      font-size:0.85rem;
+    .details-article small {
+      display: block;
+      color: #888;
+      margin-bottom: 14px;
+      font-size: 0.85rem;
     }
-    .details p {
+    .details-article p {
       color: #ddd;
       margin-bottom: 10px;
       font-size: 0.98rem;
@@ -147,94 +149,75 @@
   <section class="hero">
     <div class="hero-content">
       <h1>Hírek és elemzések</h1>
-      <p>
-        Aktuális fejlesztések, vasúti-logisztikai trendek és ipari beruházások Magyarországon –
-        összegyűjtve befektetőknek és döntéshozóknak.
-      </p>
+      <p>Aktuális fejlesztések, vasúti-logisztikai trendek és befektetői szempontok egy helyen.</p>
     </div>
   </section>
 
-  <!-- HÍRKÁRTYÁK (RÖVID ÖSSZEFOGLALÓK) -->
-  <section class="articles">
-    <div class="article">
-      <img src="shutterstock_2192389653.jpeg" alt="Rail Logistics">
-      <div class="article-content">
-        <h2>Új vasúti árufolyosó köti össze Kínát és Magyarországot</h2>
-        <p>A Türk Tanács országain és Magyarországon áthaladó vasúti útvonalak erősítik az Európa–Ázsia kapcsolatot.</p>
-        <a href="#cikk-kinamagyarorszag">További részletek →</a>
-      </div>
-    </div>
-
-    <div class="article">
-      <img src="shutterstock_2226373739.jpeg" alt="Industrial Development">
-      <div class="article-content">
-        <h2>Debrecen: Európa új ipari központja</h2>
-        <p>A BMW, a CATL és kapcsolódó beruházások Debrecent kiemelt ipari-innovációs csomóponttá teszik.</p>
-        <a href="#cikk-debrecen">További részletek →</a>
-      </div>
-    </div>
-
-    <div class="article">
-      <img src="shutterstock_251633041.jpeg" alt="Logistics Hub">
-      <div class="article-content">
-        <h2>Kecskemét és Szeged logisztikai fejlesztései</h2>
-        <p>Új logisztikai terek az M5/M43 tengelyen: autópálya-kapcsolat, vasút, ipari infrastruktúra.</p>
-        <a href="#cikk-kecskemet-szeged">További részletek →</a>
-      </div>
-    </div>
+  <!-- HÍRKÁRTYÁK (DINAMIKUSAN) -->
+  <section class="articles" id="news-list">
+    <!-- Ide tölti be a híreket a JavaScript -->
   </section>
 
-  <!-- RÉSZLETES CIKKEK (ANCHOR CÉLOK) -->
-  <section class="details">
-    <div id="cikk-kinamagyarorszag">
-      <h2>Új vasúti árufolyosó köti össze Kínát és Magyarországot</h2>
-      <small>Témák: Türk Tanács, vasúti logisztika, kelet–nyugat folyosó</small>
-      <p>
-        Az elmúlt években egyre hangsúlyosabbá váltak azok a vasúti útvonalak, amelyek Kínát és
-        Közép-Európát kötik össze, Oroszország és Ukrajna kikerülésével. Magyarország ebben a
-        struktúrában olyan elosztóponttá válik, ahol a keleti irányból érkező áruk átrakása,
-        raktározása és továbbszállítása történik nyugat felé.
-      </p>
-      <p>
-        A Türk Tanács országai, a balkáni útvonalak és a hazai intermodális terminálok (pl. Fényeslitke)
-        mind hozzájárulnak ahhoz, hogy vasúti-logisztikai fejlesztések szempontjából kiemelt értéke legyen
-        azoknak a területeknek, amelyek vasúti iparvágánnyal, autópálya-kapcsolattal és jelentős
-        energetikai kapacitással rendelkeznek.
-      </p>
-    </div>
-
-    <div id="cikk-debrecen">
-      <h2>Debrecen: Európa új ipari központja</h2>
-      <small>Témák: autóipar, akkumulátorgyártás, munkahelyteremtés</small>
-      <p>
-        Debrecen az elmúlt időszakban stratégiai jelentőségű ipari központtá vált:
-        a BMW gyár, az akkumulátorgyártási beruházások és a kapcsolódó beszállítói hálózat
-        nemcsak munkahelyeket teremtenek, hanem jelentősen növelik a térség logisztikai terhelését és
-        infrastruktúra-igényét.
-      </p>
-      <p>
-        Ezek a fejlesztések közvetlen hatással vannak az ipari és logisztikai területek iránti keresletre,
-        különösen a vasúti kapcsolattal, nagy energiaigénnyel és gyors kivitelezési lehetőséggel rendelkező telkek esetében.
-      </p>
-    </div>
-
-    <div id="cikk-kecskemet-szeged">
-      <h2>Kecskemét és Szeged logisztikai fejlesztései</h2>
-      <small>Témák: autópálya-kapcsolat, dél-alföldi logisztika, ipari területek</small>
-      <p>
-        Kecskemét a Mercedes beruházás révén, Szeged az M5–M43–Szerbia irányú tengely miatt vált kiemelt logisztikai csomóponttá.
-        Az új fejlesztések célja, hogy az itt elérhető ipari területek komplex megoldást nyújtsanak azoknak a szereplőknek,
-        akik gyors autópálya- és vasúti elérést keresnek dél-kelet-európai irányokba.
-      </p>
-      <p>
-        A megfelelően előkészített, közművesített és jogilag rendezett területek versenyelőnyt jelentenek a befektetők számára,
-        különösen akkor, ha hosszú távú, fenntartható logisztikai vagy gyártási kapacitásban gondolkodnak.
-      </p>
-    </div>
+  <!-- RÉSZLETES CIKKEK (DINAMIKUSAN) -->
+  <section class="details" id="news-details">
+    <!-- Ide kerülnek a részletes szövegek -->
   </section>
 
   <footer>
     &copy; 2025 iparingatlan.com – Minden jog fenntartva.
   </footer>
+
+  <script>
+    (async function loadNews() {
+      try {
+        const res = await fetch('hirek.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('Hírek nem elérhetők');
+
+        const items = await res.json();
+        const listEl = document.getElementById('news-list');
+        const detailsEl = document.getElementById('news-details');
+
+        listEl.innerHTML = '';
+        detailsEl.innerHTML = '';
+
+        items.forEach((n) => {
+          const id = n.id;
+          const title = n.title || '';
+          const img = n.image || 'hero-rail.jpg';
+          const excerpt = n.excerpt || '';
+          const tags = Array.isArray(n.tags) ? n.tags : [];
+          const body = Array.isArray(n.body) ? n.body : [];
+
+          // Felső kártya
+          const card = document.createElement('article');
+          card.className = 'article';
+          card.innerHTML = `
+            <img src="${img}" alt="${title}">
+            <div class="article-content">
+              <h2>${title}</h2>
+              <p>${excerpt}</p>
+              <a href="#${id}">További részletek →</a>
+            </div>
+          `;
+          listEl.appendChild(card);
+
+          // Alsó részletes blokk
+          const detail = document.createElement('article');
+          detail.className = 'details-article';
+          detail.id = id;
+          detail.innerHTML = `
+            <h2>${title}</h2>
+            ${tags.length ? `<small>${tags.join(' • ')}</small>` : ''}
+            ${body.map(p => `<p>${p}</p>`).join('')}
+          `;
+          detailsEl.appendChild(detail);
+        });
+      } catch (err) {
+        console.error(err);
+        document.getElementById('news-list').innerHTML =
+          '<p style="color:#ccc;">A hírek jelenleg nem elérhetők.</p>';
+      }
+    })();
+  </script>
 </body>
 </html>
