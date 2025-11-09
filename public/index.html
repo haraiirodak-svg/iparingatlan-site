@@ -116,10 +116,6 @@
     }
     .section p { margin-bottom:14px; }
 
-    @media (max-width:640px) {
-      .hero h1 { font-size:30px; }
-    }
-
     /* Splash screen */
     #splash-screen {
       position:fixed;
@@ -133,49 +129,53 @@
       z-index:9999;
       transition:opacity .6s ease;
     }
-
-    #splash-screen.fade-out {
-      opacity:0;
-      pointer-events:none;
-    }
-
-    #splash-screen img {
-      width:120px;
-      height:120px;
-      margin-bottom:20px;
-    }
-
-    #splash-progress {
-      width:100px;
-      height:6px;
-      background-color:#333;
-      border-radius:3px;
-      overflow:hidden;
-    }
-
+    #splash-screen.fade-out { opacity:0; pointer-events:none; }
+    #splash-screen img { width:120px; height:120px; margin-bottom:20px; }
+    #splash-progress { width:100px; height:6px; background-color:#333; border-radius:3px; overflow:hidden; }
     #splash-progress span {
-      display:block;
-      width:0;
-      height:100%;
-      background-color:#d4af37;
-      animation:load 2s linear forwards;
+      display:block; width:0; height:100%; background-color:#d4af37; animation:load 2s linear forwards;
     }
-
-    @keyframes load {
-      to { width:100%; }
-    }
+    @keyframes load { to { width:100%; } }
 
     /* HERO animációk */
     @keyframes zoomInHero { 0%{transform:scale(1)} 100%{transform:scale(1.1)} }
     @keyframes arrowBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(10px)} }
     @keyframes heroTicker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+    /* --- HERO szöveg fix: sose lógjon ki --- */
+    #hero .content {
+      position: relative;
+      z-index: 2;
+      padding: 0 20px;
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    #hero .title {
+      font-size: clamp(28px, 6vw, 56px);
+      line-height: 1.1;
+      margin: 0 0 12px;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 6px rgba(0,0,0,.6);
+    }
+    #hero .subtitle {
+      font-size: clamp(16px, 3vw, 24px);
+      margin: 0 0 28px;
+      text-shadow: 0 2px 6px rgba(0,0,0,.6);
+    }
+
+    @media (max-width: 480px) {
+      #hero { padding-top: 36px; }
+      #hero .title { letter-spacing: .5px; }
+    }
   </style>
 </head>
 
 <body>
-  <!-- Splash egyszer, globálisan -->
+  <!-- Splash (egyszer, globálisan) -->
   <div id="splash-screen">
-    <img src="/logo-512.png" alt="Ipariingatlan logó">
+    <!-- Kérésed szerint a meglévő logót használjuk -->
+    <img src="/logoip.jpg" alt="Ipariingatlan logó">
     <div id="splash-progress"><span></span></div>
   </div>
 
@@ -226,26 +226,18 @@
     <!-- sötét overlay -->
     <div style="position:absolute; inset:0; background:rgba(0,0,0,.45)"></div>
 
-    <!-- szöveg + CTA -->
-    <div style="position:relative; z-index:2; padding:0 20px;">
-      <h1 style="
-        font-size:56px;
-        margin-bottom:12px;
-        letter-spacing:1px;
-        text-shadow:0 2px 6px rgba(0,0,0,.6);
-      ">
-        Ipari területek Magyarországon
-      </h1>
-      <p style="
-        font-size:24px;
-        margin:0 0 28px;
-        text-shadow:0 2px 6px rgba(0,0,0,.6);
-      ">
-        Vasúti szállításra is optimalizálva
-      </p>
+    <!-- szöveg + CTA (javított, reszponzív) -->
+    <div class="content">
+      <h1 class="title">Ipari területek Magyarországon</h1>
+      <p class="subtitle">Vasúti szállításra is optimalizálva</p>
+
       <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-        <a href="#portfolio" style="background:#DAA520;color:#111;padding:12px 18px;border-radius:10px;font-weight:700">Portfólió megtekintése</a>
-        <a href="#contact" style="border:1px solid rgba(255,255,255,.8);color:#fff;padding:12px 18px;border-radius:10px;font-weight:600">Kapcsolat</a>
+        <a href="#portfolio" style="background:#DAA520;color:#111;padding:12px 18px;border-radius:10px;font-weight:700">
+          Portfólió megtekintése
+        </a>
+        <a href="#contact" style="border:1px solid rgba(255,255,255,.8);color:#fff;padding:12px 18px;border-radius:10px;font-weight:600">
+          Kapcsolat
+        </a>
       </div>
 
       <!-- lefelé nyíl -->
@@ -488,7 +480,7 @@
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; max-width:1100px; margin:0 auto;">
 
       <div style="background:#1b1b1b; border-radius:16px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.3); text-align:left;">
-        <img src="kina-magyarorszag-vasuti-folyoso.jpg" alt="Kelet–Nyugat vasúti árufolyosó" style="width:100%; height:200px; object-fit:cover;">
+        <img src="shutterstock_2192389653.jpeg" alt="Kelet–Nyugat vasúti árufolyosó" style="width:100%; height:200px; object-fit:cover;">
         <div style="padding:25px;">
           <h3 style="color:#d4af37; font-size:1.3rem; margin-bottom:10px;">Új vasúti útvonalak Európa felé Oroszország elkerülésével</h3>
           <p style="color:#ccc; line-height:1.6;">Alternatív szárazföldi folyosók erősítik a kínai–európai kapcsolatot, növelve a déli és középső útvonalak szerepét.</p>
@@ -497,7 +489,7 @@
       </div>
 
       <div style="background:#1b1b1b; border-radius:16px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.3); text-align:left;">
-        <img src="debrecen-ipari-kozpont.jpg" alt="Debrecen ipari központ" style="width:100%; height:200px; object-fit:cover;">
+        <img src="shutterstock_2226373739.jpeg" alt="Debrecen ipari központ" style="width:100%; height:200px; object-fit:cover;">
         <div style="padding:25px;">
           <h3 style="color:#d4af37; font-size:1.3rem; margin-bottom:10px;">Debrecen: Európa új ipari központja</h3>
           <p style="color:#ccc; line-height:1.6;">BMW, CATL és kapcsolódó beszállítók – keleti kapu a high-tech gyártásnak és logisztikának.</p>
@@ -506,7 +498,7 @@
       </div>
 
       <div style="background:#1b1b1b; border-radius:16px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.3); text-align:left;">
-        <img src="kecskemet-szeged-logisztika.jpg" alt="Logisztikai fejlesztések" style="width:100%; height:200px; object-fit:cover;">
+        <img src="shutterstock_251633041.jpeg" alt="Logisztikai fejlesztések" style="width:100%; height:200px; object-fit:cover;">
         <div style="padding:25px;">
           <h3 style="color:#d4af37; font-size:1.3rem; margin-bottom:10px;">Kecskemét és Szeged logisztikai fejlesztései</h3>
           <p style="color:#ccc; line-height:1.6;">M5–M43 tengely, ipari kapacitások és vasúti-logisztikai kapcsolatok erősödése.</p>
@@ -642,9 +634,7 @@ Telefon:
         const splash = document.getElementById("splash-screen");
         if (splash) {
           splash.classList.add("fade-out");
-          setTimeout(() => {
-            splash.style.display = "none";
-          }, 600);
+          setTimeout(() => { splash.style.display = "none"; }, 600);
         }
       }, 2000);
     });
