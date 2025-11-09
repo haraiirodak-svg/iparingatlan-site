@@ -168,6 +168,40 @@
       #hero { padding-top: 36px; }
       #hero .title { letter-spacing: .5px; }
     }
+    /* HERO finomhangolás – feszesebb tipó, simább zoom, jobb olvashatóság */
+
+/* 1) Szövegblokk szűkítése (feszesebb kompozíció) */
+#hero .content { max-width: 780px; }
+
+/* 2) Cím optikai súly (prémiumabb hatás) */
+#hero .title { font-weight: 600; }
+
+/* 3) Sima, lassabb zoom + enyhén magasabb fókusz */
+@keyframes zoomInHero { 
+  0%   { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.06) translateY(-1.5%); }
+}
+#hero > div[style*="background-image"] {
+  animation-duration: 28s !important;      /* lassabb mozgás */
+  background-position: center 40% !important; /* kicsit feljebb a fókusz */
+}
+
+/* + Extra: overlay kicsit sötétebb a jobb kontraszthoz */
+#hero::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    rgba(0,0,0,0.50),
+    rgba(0,0,0,0.35)
+  );
+  z-index: 1;
+}
+/* a meglévő sötét overlay-t nem kell törölni; ez ráerősít. Ha túl sötét: 0.45/0.3-ra állítsd */
+
+/* Akinek fontos: motion-redukció támogatás */
+@media (prefers-reduced-motion: reduce) {
+  #hero > div[style*="background-image"] { animation: none !important; transform: none !important; }
+}
   </style>
 </head>
 
