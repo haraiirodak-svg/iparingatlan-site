@@ -62,7 +62,7 @@
     #splash-screen.fade-out { opacity:0; pointer-events:none; }
     #splash-screen img { width:120px; height:120px; margin-bottom:20px; }
     #splash-progress { width:100px; height:6px; background-color:#333; border-radius:3px; overflow:hidden; }
-    #splash-progress span { display:block; width:0; height:100%; background-color:#d4af37; animation:load 2s linear forwards; }
+    #splash-progress span { display:block; width:0; height:100%; background-color:#d4af37; animation:load var(--splash-duration, 2s) linear forwards; }
     @keyframes load { to { width:100%; } }
 
     /* HERO animációk */
@@ -93,7 +93,7 @@
 
 <body>
   <!-- Splash (egyszer, globálisan) -->
-  <div id="splash-screen">
+  <div id="splash-screen" data-min="2500" style="--splash-duration:2.5s;">
     <img src="/logoip.jpg" alt="Ipariingatlan logó">
     <div id="splash-progress"><span></span></div>
   </div>
@@ -204,6 +204,20 @@
       <h2 style="font-size:28px;margin:0 0 12px">Rail-Ready portfólió</h2>
       <p class="muted" style="margin:0 0 16px">Vasúti bekötéssel és autópálya-kapcsolattal rendelkező ipari területek.</p>
       <div id="portfolio-notice" class="notice"></div>
+      <!-- Szűrők -->
+      <div id="portfolio-filters" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0 16px;">
+        <input id="f-search" type="search" placeholder="Keresés cím/város/feature" style="padding:8px 10px;border:1px solid #ddd;border-radius:8px;min-width:220px;">
+        <select id="f-rail" style="padding:8px 10px;border:1px solid #ddd;border-radius:8px;">
+          <option value="">Vasúti kapcsolat: mindegy</option>
+          <option value="true">Van</option>
+          <option value="false">Nincs</option>
+        </select>
+        <select id="f-city" style="padding:8px 10px;border:1px solid #ddd;border-radius:8px;min-width:160px;">
+          <option value="">Város: mindegy</option>
+        </select>
+        <button id="f-clear" class="btn btn-ghost" type="button">Szűrők törlése</button>
+        <span id="f-count" style="color:#666;margin-left:auto;"></span>
+      </div>
       <div class="grid" id="portfolio-grid"></div>
     </div>
   </section>
@@ -259,6 +273,39 @@
     // Kis segédek
     const $ = (sel, root=document) => root.querySelector(sel);
     const el = (tag, attrs={}) => Object.assign(document.createElement(tag), attrs);
+
+    // Szűrő állapot és logika
+    const state = { q:'', rail:'', city:'' };
+    function normalize(str){ return (str||'').toString().toLowerCase(); }
+    function applyFilters(items){
+      const q = normalize(state.q);
+      const rail = state.rail;
+      const city = state.city;
+      let out = items.filter(p => {
+        if (rail !== '' && String(p.rail_access) !== rail) return false;
+        if (city && (p.city||'') !== city) return false;
+        if (q){
+          const hay = [p.title, p.city, (p.features||[]).join(' '), p.zoning, p.rail_notes].map(normalize).join(' ');
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+      const cnt = $('#f-count'); if (cnt) cnt.textContent = `${out.length} találat`;
+      return out;
+    }
+    function initFilters(items){
+      const citySel = $('#f-city');
+      if (citySel){
+        const cities = Array.from(new Set(items.map(i=>i.city).filter(Boolean))).sort();
+        citySel.innerHTML = '<option value="">Város: mindegy</option>' + cities.map(c=>`<option value="${c}">${c}</option>`).join('');
+      }
+      const hook = () => { renderPortfolio(applyFilters(window.__PORTFOLIO__||items)); };
+      const s=$('#f-search'), r=$('#f-rail'), c=$('#f-city');
+      s&&s.addEventListener('input', e=>{ state.q = e.target.value; hook(); });
+      r&&r.addEventListener('change', e=>{ state.rail = e.target.value; hook(); });
+      c&&c.addEventListener('change', e=>{ state.city = e.target.value; hook(); });
+      $('#f-clear')?.addEventListener('click', ()=>{ state.q=''; state.rail=''; state.city=''; if(s) s.value=''; if(r) r.value=''; if(c) c.value=''; hook(); });
+    }
 
     function showNotice(text, isError=false){
       const n = $('#portfolio-notice');
@@ -328,10 +375,13 @@
       // 1) Próbáljuk meg a valódi JSON-t
       try{
         const res = await fetch('portfolio.hu.json', { cache:'no-store' });
+        if(!res.ok) throw new Error('Nem elérhető a portfolio.hu.json');
         if(!res.ok) throw new Error(`Nem elérhető a portfolio.hu.json (HTTP ${res.status})`);
         const data = await res.json();
         if(!Array.isArray(data)) throw new Error('A portfolio.hu.json nem tömböt ad vissza.');
-        renderPortfolio(data);
+        window.__PORTFOLIO__ = data; // elérhető a szűrőknek
+        initFilters(data);
+        renderPortfolio(applyFilters(data));
         return; // Siker
       }catch(err){
         console.warn('Portfólió betöltési hiba:', err);
@@ -363,6 +413,13 @@
   <script>
     window.addEventListener('load', () => {
       const splash = document.getElementById('splash-screen');
+      if (!splash) return;
+      const minMs = parseInt(splash.getAttribute('data-min')||'2000', 10);
+      setTimeout(() => {
+        splash.classList.add('fade-out');
+        setTimeout(() => { splash.style.display = 'none'; }, 600);
+      }, Math.max(0, minMs));
+    });
       if (!splash) return;
       splash.classList.add('fade-out');
       setTimeout(() => { splash.style.display = 'none'; }, 600);
