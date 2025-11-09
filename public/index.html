@@ -639,20 +639,21 @@ Telefon:
               ` : ''}
 
               <div>
-                ${
-                  Array.isArray(p.features)
-                    ? p.features.map(f => `<span class="badge">${f}</span>`).join('')
-                    : ''
-                }
+                ${Array.isArray(p.features) ? p.features.map(f => `<span class="badge">${f}</span>`).join('') : ''}
               </div>
 
-              <div style="margin-top:10px;">
-                <a href="${mailto}" class="btn btn-gold" style="padding:8px 12px;font-size:14px;">
-                  Érdekel az ingatlan
-                </a>
-              </div>
-            </div>
-          `;
+             <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
+  <a href="${mailto}" class="btn btn-gold" style="padding:8px 12px;font-size:14px;">
+    Érdekel az ingatlan
+  </a>
+  ${p.video ? `
+    <a href="${p.video}" target="_blank" rel="noopener" class="btn btn-ghost" style="padding:8px 12px;font-size:14px;">
+      ▶ Videó
+    </a>
+  ` : ''}
+</div>
+</div>            
+`;
           grid.appendChild(card);
         });
       } catch (err) {
