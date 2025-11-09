@@ -58,7 +58,8 @@
     ],
     "image": "szekszard-1.jpg",
     "gallery": ["szekszard-1.jpg", "szekszard-2.jpg", "szekszard-3.jpg"],
-    "link": "#"
+    "link": "#",
+    "video": "https://youtu.be/OA6KGkhflyI"  
   },
   {
     "id": "bp-xv-m0-20ha",
