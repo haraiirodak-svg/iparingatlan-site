@@ -1,1 +1,19 @@
-
+{
+  "id": "gyongyos-74ha",
+  "title": "Gyöngyös – Industrial Park Development Area (74 ha available)",
+  "city": "Gyöngyös",
+  "size_ha": 74,
+  "type": "industrial",
+  "status": "for_sale",
+  "rail_access": true,
+  "rail_notes": "1.7 km industrial siding, divisible into 7 parts (22–27 ha)",
+  "energy_mw": 50,
+  "features": [
+    "74 ha available in a 164 ha park",
+    "New access roads & utilities",
+    "Ready-to-develop"
+  ],
+  "image": "gyongyos-1.jpg",
+  "gallery": ["gyongyos-1.jpg", "gyongyos-2.jpg", "gyongyos-3.jpg"],
+  "link": "#"
+}
