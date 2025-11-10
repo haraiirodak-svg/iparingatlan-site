@@ -2,677 +2,355 @@
 <html lang="hu">
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" sizes="512x512" href="/logo-512.png">
-  <link rel="manifest" href="/manifest.json">
-  <title>Ipari & vasúti logisztikai portfólió – Rail-Ready</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rail-Ready — Ipari & vasúti logisztikai portfólió</title>
+  <meta name="description" content="Rail-Ready — vasútra optimalizált ipari és logisztikai ingatlanok Magyarországon. Portfólió, hírek és kapcsolatfelvétel." />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" href="/favicon.ico" />
 
-  <meta property="og:title" content="Ipari és logisztikai ingatlanok Magyarországon" />
-  <meta property="og:description" content="Vasútra optimalizált ipari és logisztikai ingatlanok Magyarországon – a jövő logisztikai központjai a Kelet–Nyugat folyosón." />
-  <meta property="og:image" content="/og-hero-rail.jpg" />
-  <meta property="og:type" content="website" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Rail-Ready ipari és logisztikai ingatlanok Magyarországon – közvetlen vasúti kapcsolat és autópálya-közelség, Kelet–Nyugat elosztó kapu." />
-  <meta name="robots" content="index,follow" />
+  <!-- Leaflet CSS (térképhez) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-sA+e2fBrdGkR5v6cQ0oQxR3uX1gqI5fQS2a0r2J6XdM=" crossorigin=""/>
 
   <style>
-    :root { --gold:#DAA520; --ink:#111; --muted:#6b7280; }
-
-    * { box-sizing:border-box; }
-
-    body {
-      margin:0;
-      font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--ink);
-      background:#fff;
+    :root {
+      --gold: #DAA520;
+      --ink: #111;
+      --muted: #6b7280;
+      --max-width: 1100px;
+      --radius: 12px;
     }
+    * { box-sizing: border-box; }
+    html,body { height:100%; margin:0; font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color:var(--ink); background:#fff; }
+    a { color: inherit; text-decoration: none; }
 
-    a { text-decoration:none; color:inherit; }
-
-    .container { max-width:1100px; margin:0 auto; padding:0 20px; }
-
-    .nav {
-      display:flex;
-      align-items:center;
-      gap:14px;
-      padding:12px 0;
-      border-bottom:1px solid #eee;
-      background:#fff;
-      position:relative;
-      z-index:10;
-    }
-
-    .nav img { height:36px; }
-
-    .nav-right {
-      margin-left:auto;
-      display:flex;
-      gap:16px;
-      font-weight:500;
-    }
-
-    .btn {
-      display:inline-block;
-      padding:10px 14px;
-      border-radius:10px;
-      font-weight:600;
-    }
-
+    /* Layout */
+    .container { max-width: var(--max-width); margin:0 auto; padding:0 18px; }
+    .nav { display:flex; align-items:center; gap:16px; padding:14px 0; border-bottom:1px solid #eee; }
+    .nav img.logo { height:36px; }
+    .nav-right { margin-left:auto; display:flex; gap:14px; align-items:center; font-weight:600; }
+    .btn { display:inline-block; padding:10px 14px; border-radius:10px; font-weight:700; cursor:pointer; }
     .btn-gold { background:var(--gold); color:#111; }
-    .btn-ghost { border:1px solid rgba(0,0,0,.3); }
+    .btn-ghost { border:1px solid rgba(0,0,0,.12); background:transparent; }
 
-    .section { padding:40px 0; }
+    /* HERO */
+    #hero { position:relative; min-height:60vh; display:flex; align-items:center; justify-content:center; text-align:center; color:white; overflow:hidden; }
+    #hero .bg { position:absolute; inset:0; background-image:url('hero-rail.jpg'); background-size:cover; background-position:center; transform:scale(1); filter:brightness(.48); }
+    #hero .content { position:relative; z-index:2; padding:40px 20px; max-width:900px; }
+    .title { font-size: clamp(28px, 6vw, 56px); margin:0 0 8px; font-weight:700; letter-spacing:1px; color:var(--gold); text-shadow:0 4px 18px rgba(0,0,0,.5); }
+    .subtitle { margin:0 0 18px; font-size:clamp(16px,3vw,20px); color:#fff; text-shadow:0 2px 8px rgba(0,0,0,.4); }
 
-    .grid {
-      display:grid;
-      gap:16px;
-      grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
-    }
+    section { padding:48px 0; }
+    h2 { font-size:1.5rem; margin:0 0 14px; color:#222; }
 
-    .card {
-      border:1px solid #eee;
-      border-radius:14px;
-      overflow:hidden;
-      background:#fff;
-    }
+    /* Grid */
+    .grid { display:grid; gap:18px; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); }
 
-    .card img {
-      width:100%;
-      height:160px;
-      object-fit:cover;
-    }
-
+    .card { border-radius: var(--radius); overflow:hidden; border:1px solid #eee; background:#fff; box-shadow: 0 6px 18px rgba(0,0,0,.04); }
+    .card img { width:100%; height:180px; object-fit:cover; display:block; }
     .card .body { padding:14px; }
+    .badge { display:inline-block; background:#f3f4f6; padding:6px 10px; border-radius:999px; font-size:12px; margin-right:8px; margin-top:6px; color:#444; }
 
-    .badge {
-      display:inline-block;
-      background:#f3f4f6;
-      border-radius:999px;
-      padding:4px 10px;
-      font-size:12px;
-      margin-right:8px;
-      margin-top:6px;
+    /* Map */
+    #map { height:420px; border-radius:12px; border:1px solid #eee; }
+
+    /* News */
+    .news-card { background:#111; color:#fff; border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,.16); }
+    .news-card img { height:180px; width:100%; object-fit:cover; display:block; }
+
+    /* Contact */
+    .contact-card { max-width:760px; margin:0 auto; padding:20px; border-radius:12px; border:1px solid #eee; }
+    label { display:block; margin-bottom:6px; font-size:0.9rem; color:#333; }
+    input, textarea { width:100%; padding:10px 12px; border-radius:8px; border:1px solid #ddd; margin-bottom:12px; }
+    textarea { min-height:120px; resize:vertical; }
+
+    footer { background:#fafafa; border-top:1px solid #eee; padding:18px 0; color:#666; font-size:.95rem; }
+
+    @media (max-width:640px) {
+      .nav { padding:10px 0; }
+      .title { font-size:28px; }
+      .subtitle { font-size:15px; }
     }
-
-    .footer {
-      border-top:1px solid #eee;
-      color:#666;
-    }
-
-    .footer-inner {
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      padding:16px 0;
-    }
-
-    /* Tipográfia: egységes sorkizárás */
-    p {
-      text-align:justify;
-      text-justify:inter-word;
-      hyphens:auto;
-      line-height:1.8;
-    }
-    .section p { margin-bottom:14px; }
-
-    /* Splash screen */
-    #splash-screen {
-      position:fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      background-color:#111111;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      z-index:9999;
-      transition:opacity .6s ease;
-    }
-    #splash-screen.fade-out { opacity:0; pointer-events:none; }
-    #splash-screen img { width:120px; height:120px; margin-bottom:20px; }
-    #splash-progress { width:100px; height:6px; background-color:#333; border-radius:3px; overflow:hidden; }
-    #splash-progress span {
-      display:block; width:0; height:100%; background-color:#d4af37; animation:load 2s linear forwards;
-    }
-    @keyframes load { to { width:100%; } }
-
-    /* HERO animációk */
-    @keyframes zoomInHero { 0%{transform:scale(1)} 100%{transform:scale(1.1)} }
-    @keyframes arrowBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(10px)} }
-    @keyframes heroTicker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-
-    /* --- HERO szöveg fix: sose lógjon ki --- */
-    #hero .content {
-      position: relative;
-      z-index: 2;
-      padding: 0 20px;
-      max-width: 960px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    #hero .title {
-      font-size: clamp(28px, 6vw, 56px);
-      line-height: 1.1;
-      margin: 0 0 12px;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 6px rgba(0,0,0,.6);
-    }
-    #hero .subtitle {
-      font-size: clamp(16px, 3vw, 24px);
-      margin: 0 0 28px;
-      text-shadow: 0 2px 6px rgba(0,0,0,.6);
-    }
-
-    @media (max-width: 480px) {
-      #hero { padding-top: 36px; }
-      #hero .title { letter-spacing: .5px; }
-    }
-    /* HERO finomhangolás – feszesebb tipó, simább zoom, jobb olvashatóság */
-
-/* 1) Szövegblokk szűkítése (feszesebb kompozíció) */
-#hero .content { max-width: 780px; }
-
-/* 2) Cím optikai súly (prémiumabb hatás) */
-#hero .title { font-weight: 600; }
-
-/* 3) Sima, lassabb zoom + enyhén magasabb fókusz */
-@keyframes zoomInHero { 
-  0%   { transform: scale(1) translateY(0); }
-  100% { transform: scale(1.06) translateY(-1.5%); }
-}
-#hero > div[style*="background-image"] {
-  animation-duration: 28s !important;      /* lassabb mozgás */
-  background-position: center 40% !important; /* kicsit feljebb a fókusz */
-}
-
-/* + Extra: overlay kicsit sötétebb a jobb kontraszthoz */
-#hero::after {
-  content: "";
-  position: absolute; inset: 0;
-  background: linear-gradient(
-    rgba(0,0,0,0.50),
-    rgba(0,0,0,0.35)
-  );
-  z-index: 1;
-}
-/* a meglévő sötét overlay-t nem kell törölni; ez ráerősít. Ha túl sötét: 0.45/0.3-ra állítsd */
-
-/* Akinek fontos: motion-redukció támogatás */
-@media (prefers-reduced-motion: reduce) {
-  #hero > div[style*="background-image"] { animation: none !important; transform: none !important; }
-}
   </style>
 </head>
-
 <body>
-  <!-- Splash (egyszer, globálisan) -->
-  <div id="splash-screen">
-    <!-- Kérésed szerint a meglévő logót használjuk -->
-    <img src="/logoip.jpg" alt="Ipariingatlan logó">
-    <div id="splash-progress"><span></span></div>
-  </div>
-
   <!-- NAV -->
-  <div class="container nav">
-    <img src="logoip.jpg" alt="Industrial & Logistics" />
+  <div class="container nav" role="navigation" aria-label="Felső menü">
+    <img src="logoip.jpg" alt="Rail-Ready logó" class="logo" />
     <div class="nav-right">
       <a href="#portfolio">Portfólió</a>
-      <a href="#routes">Útvonalak</a>
-      <a href="#contact">Kapcsolat</a>
+      <a href="#map">Térkép</a>
+      <a href="#news">Hírek</a>
+      <a href="#contact" class="btn btn-gold">Kapcsolat</a>
     </div>
   </div>
 
-  <!-- HERO – teljes magasságú nyitókép futósorral -->
-  <section id="hero" style="
-    position:relative; width:100%; height:100vh; overflow:hidden;
-    display:flex; align-items:center; justify-content:center;
-    text-align:center; color:white;
-  ">
-    <!-- háttérkép + lassú zoom -->
-    <div style="
-      position:absolute; inset:0;
-      background-image:url('hero-rail.jpg');
-      background-size:cover;
-      background-position:center;
-      transform:scale(1);
-      animation:zoomInHero 20s ease-in-out infinite alternate;
-    "></div>
-
-    <!-- felső sárga futósor -->
-    <div id="hero-ticker" style="
-      position:absolute; left:0; right:0; top:0; z-index:3;
-      overflow:hidden;
-      background:linear-gradient(to bottom, rgba(0,0,0,.6), rgba(0,0,0,0));
-      padding:10px 0;
-    ">
-      <div class="ticker-track" style="
-        display:flex; gap:40px; white-space:nowrap; will-change:transform;
-        animation:heroTicker 35s linear infinite;
-        padding:6px 0;
-        font-size:16px; letter-spacing:.3px;
-        color:#FFD700;
-        text-shadow:0 1px 3px rgba(0,0,0,.4);
-        font-weight:500;
-      "></div>
-    </div>
-
-    <!-- sötét overlay -->
-    <div style="position:absolute; inset:0; background:rgba(0,0,0,.45)"></div>
-
-    <!-- szöveg + CTA (javított, reszponzív) -->
-    <div class="content">
-      <h1 class="title">Ipari területek Magyarországon</h1>
-      <p class="subtitle">Vasúti szállításra is optimalizálva</p>
-
-      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-        <a href="#portfolio" style="background:#DAA520;color:#111;padding:12px 18px;border-radius:10px;font-weight:700">
-          Portfólió megtekintése
-        </a>
-        <a href="#contact" style="border:1px solid rgba(255,255,255,.8);color:#fff;padding:12px 18px;border-radius:10px;font-weight:600">
-          Kapcsolat
-        </a>
-      </div>
-
-      <!-- lefelé nyíl -->
-      <div style="margin-top:36px; animation:arrowBounce 2s infinite; cursor:pointer;"
-           onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})"
-           aria-label="Görgess le">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-             stroke-width="2" stroke="white" style="width:40px;height:40px;opacity:.85">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-        </svg>
-      </div>
-    </div>
-
-    <!-- kulcsszó-szalag JS -->
-    <script>
-      (function(){
-        const keywords = [
-          "Adatközpontnak kiváló terület","Fejlesztési terület",
-          "Európai optikai gerinchálózat közelében",
-          "Vasúti iparvágánnyal rendelkező telkek",
-          "M0 körgyűrű melletti logisztikai zónák",
-          "Autópálya-lehajtónál fekvő területek",
-          "Intermodális kapacitás","Ipari áram (MW) elérhető",
-          "Bővíthető, egybenyitható telkek",
-          "Kelet–nyugati elosztó pozíció",
-          "TEN-T kapcsolódás","Gyors kivitelezési lehetőség"
-        ];
-        for (let i = keywords.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [keywords[i], keywords[j]] = [keywords[j], keywords[i]];
-        }
-        const track = document.querySelector('#hero-ticker .ticker-track');
-        const row = arr => arr
-          .map(k => `<span>${k}</span>`)
-          .join('<span style="opacity:.4;">•</span>');
-        track.innerHTML = row(keywords)
-          + '<span style="opacity:.4;">•</span>'
-          + row(keywords);
-      })();
-    </script>
-  </section>
-
-  <!-- MAGYARORSZÁG – KELET–NYUGATI HÍD BLOKK -->
-  <section id="intro" style="
-    background-image:url('gallery-rail-1.jpg');
-    background-size:cover;
-    background-position:center;
-    background-attachment:fixed;
-    position:relative;
-    color:white;
-    overflow:hidden;
-  ">
-    <div style="
-      position:absolute;
-      inset:0;
-      background:linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55));
-    "></div>
-
-    <div class="container" style="position:relative; z-index:2; padding:90px 20px; text-align:left;">
-      <h2 style="
-        font-size:36px;
-        margin-bottom:22px;
-        color:#DAA520;
-        letter-spacing:0.5px;
-        text-shadow:0 0 10px rgba(0,0,0,0.5);
-        text-align:center;
-      ">
-        Magyarország: a kelet–nyugati logisztika kapuja
-      </h2>
-
-      <div style="max-width:950px; margin:0 auto;">
-        <p style="font-size:18px; line-height:1.8;">
-          Magyarország földrajzi helyzete és fejlesztési politikája révén egyre inkább
-          <strong style="color:#FFD700;">kereskedelmi hídként</strong> köti össze Keletet és Nyugatot.
-          Az Európai Unió célja, hogy 2030-ig a 300 km-nél hosszabb közúti áruszállítás legalább
-          <strong style="color:#FFD700;">30%-át vasútra vagy vízre</strong> terelje – ez a tendencia
-          <strong style="color:#FFD700;">vasúti-logisztikai beruházási hullámot</strong> indított el hazánkban.
-        </p>
-        <p style="font-size:18px; line-height:1.8;">
-          A megvalósuló <strong style="color:#FFD700;">Budapest–Belgrád vasútvonal</strong>,
-          a <strong style="color:#FFD700;">Fényeslitkei East-West Gate</strong> intermodális terminál,
-          valamint a <strong style="color:#FFD700;">debreceni ipari és akkumulátor-beruházások</strong>
-          új szintre emelik Magyarország logisztikai infrastruktúráját.
-        </p>
-        <p style="font-size:18px; line-height:1.8; margin-bottom:0;">
-          Célunk: a keleti árufolyamok
-          <strong style="color:#FFD700;">átrakása, feldolgozása és nyugati elosztása</strong>
-          Magyarországon keresztül – és viszont. Portfóliónk ehhez kínál
-          <strong style="color:#FFD700;">vasúti bekötéssel és autópálya-kapcsolattal</strong>
-          rendelkező fejlesztési területeket – a jövő ipari logisztikai központjait.
-        </p>
+  <!-- HERO -->
+  <section id="hero" aria-label="Nyitó">
+    <div class="bg" role="img" aria-label="vasúti logisztika"></div>
+    <div class="content container">
+      <h1 class="title">Ipari területek Magyarországon — vasútra optimalizálva</h1>
+      <p class="subtitle">Rail-Ready portfólió — közvetlen vasúti bekötéssel, autópálya-kapcsolattal és kiemelt energetikai kapacitással.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="#portfolio" class="btn btn-gold">Portfólió megtekintése</a>
+        <a href="#map" class="btn btn-ghost">Térkép</a>
       </div>
     </div>
   </section>
 
-  <!-- MIÉRT MAGYARORSZÁG -->
-  <section id="why-hungary" style="background-color:#f8f8f8; padding:80px 20px; text-align:center;">
-    <h2 style="font-size:2.2rem; color:#222; margin-bottom:30px; font-weight:600;">
-      Miért Magyarország?
-    </h2>
-    <p style="max-width:900px; margin:0 auto 50px; font-size:1.1rem; line-height:1.7; color:#444;">
-      Magyarország Európa szívében helyezkedik el, stratégiai hídként összekötve a keleti és nyugati piacokat.
-      Fejlett infrastruktúrája, vasúti-logisztikai kapcsolatai és ipari beruházásai miatt kiemelt célpont a befektetők számára.
-    </p>
+  <!-- INTRO -->
+  <section id="intro" class="container" aria-label="Bemutatkozás">
+    <h2>Magyarország: kelet–nyugati logisztikai kapu</h2>
+    <p style="max-width:900px;margin:0 0 18px;">Portfóliónk olyan ipari és logisztikai területeket mutat be, amelyek vasúti bekötéssel és jelentős energetikai kapacitással rendelkeznek — ideálisak nagy volumenű, intermodális szállítmányok kezelésére.</p>
+  </section>
 
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; max-width:1100px; margin:0 auto;">
-      <div style="background:white; padding:25px; border-radius:16px; box-shadow:0 3px 10px rgba(0,0,0,0.1);">
-        <div style="font-size:40px; color:#d4af37;">🚄</div>
-        <h3 style="margin:15px 0 10px; font-size:1.3rem;">Központi fekvés</h3>
-        <p style="color:#555;">Kelet–nyugati, észak–déli tengely találkozása, ideális európai elosztóközpont.</p>
-      </div>
-
-      <div style="background:white; padding:25px; border-radius:16px; box-shadow:0 3px 10px rgba(0,0,0,0.1);">
-        <div style="font-size:40px; color:#d4af37;">🏗️</div>
-        <h3 style="margin:15px 0 10px; font-size:1.3rem;">Gyors fejlesztések</h3>
-        <p style="color:#555;">Bővülő ipari parkok, vasút- és autópálya-fejlesztések, célzott állami és EU-támogatások.</p>
-      </div>
-
-      <div style="background:white; padding:25px; border-radius:16px; box-shadow:0 3px 10px rgba(0,0,0,0.1);">
-        <div style="font-size:40px; color:#d4af37;">⚡</div>
-        <h3 style="margin:15px 0 10px; font-size:1.3rem;">Energetikai háttér</h3>
-        <p style="color:#555;">Magas szintű ipari áramkapacitás, energiaigényes beruházások támogatása.</p>
-      </div>
-
-      <div style="background:white; padding:25px; border-radius:16px; box-shadow:0 3px 10px rgba(0,0,0,0.1);">
-        <div style="font-size:40px; color:#d4af37;">🌍</div>
-        <h3 style="margin:15px 0 10px; font-size:1.3rem;">Nemzetközi jelenlét</h3>
-        <p style="color:#555;">BMW, CATL, BYD, Mercedes, Samsung SDI – erős, hosszú távú befektetői jelenlét.</p>
-      </div>
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="container" aria-label="Portfólió">
+    <h2>Rail-Ready portfólió</h2>
+    <p style="color:var(--muted);margin:0 0 18px;">Az alábbi listát dinamikusan töltjük be a <code>portfolio.hu.json</code> állományból.</p>
+    <div id="portfolio-grid" class="grid" aria-live="polite">
+      <!-- Kártyák ide kerülnek -->
     </div>
   </section>
 
-  <!-- FEJLESZTÉSEK MAGYARORSZÁGON -->
-  <section id="developments" style="background:#111; color:white; padding:90px 20px; text-align:center;">
-    <h2 style="font-size:2.2rem; color:#d4af37; margin-bottom:30px;">Fejlesztések Magyarországon</h2>
-    <p style="max-width:900px; margin:0 auto 60px; font-size:1.1rem; line-height:1.7; color:#ddd;">
-      Nagy volumenű autóipari, akkumulátoripari és logisztikai beruházások erősítik Magyarország szerepét
-      az európai ellátási láncban.
-    </p>
+  <!-- MAP -->
+  <section id="map-section" class="container" aria-label="Térkép">
+    <h2>Térkép</h2>
+    <p style="color:var(--muted); margin:0 0 12px;">A térképen azok az ingatlanok jelennek meg, amelyeknél a `lat` és `lng` mezők meg vannak adva a `portfolio.hu.json` fájlban. (Ha nincs, lásd a README javaslatát a geokódolásra.)</p>
+    <div id="map" aria-hidden="false"></div>
+    <div id="map-note" style="margin-top:8px;color:var(--muted);font-size:.95rem;"></div>
+  </section>
 
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; max-width:1100px; margin:0 auto;">
-      <div style="background:#1b1b1b; border-radius:16px; padding:25px;">
-        <h3 style="color:#d4af37; font-size:1.3rem;">Debrecen – BMW &amp; CATL</h3>
-        <p>Kelet-magyarországi elektromobilitási központ, gigaberuházásokkal és növekvő logisztikai igénnyel.</p>
-      </div>
-      <div style="background:#1b1b1b; border-radius:16px; padding:25px;">
-        <h3 style="color:#d4af37; font-size:1.3rem;">Győr – Audi &amp; vasút</h3>
-        <p>Nyugat-magyarországi ipari mag, közvetlen kapcsolatokkal Ausztria és Németország felé.</p>
-      </div>
-      <div style="background:#1b1b1b; border-radius:16px; padding:25px;">
-        <h3 style="color:#d4af37; font-size:1.3rem;">Kecskemét – Mercedes</h3>
-        <p>Autóipari klaszter, amely vonzza a beszállítói és logisztikai fejlesztéseket.</p>
-      </div>
-      <div style="background:#1b1b1b; border-radius:16px; padding:25px;">
-        <h3 style="color:#d4af37; font-size:1.3rem;">Záhony &amp; Szeged</h3>
-        <p>Keleti vasúti kapuk, stratégiai intermodális csomópontok a keleti forgalom számára.</p>
-      </div>
+  <!-- NEWS -->
+  <section id="news" class="container" aria-label="Hírek">
+    <h2>Hírek és elemzések</h2>
+    <div id="news-grid" class="grid" style="margin-top:12px;">
+      <!-- Hírek -->
     </div>
   </section>
 
-  <!-- TÁMOGATÁSOK ÉS TANÁCSADÁS -->
-  <section id="investor-support" style="background-color:#f5f5f5; color:#222; padding:90px 20px; text-align:center;">
-    <h2 style="font-size:2.2rem; color:#111; margin-bottom:40px; font-weight:600;">
-      Támogatások és tanácsadás befektetőknek
-    </h2>
-    <p style="max-width:900px; margin:0 auto 60px; font-size:1.1rem; line-height:1.7; color:#444;">
-      Teljes körű támogatást nyújtunk az ipari–logisztikai fejlesztésekhez: területválasztás, vasúti kapcsolat,
-      engedélyezés, energetika, támogatások.
-    </p>
-
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:25px; max-width:1100px; margin:0 auto;">
-      <div style="background:white; border-radius:16px; box-shadow:0 3px 10px rgba(0,0,0,0.1); padding:30px;">
-        <div style="font-size:38px; color:#d4af37;">💶</div>
-        <h3 style="margin:15px 0 10px; font-size:1.3rem;">Beruházási támogatások</h3>
-        <p style="color:#555;">Hazai és EU-s források, ipari park és infrastruktúra támogatások feltérképezése, pályázati irány.</p>
-      </div>
-      <div style="background:white; border-radius:16px; box-shadow:0 3px 10px rgba(0,0,0,0.1); padding:30px;">
-        <div style="font-size:38px; color:#d4af37;">🧾</div>
-        <h3 style="margin:15px 0 10px; font-size:1.3rem;">Adókedvezmények</h3>
-        <p style="color:#555;">Települési és állami kedvezmények optimalizálása a beruházás paraméterei alapján.</p>
-      </div>
-      <div style="background:white; border-radius:16px; box-shadow:0 3px 10px rgba(0,0,0,0.1); padding:30px;">
-        <div style="font-size:38px; color:#d4af37;">⚙️</div>
-        <h3 style="margin:15px 0 10px; font-size:1.3rem;">Fejlesztési tanácsadás</h3>
-        <p style="color:#555;">Engedélyezés, infrastruktúra, közmű, energetika, ütemezés – gyakorlati támogatással.</p>
-      </div>
-      <div style="background:white; border-radius:16px; box-shadow:0 3px 10px rgba(0,0,0,0.1); padding:30px;">
-        <div style="font-size:38px; color:#d4af37;">🚄</div>
-        <h3 style="margin:15px 0 10px; font-size:1.3rem;">Vasúti integráció</h3>
-        <p style="color:#555;">Iparvágány, terminál, MÁV-egyeztetés – olyan telkekre fókuszálva, ahol ez reális opció.</p>
-      </div>
-    </div>
-
-    <div style="margin-top:60px;">
-      <a href="mailto:harai.tamas@harai.hu"
-         style="background-color:#d4af37; color:white; padding:14px 28px; border-radius:8px; font-weight:600; font-size:1rem;">
-        Kérek tanácsadást
-      </a>
-    </div>
-  </section>
-
-  <!-- PORTFÓLIÓ -->
-  <section id="portfolio" class="section">
-    <div class="container">
-      <h2 style="font-size:28px;margin:0 0 12px">Rail-Ready portfólió</h2>
-      <p class="muted" style="margin:0 0 16px">
-        Vasúti bekötéssel és autópálya-kapcsolattal rendelkező ipari területek.
-      </p>
-      <div class="grid" id="portfolio-grid">
-        <!-- Kártyák JSON-ból -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ÚTVONALAK & FOLYOSÓK -->
-  <section id="routes" class="section" style="border-top:1px solid #eee;background:#fafafa">
-    <div class="container">
-      <h2 style="font-size:28px;margin:0 0 12px">Útvonalak & folyosók</h2>
-      <p class="muted" style="margin:0 16px 16px 0; max-width:800px">
-        Magyarország kelet–nyugati híd szerepére építve: a Türk Tanács országaiból és Kínából érkező vasúti/intermodális
-        szállítmányok átrakása és elosztása Nyugat-Európa felé, illetve viszontirányban.
-      </p>
-      <ul style="margin:0; padding-left:20px; line-height:1.6">
-        <li>TR → BG/RO → <strong>HU</strong> → AT/DE/IT</li>
-        <li>Kaukázus/KZ → AZ/GE → TR → BG/RO → <strong>HU</strong> → EU mag</li>
-        <li>Közép-Ázsia → Kaszpi → AZ/GE → TR/GR → RO → <strong>HU</strong></li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- HÍREK KÁRTYÁK -->
-  <section id="news" style="background:#111; color:white; padding:90px 20px; text-align:center;">
-    <h2 style="font-size:2.2rem; color:#d4af37; margin-bottom:40px; font-weight:600;">
-      Hírek és elemzések
-    </h2>
-    <p style="max-width:900px; margin:0 auto 60px; font-size:1.1rem; line-height:1.7; color:#ddd;">
-      Válogatott hírek és háttérelemzések a vasúti-logisztikai folyosókról, ipari beruházásokról és Magyarország szerepéről.
-    </p>
-
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; max-width:1100px; margin:0 auto;">
-
-      <div style="background:#1b1b1b; border-radius:16px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.3); text-align:left;">
-        <img src="shutterstock_2192389653.jpeg" alt="Kelet–Nyugat vasúti árufolyosó" style="width:100%; height:200px; object-fit:cover;">
-        <div style="padding:25px;">
-          <h3 style="color:#d4af37; font-size:1.3rem; margin-bottom:10px;">Új vasúti útvonalak Európa felé Oroszország elkerülésével</h3>
-          <p style="color:#ccc; line-height:1.6;">Alternatív szárazföldi folyosók erősítik a kínai–európai kapcsolatot, növelve a déli és középső útvonalak szerepét.</p>
-          <a href="hirek.html" style="color:#d4af37; font-weight:500;">Tovább olvasom →</a>
+  <!-- CONTACT -->
+  <section id="contact" class="container" aria-label="Kapcsolat" style="padding-bottom:60px;">
+    <h2>Kapcsolat</h2>
+    <div class="contact-card" role="form" aria-labelledby="contact-title">
+      <p style="margin:0 0 12px;color:var(--muted);">Használd az alábbi űrlapot — a küldés az e-mail címedre előkészített levél formájában nyílik meg (nincs szükség szerverre).</p>
+      <form id="contact-form">
+        <label for="c-name">Név *</label>
+        <input id="c-name" name="name" required placeholder="Teljes név" />
+        <label for="c-company">Cég</label>
+        <input id="c-company" name="company" placeholder="Cég (opcionális)" />
+        <label for="c-email">Email *</label>
+        <input id="c-email" name="email" type="email" required placeholder="email@pelda.hu" />
+        <label for="c-message">Üzenet *</label>
+        <textarea id="c-message" name="message" required placeholder="Írd le röviden, melyik ingatlan érdekel..."></textarea>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <button type="submit" class="btn btn-gold">Üzenet előkészítése</button>
+          <small style="color:var(--muted)">A küldés a levelezőben történik.</small>
         </div>
-      </div>
-
-      <div style="background:#1b1b1b; border-radius:16px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.3); text-align:left;">
-        <img src="shutterstock_2226373739.jpeg" alt="Debrecen ipari központ" style="width:100%; height:200px; object-fit:cover;">
-        <div style="padding:25px;">
-          <h3 style="color:#d4af37; font-size:1.3rem; margin-bottom:10px;">Debrecen: Európa új ipari központja</h3>
-          <p style="color:#ccc; line-height:1.6;">BMW, CATL és kapcsolódó beszállítók – keleti kapu a high-tech gyártásnak és logisztikának.</p>
-          <a href="hirek.html" style="color:#d4af37; font-weight:500;">Tovább olvasom →</a>
-        </div>
-      </div>
-
-      <div style="background:#1b1b1b; border-radius:16px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.3); text-align:left;">
-        <img src="shutterstock_251633041.jpeg" alt="Logisztikai fejlesztések" style="width:100%; height:200px; object-fit:cover;">
-        <div style="padding:25px;">
-          <h3 style="color:#d4af37; font-size:1.3rem; margin-bottom:10px;">Kecskemét és Szeged logisztikai fejlesztései</h3>
-          <p style="color:#ccc; line-height:1.6;">M5–M43 tengely, ipari kapacitások és vasúti-logisztikai kapcsolatok erősödése.</p>
-          <a href="hirek.html" style="color:#d4af37; font-weight:500;">Tovább olvasom →</a>
-        </div>
-      </div>
-
+      </form>
     </div>
   </section>
 
-  <!-- KAPCSOLAT -->
-  <section id="contact" class="section" style="background:#fff;border-top:1px solid #eee">
-    <div class="container">
-      <h2 style="font-size:28px;margin:0 0 8px">Kapcsolat</h2>
-      <p style="margin:6px 0">
-        Harai Tamás ·
-        <a href="mailto:harai.tamas@harai.hu">harai.tamas@harai.hu</a> ·
-        <a href="tel:+36309713836">+36 30 971 3836</a>
-      </p>
-      <a class="btn" href="mailto:harai.tamas@harai.hu?subject=Rail-Ready%20ingatlan%20érdeklődés" style="background:#111;color:#fff">
-        Írj üzenetet
-      </a>
-    </div>
-  </section>
-
-  <!-- LÁBLÉC -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <span>© iparingatlan.com</span>
-      <a href="#hero">Vissza az elejére ↑</a>
+  <!-- FOOTER -->
+  <footer class="container" role="contentinfo" style="margin-top:30px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:18px 0;">
+      <div>© iparingatlan.com — Rail-Ready</div>
+      <div><a href="#hero">Vissza az elejére ↑</a></div>
     </div>
   </footer>
 
-  <!-- PORTFÓLIÓ BETÖLTÉSE JSON-BÓL -->
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-o9N1j8mTt2b2b2o0hF1vQ8a+GJ8r/4k4Xc1a5rU5o+I=" crossorigin=""></script>
+
   <script>
-    (async function loadPortfolio() {
-      try {
-        const res = await fetch('portfolio.hu.json', { cache: 'no-store' });
-        if (!res.ok) throw new Error('Nem elérhető a portfolio.hu.json');
+  // --- Segéd: biztonságos fetch wrapper (egyszerű hibaüzenetek) ---
+  async function safeFetchJSON(url) {
+    try {
+      const res = await fetch(url, {cache:'no-store'});
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return await res.json();
+    } catch (e) {
+      console.error('Hiba a betöltéskor:', url, e);
+      return null;
+    }
+  }
 
-        const items = await res.json();
-        const grid = document.getElementById('portfolio-grid');
-        if (!grid) return;
+  // --- PORTFOLIO betöltés és render ---
+  async function loadPortfolio() {
+    const items = await safeFetchJSON('portfolio.hu.json');
+    const grid = document.getElementById('portfolio-grid');
+    if (!items || !Array.isArray(items)) {
+      grid.innerHTML = '<p style="color:var(--muted)">A portfólió jelenleg nem elérhető.</p>';
+      return;
+    }
 
-        grid.innerHTML = '';
-        const email = 'harai.tamas@harai.hu';
+    grid.innerHTML = '';
+    const markers = []; // térképhez
 
-        items.forEach((p) => {
-          const title = p.title || 'Ismeretlen ingatlan';
-          const id = p.id || '';
-          const subject = encodeURIComponent(`Érdeklődés – ${title}`);
-          const body = encodeURIComponent(
-`Tisztelt Cím!
+    items.forEach(p => {
+      const title = p.title || 'Ismeretlen ingatlan';
+      const city = p.city ? `<strong>${p.city}</strong>` : '';
+      const size = p.size_ha ? `<div><strong>Terület:</strong> ${p.size_ha} ha</div>` : '';
+      const rail = (p.rail_access === true) ? `<div style="color:var(--gold)"><strong>Vasút:</strong> ${p.rail_notes || 'iparvágány/vasút elérhető'}</div>` :
+                   (p.rail_access === false ? `<div><strong>Vasút:</strong> nincs közvetlen</div>` : '');
+      const energy = p.energy_mw ? `<div><strong>Energia:</strong> ${p.energy_mw} MW</div>` : '';
+      const gallery = Array.isArray(p.gallery) && p.gallery.length ? p.gallery : (p.image ? [p.image] : ['gallery-rail-1.jpg']);
+      const mainImg = gallery[0] || 'gallery-rail-1.jpg';
 
-Az alábbi ingatlan iránt érdeklődöm:
+      // Card
+      const article = document.createElement('article');
+      article.className = 'card';
+      article.innerHTML = `
+        <img src="${mainImg}" alt="${escapeHtml(title)}" loading="lazy" decoding="async">
+        <div class="body">
+          <h3 style="margin:4px 0 8px;font-size:18px">${escapeHtml(title)}</h3>
+          ${city}
+          ${rail}
+          ${size}
+          ${energy}
+          <div style="margin-top:10px">
+            ${(Array.isArray(p.features) ? p.features.map(f => `<span class="badge">${escapeHtml(f)}</span>`).join('') : '')}
+          </div>
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+            <a href="${p.link || '#'}" class="btn btn-ghost" style="padding:8px 12px;font-size:14px">Részletek</a>
+            <button class="btn btn-gold" style="padding:8px 12px;font-size:14px" onclick='openInterest("${encodeURIComponent(title)}","${encodeURIComponent(p.id||'') }")'>Érdekel</button>
+          </div>
+        </div>
+      `;
+      grid.appendChild(article);
 
-${title}
-Azonosító: ${id}
-
-Kérem, vegyék fel velem a kapcsolatot további információkkal.
-
-Név:
-Cég:
-Telefon:
-
-Üdvözlettel,
-`
-          );
-          const mailto = `mailto:${email}?subject=${subject}&body=${body}`;
-
-          const gallery = Array.isArray(p.gallery) && p.gallery.length
-            ? p.gallery
-            : (p.image ? [p.image] : ['gallery-rail-1.jpg']);
-
-          const mainImg = gallery[0];
-          const extraThumbs = gallery.slice(1);
-
-          const card = document.createElement('article');
-          card.className = 'card';
-          card.innerHTML = `
-            <img src="${mainImg}" alt="${title}" class="main-img"
-                 style="width:100%;height:180px;object-fit:cover;border-radius:10px 10px 0 0;">
-            <div class="body">
-              <h3 style="margin:4px 0 8px;font-size:18px">${title}</h3>
-              ${p.city ? `<p style="margin:4px 0"><strong>Város:</strong> ${p.city}</p>` : ''}
-              ${p.rail_access === true
-                ? `<p style="margin:4px 0"><strong>Vasút:</strong> ${p.rail_notes || 'iparvágány / vasúti kapcsolat elérhető'}</p>`
-                : (p.rail_access === false
-                    ? `<p style="margin:4px 0"><strong>Vasút:</strong> nincs közvetlen iparvágány</p>`
-                    : '')}
-              ${p.size_ha ? `<p style="margin:4px 0"><strong>Terület:</strong> ${p.size_ha} ha</p>` : ''}
-              ${p.energy_mw ? `<p style="margin:4px 0"><strong>Energia:</strong> ${p.energy_mw} MW</p>` : ''}
-              ${p.zoning ? `<p style="margin:4px 0"><strong>Övezeti besorolás:</strong> ${p.zoning}</p>` : ''}
-
-              ${extraThumbs.length ? `
-                <div style="display:flex;gap:6px;margin:6px 0 4px;">
-                  ${extraThumbs.map(img => `
-                    <img src="${img}" alt="${title}"
-                      style="width:56px;height:40px;object-fit:cover;cursor:pointer;
-                             border-radius:4px;border:1px solid rgba(255,255,255,0.7);opacity:0.9;"
-                      onclick="this.closest('article').querySelector('.main-img').src='${img}'">
-                  `).join('')}
-                </div>
-              ` : ''}
-
-              <div>
-                ${Array.isArray(p.features) ? p.features.map(f => `<span class="badge">${f}</span>`).join('') : ''}
-              </div>
-
-             <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
-  <a href="${mailto}" class="btn btn-gold" style="padding:8px 12px;font-size:14px;">
-    Érdekel az ingatlan
-  </a>
-  ${p.video ? `
-    <a href="${p.video}" target="_blank" rel="noopener" class="btn btn-ghost" style="padding:8px 12px;font-size:14px;">
-      ▶ Videó
-    </a>
-  ` : ''}
-</div>
-</div>            
-`;
-          grid.appendChild(card);
+      // Térkép marker (ha van lat/lng)
+      if (p.lat && p.lng) {
+        markers.push({
+          lat: parseFloat(p.lat),
+          lng: parseFloat(p.lng),
+          title,
+          city,
+          snippet: (rail || size || energy || '')
         });
-      } catch (err) {
-        console.error('Portfólió betöltési hiba:', err);
       }
-    })();
-  </script>
-
-  <!-- Splash: csak egyszer, fade-outtal -->
-  <script>
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        const splash = document.getElementById("splash-screen");
-        if (splash) {
-          splash.classList.add("fade-out");
-          setTimeout(() => { splash.style.display = "none"; }, 600);
-        }
-      }, 2000);
     });
+
+    // Ha van térkép markers, inicializáljuk
+    initMap(markers);
+  }
+
+  // --- NEWS betöltés ---
+  async function loadNews() {
+    const items = await safeFetchJSON('hirek.json');
+    const grid = document.getElementById('news-grid');
+    if (!items || !Array.isArray(items)) {
+      grid.innerHTML = '<p style="color:var(--muted)">A hírek jelenleg nem elérhetők.</p>';
+      return;
+    }
+    grid.innerHTML = '';
+    items.forEach(n => {
+      const title = n.title || '';
+      const img = n.image || 'hero-rail.jpg';
+      const excerpt = n.excerpt || (Array.isArray(n.body) ? n.body[0].slice(0,160)+'...' : '');
+      const card = document.createElement('article');
+      card.className = 'news-card';
+      card.innerHTML = `
+        <img src="${img}" alt="${escapeHtml(title)}" loading="lazy" decoding="async">
+        <div style="padding:16px;">
+          <h3 style="margin:0 0 8px;color:var(--gold)">${escapeHtml(title)}</h3>
+          <p style="margin:0 0 12px;color:#ddd">${escapeHtml(excerpt)}</p>
+          <a href="hirek.html#${n.id || ''}" style="color:var(--gold);font-weight:700">Tovább olvasom →</a>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  // --- Térkép inicializálása (Leaflet) ---
+  let mapInstance = null;
+  function initMap(markers) {
+    const mapEl = document.getElementById('map');
+    const noteEl = document.getElementById('map-note');
+
+    if (!markers || markers.length === 0) {
+      // ha nincs egyetlen marker sem, elrejthetjük vagy tájékoztathatjuk a felhasználót
+      mapEl.style.display = 'none';
+      noteEl.innerHTML = 'Nincsenek koordináták a portfóliós tételekben. Adjon hozzá <code>lat</code> és <code>lng</code> mezőket a <code>portfolio.hu.json</code>-hoz a térképes megjelenítéshez.';
+      return;
+    }
+
+    mapEl.style.display = 'block';
+    noteEl.innerHTML = '';
+
+    // inicializáljuk a térképet
+    mapInstance = L.map('map', { zoomControl: true, attributionControl: true });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19, attribution: '© OpenStreetMap'
+    }).addTo(mapInstance);
+
+    // bounds-ot számolunk
+    const bounds = [];
+    markers.forEach(m => {
+      if (!isFinite(m.lat) || !isFinite(m.lng)) return;
+      bounds.push([m.lat, m.lng]);
+      const popup = `<strong>${escapeHtml(m.title)}</strong><br>${m.city || ''}<div style="margin-top:6px;color:#444">${m.snippet||''}</div>`;
+      L.marker([m.lat, m.lng]).addTo(mapInstance).bindPopup(popup);
+    });
+
+    if (bounds.length === 1) {
+      mapInstance.setView(bounds[0], 12);
+    } else {
+      mapInstance.fitBounds(bounds, {padding:[40,40]});
+    }
+  }
+
+  // --- Contact form: mailto előkészítés ---
+  document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('c-name').value.trim();
+    const company = document.getElementById('c-company').value.trim();
+    const email = document.getElementById('c-email').value.trim();
+    const message = document.getElementById('c-message').value.trim();
+
+    if (!name || !email || !message) {
+      alert('Kérlek töltsd ki az összes kötelező mezőt.');
+      return;
+    }
+
+    const subject = encodeURIComponent(`Érdeklődés — Rail-Ready`);
+    const bodyLines = [
+      `Név: ${name}`,
+      `Cég: ${company}`,
+      `Email: ${email}`,
+      '',
+      'Üzenet:',
+      message
+    ];
+    const body = encodeURIComponent(bodyLines.join('\n'));
+    const to = 'harai.tamas@harai.hu';
+    // mailto megnyitása
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+  });
+
+  // --- Segédfüggvények ---
+  function escapeHtml(s) {
+    if (!s) return '';
+    return String(s).replace(/[&<>"']/g, function (m) {
+      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]);
+    });
+  }
+
+  // Érdeklődés gomb: előkészít egy emailt az ingatlanról
+  window.openInterest = function(title, id) {
+    const to = 'harai.tamas@harai.hu';
+    const subject = encodeURIComponent(`Érdeklődés – ${decodeURIComponent(title)}`);
+    const body = encodeURIComponent(`Tisztelt Cím!\n\nÉrdeklődöm az alábbi ingatlan iránt:\n\n${decodeURIComponent(title)}\nAzonosító: ${decodeURIComponent(id)}\n\nKérem, vegyék fel velem a kapcsolatot.\n\nNév:\nCég:\nTelefon:\n\nÜdvözlettel,`);
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+  };
+
+  // oldalletöltéskor betöltjük a tartalmakat
+  (function init() {
+    loadPortfolio();
+    loadNews();
+  })();
+
   </script>
 </body>
 </html>
