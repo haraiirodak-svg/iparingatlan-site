@@ -1,1 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="512x512" href="/logo-512.png">
+  <link rel="manifest" href="/manifest.json">
+  <title>Rail-Ready Industrial & Logistics – Hungary</title>
 
+  <!-- SEO / Social -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Rail-Ready industrial & logistics land portfolio in Hungary – rail-ready development sites on the East–West corridor." />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:title" content="Industrial & Logistics Properties in Hungary – Rail-Ready" />
+  <meta property="og:description" content="Rail-optimized industrial & logistics land – future hubs on the East–West trade corridor." />
+  <meta property="og:image" content="/og-hero-rail.jpg" />
+  <meta property="og:type" content="website" />
+
+  <!-- Hreflang – keresőknek -->
+  <link rel="alternate" hreflang="hu" href="https://iparingatlan-site.vercel.app/" />
+  <link rel="alternate" hreflang="en" href="https://iparingatlan-site.vercel.app/en" />
+
+  <style>
+    :root { --gold:#DAA520; --ink:#111; --muted:#6b7280; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:#fff}
+    a{text-decoration:none;color:inherit}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+    .nav{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid #eee;background:#fff;position:relative;z-index:10}
+    .nav img{height:36px}
+    .nav-right{margin-left:auto;display:flex;gap:16px;font-weight:500}
+
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;font-weight:600}
+    .btn-gold{background:var(--gold);color:#111}
+    .btn-ghost{border:1px solid rgba(0,0,0,.3)}
+    .section{padding:40px 0}
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit, minmax(260px,1fr))}
+    .card{border:1px solid #eee;border-radius:14px;overflow:hidden;background:#fff}
+    .card img{width:100%;height:160px;object-fit:cover}
+    .card .body{padding:14px}
+    .badge{display:inline-block;background:#f3f4f6;border-radius:999px;padding:4px 10px;font-size:12px;margin-right:8px;margin-top:6px}
+    .footer{border-top:1px solid #eee;color:#666}
+    .footer-inner{display:flex;justify-content:space-between;gap:10px;padding:16px 0}
+
+    /* Typography */
+    p{text-align:justify;text-justify:inter-word;hyphens:auto;line-height:1.8}
+    .section p{margin-bottom:14px}
+
+    /* Splash */
+    #splash-screen{position:fixed;inset:0;background:#111;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:9999;transition:opacity .6s}
+    #splash-screen.fade-out{opacity:0;pointer-events:none}
+    #splash-screen img{width:120px;height:120px;margin-bottom:20px}
+    #splash-progress{width:100px;height:6px;background:#333;border-radius:3px;overflow:hidden}
+    #splash-progress span{display:block;width:0;height:100%;background:#d4af37;animation:load 2s linear forwards}
+    @keyframes load{to{width:100%}}
+
+    /* Hero anim */
+    @keyframes zoomInHero{0%{transform:scale(1)}100%{transform:scale(1.06) translateY(-1.5%)}}
+    @keyframes arrowBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+    @keyframes heroTicker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* Hero text (nem lóg ki) */
+    #hero .content{position:relative;z-index:2;padding:0 20px;max-width:780px;margin:0 auto;text-align:center}
+    #hero .title{font-size:clamp(28px,6vw,56px);line-height:1.1;margin:0 0 12px;letter-spacing:1px;text-shadow:0 2px 6px rgba(0,0,0,.6);font-weight:600}
+    #hero .subtitle{font-size:clamp(16px,3vw,24px);margin:0 0 28px;text-shadow:0 2px 6px rgba(0,0,0,.6)}
+
+    @media (max-width:480px){ #hero{padding-top:36px} #hero .title{letter-spacing:.5px} }
+    /* Extra overlay a jobb kontraszthoz */
+    #hero::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.50),rgba(0,0,0,.35));z-index:1}
+  </style>
+</head>
+<body>
+  <!-- Splash -->
+  <div id="splash-screen">
+    <img src="/logoip.jpg" alt="Rail-Ready logo">
+    <div id="splash-progress"><span></span></div>
+  </div>
+
+  <!-- NAV -->
+  <div class="container nav">
+    <img src="/logoip.jpg" alt="Rail-Ready" />
+    <div class="nav-right">
+      <a href="/#portfolio">HU</a>
+      <a href="/en">EN</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero" style="position:relative;width:100%;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;">
+    <div style="position:absolute;inset:0;background-image:url('/hero-rail.jpg');background-size:cover;background-position:center 40%;animation:zoomInHero 28s ease-in-out infinite alternate;"></div>
+
+    <!-- top ticker -->
+    <div id="hero-ticker" style="position:absolute;left:0;right:0;top:0;z-index:3;overflow:hidden;background:linear-gradient(to bottom, rgba(0,0,0,.6), rgba(0,0,0,0));padding:10px 0;">
+      <div class="ticker-track" style="display:flex;gap:40px;white-space:nowrap;will-change:transform;animation:heroTicker 35s linear infinite;padding:6px 0;font-size:16px;letter-spacing:.3px;color:#FFD700;text-shadow:0 1px 3px rgba(0,0,0,.4);font-weight:500;"></div>
+    </div>
+
+    <div style="position:absolute;inset:0;background:rgba(0,0,0,.0)"></div>
+
+    <div class="content">
+      <h1 class="title">Industrial & Logistics Land in Hungary</h1>
+      <p class="subtitle">Rail-ready development sites on the East–West corridor</p>
+
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="#portfolio" class="btn btn-gold">View portfolio</a>
+        <a href="#contact" class="btn btn-ghost">Contact</a>
+      </div>
+
+      <div style="margin-top:36px;animation:arrowBounce 2s infinite;cursor:pointer;"
+           onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})" aria-label="Scroll down">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" style="width:40px;height:40px;opacity:.85">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </div>
+    </div>
+
+    <script>
+      (function(){
+        const keywords=[
+          "Data-center ready plots","Greenfield development","Near EU optical backbone",
+          "Industrial sidings available","M0/M3 logistics zones",
+          "Motorway ramps nearby","Intermodal capacity","Industrial power (MW) available",
+          "Expandable / mergeable plots","East–West distribution hub","TEN-T connection","Fast-track permitting"
+        ];
+        // shuffle
+        for(let i=keywords.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [keywords[i],keywords[j]]=[keywords[j],keywords[i]]}
+        const track=document.querySelector('#hero-ticker .ticker-track');
+        const row=arr=>arr.map(k=>`<span>${k}</span>`).join('<span style="opacity:.4;">•</span>');
+        track.innerHTML=row(keywords)+'<span style="opacity:.4;">•</span>'+row(keywords);
+      })();
+    </script>
+  </section>
+
+  <!-- INTRO -->
+  <section id="intro" style="background-image:url('/gallery-rail-1.jpg');background-size:cover;background-position:center;background-attachment:fixed;position:relative;color:white;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55));"></div>
+    <div class="container" style="position:relative;z-index:2;padding:90px 20px;">
+      <h2 style="font-size:36px;margin-bottom:22px;color:#DAA520;letter-spacing:.5px;text-shadow:0 0 10px rgba(0,0,0,.5);text-align:center;">
+        Hungary: the gateway between East and West
+      </h2>
+      <div style="max-width:950px;margin:0 auto;">
+        <p>Hungary’s geography and development policy position the country as a <strong style="color:#FFD700;">trade bridge</strong> connecting East and West. The EU aims to shift at least <strong style="color:#FFD700;">30% of 300km+ road freight to rail/water by 2030</strong>, driving a rail-logistics investment wave.</p>
+        <p>The <strong style="color:#FFD700;">Budapest–Belgrade railway</strong>, the <strong style="color:#FFD700;">East-West Gate</strong> intermodal terminal, and large-scale <strong style="color:#FFD700;">industrial projects in Debrecen</strong> elevate Hungary’s logistics infrastructure.</p>
+        <p>Our portfolio offers <strong style="color:#FFD700;">rail-connected and motorway-adjacent</strong> sites for transshipment, value-add and EU distribution along the East–West corridor.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="section">
+    <div class="container">
+      <h2 style="font-size:28px;margin:0 0 12px">Rail-Ready Portfolio</h2>
+      <p class="muted" style="margin:0 0 16px">Industrial & logistics development land with rail access and motorway proximity.</p>
+      <div class="grid" id="portfolio-grid"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section" style="background:#fff;border-top:1px solid #eee">
+    <div class="container">
+      <h2 style="font-size:28px;margin:0 0 8px">Contact</h2>
+      <p style="margin:6px 0">
+        Tamás Harai ·
+        <a href="mailto:harai.tamas@harai.hu">harai.tamas@harai.hu</a> ·
+        <a href="tel:+36309713836">+36 30 971 3836</a>
+      </p>
+      <a class="btn" href="mailto:harai.tamas@harai.hu?subject=Rail-Ready%20inquiry" style="background:#111;color:#fff">
+        Send a message
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© iparingatlan.com</span>
+      <a href="#hero">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Load portfolio EN -->
+  <script>
+    (async function loadPortfolio() {
+      try {
+        const res = await fetch('/portfolio.en.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('portfolio.en.json not available');
+
+        const items = await res.json();
+        const grid = document.getElementById('portfolio-grid');
+        if (!grid) return;
+        grid.innerHTML = '';
+
+        const email = 'harai.tamas@harai.hu';
+
+        items.forEach((p) => {
+          const title = p.title || 'Unnamed property';
+          const id = p.id || '';
+          const subject = encodeURIComponent(`Inquiry – ${title}`);
+          const body = encodeURIComponent(
+`Hello,
+
+I am interested in the following property:
+
+${title}
+ID: ${id}
+
+Please contact me with more information.
+
+Name:
+Company:
+Phone:
+
+Best regards,
+`
+          );
+          const mailto = `mailto:${email}?subject=${subject}&body=${body}`;
+
+          const gallery = Array.isArray(p.gallery) && p.gallery.length
+            ? p.gallery
+            : (p.image ? [p.image] : ['gallery-rail-1.jpg']);
+
+          const mainImg = gallery[0];
+          const extraThumbs = gallery.slice(1);
+
+          const card = document.createElement('article');
+          card.className = 'card';
+          card.innerHTML = `
+            <img src="/${mainImg}" alt="${title}" class="main-img" style="width:100%;height:180px;object-fit:cover;border-radius:10px 10px 0 0;">
+            <div class="body">
+              <h3 style="margin:4px 0 8px;font-size:18px">${title}</h3>
+              ${p.city ? `<p style="margin:4px 0"><strong>City:</strong> ${p.city}</p>` : ''}
+              ${p.rail_access === true
+                ? `<p style="margin:4px 0"><strong>Rail:</strong> ${p.rail_notes || 'industrial siding / rail access available'}</p>`
+                : (p.rail_access === false
+                    ? `<p style="margin:4px 0"><strong>Rail:</strong> no direct industrial siding</p>`
+                    : '')}
+              ${p.size_ha ? `<p style="margin:4px 0"><strong>Area:</strong> ${p.size_ha} ha</p>` : ''}
+              ${p.energy_mw ? `<p style="margin:4px 0"><strong>Power:</strong> ${p.energy_mw} MW</p>` : ''}
+              ${p.zoning ? `<p style="margin:4px 0"><strong>Zoning:</strong> ${p.zoning}</p>` : ''}
+
+              ${extraThumbs.length ? `
+                <div style="display:flex;gap:6px;margin:6px 0 4px;">
+                  ${extraThumbs.map(img => `
+                    <img src="/${img}" alt="${title}"
+                      style="width:56px;height:40px;object-fit:cover;cursor:pointer;border-radius:4px;border:1px solid rgba(0,0,0,0.15);opacity:0.95;"
+                      onclick="this.closest('article').querySelector('.main-img').src='/${img}'">
+                  `).join('')}
+                </div>
+              ` : ''}
+
+              <div>
+                ${Array.isArray(p.features) ? p.features.map(f => `<span class="badge">${f}</span>`).join('') : ''}
+              </div>
+
+              <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;">
+                <a href="${mailto}" class="btn btn-gold" style="padding:8px 12px;font-size:14px;">I’m interested</a>
+              </div>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+      } catch (err) {
+        console.error('Portfolio (EN) load error:', err);
+      }
+    })();
+
+    // Splash fade-out
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        const splash = document.getElementById("splash-screen");
+        if (splash) { splash.classList.add("fade-out"); setTimeout(() => splash.style.display="none", 600); }
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
