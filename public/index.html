@@ -8,7 +8,7 @@
   <link rel="manifest" href="/manifest.json">
   <link rel="icon" href="/favicon.ico">
 
-  <!-- Google Fonts: Playfair Display (headline) + Inter (ui) -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <meta property="og:title" content="Rail-Ready — Rail-Connected Industrial Hubs" />
@@ -49,8 +49,7 @@
 
     /* HERO base */
     #hero { position:relative; width:100%; height:100vh; overflow:hidden; display:flex; align-items:center; color:white; }
-    /* single background */
-    #hero > .bg { position:absolute; inset:0; background-image:url('hero-rail.jpg'); background-size:cover; background-position:center 30%; transform:scale(1); transition:transform 20s linear; z-index:0; }
+    #hero > .bg { position:absolute; inset:0; background-image:url('hero-rail.jpg'); background-size:cover; background-position:center 30%; transform:scale(1); z-index:0; }
     #hero::after { content:""; position:absolute; inset:0; background:linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.35)); z-index:1; pointer-events:none; }
 
     /* ticker */
@@ -60,58 +59,44 @@
 
     /* hero content (modern) */
     #hero .content { position:relative; z-index:2; padding:40px 20px; max-width:920px; margin-left:8vw; margin-right:20px; }
-    /* On mobile, center it */
-    @media (max-width: 879px) {
-      #hero .content { margin:0 auto; padding:32px 18px; text-align:center; }
-    }
+    @media (max-width: 879px) { #hero .content { margin:0 auto; padding:32px 18px; text-align:center; } }
 
-    /* Title (Playfair Display) */
+    /* Title (Playfair) */
     #hero .title {
       font-family: 'Playfair Display', Georgia, serif;
       font-weight:700;
       font-size: clamp(32px,5.6vw,64px);
       line-height:1.02;
       margin:0 0 10px 0;
-      /* gradient text */
       background: linear-gradient(90deg, var(--accent-light) 0%, var(--gold) 60%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
       -webkit-text-stroke: 0.4px rgba(0,0,0,0.12);
       text-shadow: 0 10px 30px rgba(0,0,0,0.35);
       display:inline-block;
-      transform: translateY(10px);
-      opacity:0;
+      transform: translateY(10px); opacity:0;
       transition: transform .7s cubic-bezier(.2,.9,.3,1), opacity .7s ease;
     }
-
-    /* small accent bar under title */
     #hero .title-accent { display:block; height:6px; width:86px; background: linear-gradient(90deg,var(--accent-light),var(--gold)); border-radius:999px; margin-top:14px; opacity:0; transform:translateY(8px); transition: transform .6s cubic-bezier(.2,.9,.3,1), opacity .6s ease; }
 
-    /* Subtitle (Inter) */
     #hero .subtitle {
       font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
       font-weight:400;
       font-size: clamp(15px,2vw,18px);
       color: rgba(255,255,255,0.95);
-      margin:12px 0 18px;
-      max-width:720px;
-      letter-spacing:.2px;
-      transform: translateY(8px);
-      opacity:0;
+      margin:12px 0 18px; max-width:720px; letter-spacing:.2px;
+      transform: translateY(8px); opacity:0;
       transition: transform .6s cubic-bezier(.2,.9,.3,1), opacity .6s ease;
     }
 
     /* CTA */
-    .cta-group { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
-    .cta-group .btn { font-family:Inter, sans-serif; }
+    .cta-group { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:6px; }
 
-    /* reveal state */
+    /* reveal */
     #hero.reveal .title { transform:none; opacity:1; transition-delay:.08s; }
     #hero.reveal .title-accent { transform:none; opacity:1; transition-delay:.18s; }
     #hero.reveal .subtitle { transform:none; opacity:1; transition-delay:.12s; }
 
-    /* Basic sections & cards */
+    /* sections and cards */
     .section { padding:48px 0; }
     h2 { font-size:1.45rem; margin:0 0 14px; color:#222; }
     .grid { display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
@@ -125,11 +110,9 @@
     footer.footer { border-top:1px solid #eee; color:#666; padding:18px 0; }
     .footer-inner { display:flex; justify-content:space-between; gap:10px; }
 
-    /* news card */
     .news-card { background:#121212; color:#fff; border-radius:12px; overflow:hidden; box-shadow:0 6px 24px rgba(0,0,0,0.2); }
     .news-card img { width:100%; height:200px; object-fit:cover; display:block; }
 
-    /* Small screens */
     @media (max-width:640px) {
       .nav { padding:10px 0; }
       #hero .title { font-size: clamp(28px,7vw,44px); text-shadow: 0 6px 20px rgba(0,0,0,0.45); }
@@ -162,7 +145,6 @@
       <div class="ticker-track" aria-hidden="true"></div>
     </div>
 
-    <!-- content (modern, reveal) -->
     <div class="content container">
       <div class="hero-text">
         <h1 class="title">Rail-Ready — Rail-Connected Industrial Hubs</h1>
@@ -174,7 +156,7 @@
           <small style="font-family:Inter, sans-serif; font-weight:600; color:rgba(255,255,255,0.88);">Strategic sites by rail &amp; highway</small>
         </p>
 
-        <div class="cta-group" style="margin-top:6px;">
+        <div class="cta-group">
           <a href="#portfolio" class="btn btn-gold">Portfólió megtekintése</a>
           <a href="#contact" class="btn btn-ghost">Kapcsolat</a>
         </div>
@@ -185,9 +167,9 @@
   <!-- INTRO -->
   <section id="intro" style="background-image:url('gallery-rail-1.jpg'); background-size:cover; background-position:center; background-attachment:fixed; position:relative; color:white; overflow:hidden;">
     <div style="position:absolute; inset:0; background:linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55));"></div>
-    <div class="container" style="position:relative; z-index:2; padding:90px 20px; text-align:left;">
-      <h2 style="font-size:36px; margin-bottom:22px; color:var(--gold); letter-spacing:0.5px; text-shadow:0 0 10px rgba(0,0,0,0.5); text-align:center;">Magyarország: a kelet–nyugati logisztikai kapu</h2>
-      <div style="max-width:950px; margin:0 auto;">
+    <div class="container" style="position:relative; z-index:2; padding:80px 20px; text-align:left;">
+      <h2 style="font-size:32px; margin-bottom:18px; color:var(--gold); letter-spacing:0.5px; text-shadow:0 0 10px rgba(0,0,0,0.45); text-align:center;">Magyarország: a kelet–nyugati logisztikai kapu</h2>
+      <div style="max-width:920px; margin:0 auto;">
         <p style="font-size:18px; line-height:1.8;">
           Magyarország földrajzi helyzete és fejlesztési politikája révén ideális helyszínt biztosít mind a vasúti, mind a közúti logisztikai megoldások számára. Portfóliónk olyan telkeket kínál, amelyek autópálya-lehajtókhoz közel vagy közvetlen vasúti bekötéssel rendelkeznek — stratégiai előnyt adva beruházásainak.
         </p>
@@ -195,11 +177,11 @@
     </div>
   </section>
 
-  <!-- WHY -->
+  <!-- MIÉRT MAGYARORSZÁG -->
   <section id="why-hungary" class="section" style="background:#f8f8f8; text-align:center;">
     <div class="container">
-      <h2 style="font-size:2.2rem; color:#222; margin-bottom:30px;">Miért Magyarország?</h2>
-      <p style="max-width:900px; margin:0 auto 50px; font-size:1.05rem; line-height:1.6; color:#444;">
+      <h2 style="font-size:2.1rem; color:#222; margin-bottom:20px;">Miért Magyarország?</h2>
+      <p style="max-width:900px; margin:0 auto 30px; font-size:1.05rem; line-height:1.6; color:#444;">
         Fejlett infrastruktúra, kedvező földrajzi elhelyezkedés és növekvő ipari beruházások — mindezek teszik Magyarországot kiemelt logisztikai csomóponttá.
       </p>
 
@@ -227,6 +209,62 @@
           <h3 style="margin:12px 0 6px;">Nemzetközi elérés</h3>
           <p style="color:#555;">Központi fekvés Európa és a keleti folyosók között.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEJLESZTÉSEK MAGYARORSZÁGON (visszahelyezve) -->
+  <section id="developments" style="background:#111; color:white; padding:80px 20px; text-align:center;">
+    <div class="container">
+      <h2 style="font-size:2rem; color:var(--gold); margin-bottom:22px;">Fejlesztések Magyarországon</h2>
+      <p style="max-width:900px; margin:0 auto 36px; font-size:1.05rem; line-height:1.6; color:#ddd;">
+        Nagy volumenű ipari és logisztikai beruházások indulnak, melyek új csomópontokat hoznak létre. Az alábbi régiók különösen kiemelkednek.
+      </p>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; max-width:1100px; margin:0 auto;">
+        <div style="background:#1b1b1b; border-radius:12px; padding:24px;">
+          <h3 style="color:var(--gold); font-size:1.15rem; margin-bottom:10px;">Debrecen – Elektromobilitás</h3>
+          <p style="color:#ddd;">BMW, akkumulátorgyártás és a hozzá kapcsolódó logisztika bővülése.</p>
+        </div>
+
+        <div style="background:#1b1b1b; border-radius:12px; padding:24px;">
+          <h3 style="color:var(--gold); font-size:1.15rem; margin-bottom:10px;">Győr – Nyugat-magyar ipar</h3>
+          <p style="color:#ddd;">Autóipari klaszterek és vasúti kapcsolódások erősítik a régiót.</p>
+        </div>
+
+        <div style="background:#1b1b1b; border-radius:12px; padding:24px;">
+          <h3 style="color:var(--gold); font-size:1.15rem; margin-bottom:10px;">Záhony & Szeged – Intermodális kapuk</h3>
+          <p style="color:#ddd;">Keleti áruáramlás fogadása és továbbítása Nyugat felé.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÁMOGATÁSOK ÉS TANÁCSADÁS (visszahelyezve) -->
+  <section id="investor-support" style="background:#f5f5f5; color:#222; padding:80px 20px; text-align:center;">
+    <div class="container">
+      <h2 style="font-size:2rem; color:#111; margin-bottom:20px;">Támogatások és tanácsadás befektetőknek</h2>
+      <p style="max-width:900px; margin:0 auto 30px; font-size:1.05rem; line-height:1.6; color:#444;">
+        Teljes körű támogatást nyújtunk a területválasztástól a kivitelezésig: jogi, engedélyezési, energetikai és infrastrukturális tanácsadás.
+      </p>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; max-width:1100px; margin:0 auto;">
+        <div style="background:white; padding:20px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.04);">
+          <h3 style="margin:8px 0 8px; font-size:1.1rem;">Beruházási támogatások</h3>
+          <p style="color:#555;">Hazai és EU-s források feltérképezése és pályázati támogatás.</p>
+        </div>
+        <div style="background:white; padding:20px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.04);">
+          <h3 style="margin:8px 0 8px; font-size:1.1rem;">Engedélyezés és ütemezés</h3>
+          <p style="color:#555;">Gyakorlati segítség az engedélyezési folyamatokban és projektmenedzsmentben.</p>
+        </div>
+        <div style="background:white; padding:20px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.04);">
+          <h3 style="margin:8px 0 8px; font-size:1.1rem;">Energetikai tanácsadás</h3>
+          <p style="color:#555;">Villamosenergia és nagy teljesítményű ipari energiaigények tervezése és biztosítása.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:26px;">
+        <a href="mailto:harai.tamas@harai.hu" class="btn btn-gold">Kérek tanácsadást</a>
       </div>
     </div>
   </section>
@@ -278,11 +316,8 @@
 
   <!-- SCRIPTS -->
   <script>
-    /* ---------- helper: html escape ---------- */
-    function escapeHtml(s) {
-      if (!s) return '';
-      return String(s).replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]); });
-    }
+    /* ---------- helper ---------- */
+    function escapeHtml(s) { if (!s) return ''; return String(s).replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]; }); }
 
     /* ---------- ticker init ---------- */
     (function initTicker(){
@@ -307,47 +342,29 @@
       track.innerHTML = row(keywords) + '<span style="opacity:.4;">•</span>' + row(keywords);
     })();
 
-    /* ---------- splash fade ---------- */
+    /* ---------- splash fade and reveal ---------- */
     window.addEventListener('load', function(){
       setTimeout(function(){
         const splash = document.getElementById('splash-screen');
-        if (splash) {
-          splash.classList.add('fade-out');
-          setTimeout(()=>{ splash.style.display = 'none'; }, 600);
-        }
+        if (splash) { splash.classList.add('fade-out'); setTimeout(()=>{ splash.style.display='none'; },600); }
       }, 900);
       // reveal hero
-      setTimeout(function(){
-        const hero = document.getElementById('hero');
-        if (hero) hero.classList.add('reveal');
-      }, 1100);
+      setTimeout(function(){ const hero=document.getElementById('hero'); if(hero) hero.classList.add('reveal'); }, 1100);
     });
 
-    /* ---------- safe fetch for JSON ---------- */
-    async function safeFetchJSON(url) {
-      try {
-        const r = await fetch(url, { cache: 'no-store' });
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return await r.json();
-      } catch (e) {
-        console.error('JSON load error:', url, e);
-        return null;
-      }
-    }
+    /* ---------- safeFetch ---------- */
+    async function safeFetchJSON(url){ try { const r = await fetch(url, {cache:'no-store'}); if(!r.ok) throw new Error('HTTP '+r.status); return await r.json(); } catch(e){ console.error('JSON load error:', url, e); return null; } }
 
-    /* ---------- PORTFOLIO render (badges: Autópálya mindig, Vasút ha van) ---------- */
+    /* ---------- PORTFOLIO render (road badge always, rail if present) ---------- */
     (async function loadPortfolio(){
       const items = await safeFetchJSON('portfolio.hu.json');
       const grid = document.getElementById('portfolio-grid');
       if (!grid) return;
-      if (!items || !Array.isArray(items)) {
-        grid.innerHTML = '<p style="color:var(--muted)">A portfólió jelenleg nem elérhető.</p>';
-        return;
-      }
+      if (!items || !Array.isArray(items)) { grid.innerHTML = '<p style="color:var(--muted)">A portfólió jelenleg nem elérhető.</p>'; return; }
       grid.innerHTML = '';
-      const email = 'harai.tamas@harai.hu';
+      const email='harai.tamas@harai.hu';
 
-      items.forEach(p => {
+      items.forEach(p=>{
         const title = p.title || 'Ismeretlen ingatlan';
         const id = p.id || '';
         const subject = encodeURIComponent(`Érdeklődés – ${title}`);
@@ -358,15 +375,14 @@
         const mainImg = gallery[0];
         const extraThumbs = gallery.slice(1);
 
-        // badges: always road, conditional rail
         const badges = [];
         badges.push('<span class="badge badge-road">🛣️ Autópálya-közeli</span>');
         if (p.rail_access === true) badges.push('<span class="badge badge-rail">🚄 Vasút</span>');
 
-        const featuresHtml = Array.isArray(p.features) ? p.features.map(f => `<span class="badge">${escapeHtml(f)}</span>`).join(' ') : '';
+        const featuresHtml = Array.isArray(p.features) ? p.features.map(f=>`<span class="badge">${escapeHtml(f)}</span>`).join(' ') : '';
 
-        const article = document.createElement('article');
-        article.className = 'card';
+        const article=document.createElement('article');
+        article.className='card';
         article.innerHTML = `
           <img src="${mainImg}" alt="${escapeHtml(title)}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='gallery-rail-1.jpg'">
           <div class="body">
@@ -391,18 +407,15 @@
       const items = await safeFetchJSON('hirek.json');
       const grid = document.getElementById('news-grid');
       if (!grid) return;
-      if (!items || !Array.isArray(items)) {
-        // leave static examples
-        return;
-      }
+      if (!items || !Array.isArray(items)) return;
       grid.innerHTML = '';
-      items.forEach(n => {
-        const title = n.title || '';
-        const img = n.image || 'hero-rail.jpg';
-        const excerpt = n.excerpt || (Array.isArray(n.body) ? n.body[0].slice(0,160)+'...' : '');
-        const card = document.createElement('article');
-        card.className = 'news-card';
-        card.innerHTML = `
+      items.forEach(n=>{
+        const title=n.title||'';
+        const img=n.image||'hero-rail.jpg';
+        const excerpt=n.excerpt || (Array.isArray(n.body)? n.body[0].slice(0,160)+'...' : '');
+        const card=document.createElement('article');
+        card.className='news-card';
+        card.innerHTML=`
           <img src="${img}" alt="${escapeHtml(title)}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='hero-rail.jpg'">
           <div style="padding:18px;">
             <h3 style="margin:0 0 8px;color:var(--gold)">${escapeHtml(title)}</h3>
