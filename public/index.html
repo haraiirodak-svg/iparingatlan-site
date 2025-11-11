@@ -8,63 +8,59 @@
   <link rel="icon" href="/favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{--gold:#DAA520;--accent-light:#FFD86E;--ink:#111;--muted:#6b7280;--max-width:1100px;--radius:14px}
+    :root{
+      --gold:#DAA520; --accent:#FFD86E; --ink:#111; --muted:#6b7280; --max-width:1100px; --radius:14px;
+    }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;color:var(--ink);background:#fff}
-    a{color:inherit;text-decoration:none}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;color:var(--ink);background:#fff}
     .container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
-
-    /* NAV */
-    .nav{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid #eee;background:#fff;position:relative;z-index:10}
+    .nav{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #eee;background:#fff;z-index:10}
     .nav img{height:36px}
-    .nav-right{margin-left:auto;display:flex;gap:16px;font-weight:600;align-items:center}
-    .btn{display:inline-block;padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer;font-family:Inter,sans-serif}
-    .btn-gold{background:linear-gradient(90deg,var(--accent-light),var(--gold));color:#111}
-    .btn-ghost{border:1px solid rgba(255,255,255,0.12);background:transparent;color:#fff}
+    .nav-right{margin-left:auto;display:flex;gap:14px;align-items:center}
+    .btn{padding:10px 14px;border-radius:10px;font-weight:700;cursor:pointer}
+    .btn-gold{background:linear-gradient(90deg,var(--accent),var(--gold));color:#111}
+    .btn-ghost{border:1px solid rgba(0,0,0,0.08);background:transparent;color:#111}
 
-    /* SPLASH */
-    #splash-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:#111;display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:9999;transition:opacity .6s}
+    #splash-screen{position:fixed;inset:0;background:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;z-index:9999;transition:opacity .6s}
     #splash-screen.fade-out{opacity:0;pointer-events:none}
     #splash-progress{width:100px;height:6px;background:#333;border-radius:3px;overflow:hidden}
-    #splash-progress span{display:block;width:0;height:100%;background:var(--accent-light);animation:load 2s linear forwards}
+    #splash-progress span{display:block;width:0;height:100%;background:var(--accent);animation:load 2s linear forwards}
     @keyframes load{to{width:100%}}
 
     /* HERO */
-    #hero{position:relative;width:100%;height:80vh;min-height:520px;overflow:hidden;display:flex;align-items:center;color:#fff}
-    #hero>.bg{position:absolute;inset:0;background-image:url('/uploads/gyongyos-hero.jpg');background-size:cover;background-position:center 30%;z-index:0;filter:brightness(.55)}
-    #hero::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.35));z-index:1}
-    #hero .content{position:relative;z-index:2;max-width:920px;margin-left:8vw;padding:40px 20px}
+    #hero{position:relative;height:78vh;min-height:420px;display:flex;align-items:center;color:#fff;overflow:hidden}
+    #hero>.bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.58);z-index:0}
+    #hero::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.25));z-index:1}
+    #hero .content{position:relative;z-index:2;padding:40px 20px;max-width:920px;margin-left:6vw}
+    .title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(32px,6vw,64px);background:linear-gradient(90deg,var(--accent),var(--gold));-webkit-background-clip:text;color:transparent}
+    .subtitle{margin-top:10px;color:rgba(255,255,255,0.95);max-width:680px}
 
-    .title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(32px,6vw,64px);background:linear-gradient(90deg,var(--accent-light),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .subtitle{font-size:1.1rem;color:rgba(255,255,255,0.95);margin-top:12px}
-
-    /* FEATURED */
+    /* sections */
     .section{padding:48px 0}
+    h2{font-size:1.6rem;margin:0 0 12px}
     .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-    .card{border:1px solid #eee;border-radius:14px;overflow:hidden;background:#fff}
-    .card img{width:100%;height:200px;object-fit:cover;display:block}
+    .card{border:1px solid #eee;border-radius:var(--radius);background:#fff;overflow:hidden}
+    .card img{width:100%;height:180px;object-fit:cover;display:block}
     .card .body{padding:14px}
-    .badge{display:inline-block;background:#f3f4f6;padding:6px 10px;border-radius:999px;margin-right:8px;font-weight:600}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#f3f4f6;margin-right:8px}
     .badge-rail{background:linear-gradient(90deg,#DDF5FF,#C3EFFF);color:#023}
     .badge-road{background:linear-gradient(90deg,#FFF4D8,#FFE6A8);color:#6a4800}
 
-    /* project section */
-    .project-hero{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:start}
-    .project-hero .bg{width:100%;height:420px;background-size:cover;background-position:center;border-radius:10px;overflow:hidden}
-
-    @media(max-width:900px){#hero{height:60vh} .project-hero{grid-template-columns:1fr} }
+    .project-hero{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start}
+    .project-hero .bg{width:100%;height:340px;background-size:cover;background-position:center;border-radius:10px}
+    @media(max-width:900px){.project-hero{grid-template-columns:1fr} #hero{height:60vh}}
   </style>
 </head>
 <body>
   <!-- SPLASH -->
   <div id="splash-screen" aria-hidden="false">
-    <img src="/logoip.jpg" alt="Ipariingatlan logó" style="width:120px;height:120px;object-fit:cover" onerror="this.onerror=null;this.src='/logo-512.png'">
+    <img src="/logoip.jpg" alt="Logó" style="width:120px;height:120px;object-fit:cover" onerror="this.onerror=null;this.src='/logo-512.png'">
     <div id="splash-progress"><span></span></div>
   </div>
 
   <!-- NAV -->
   <div class="container nav" role="navigation" aria-label="Felső menü">
-    <img src="/logoip.jpg" alt="Rail-Ready" onerror="this.onerror=null;this.src='/logo-512.png'">
+    <img src="/logoip.jpg" alt="Rail-Ready logó" onerror="this.onerror=null;this.src='/logo-512.png'">
     <div class="nav-right">
       <a href="#featured">Zászlóshajók</a>
       <a href="#portfolio">Portfólió</a>
@@ -76,41 +72,70 @@
 
   <!-- HERO -->
   <section id="hero">
-    <div class="bg" aria-hidden="true"></div>
+    <div class="bg" style="background-image:url('/uploads/gyongyos-hero.jpg')"></div>
     <div class="content container">
       <h1 class="title">Rail-Ready — Rail-Connected Industrial Hubs</h1>
-      <p class="subtitle">Vasútra és közútra optimalizált ipari területek Magyarországon — <strong>Gyöngyös zászlóshajó:</strong> 161 ha, 50 MW kiépítve, gáz: akár 30 000 m³/h.</p>
+      <p class="subtitle">Vasútra és közútra optimalizált ipari területek Magyarországon — zászlóshajó: <strong>Gyöngyös, 161 ha</strong> (50 MW kiépítve).</p>
       <div style="margin-top:16px">
-        <a class="btn btn-gold" href="#featured">Zászlóshajók megtekintése</a>
+        <a class="btn btn-gold" href="#featured">Zászlóshajók</a>
         <a class="btn btn-ghost" href="#portfolio">Teljes portfólió</a>
       </div>
     </div>
   </section>
 
-  <!-- FEATURED: beágyazott *statikus* Gyöngyös card + dinamikus betöltés -->
+  <!-- WHY -->
+  <section id="intro" class="section" style="background:#f7f7f7">
+    <div class="container">
+      <h2>Miért Magyarország?</h2>
+      <p>Fejlett infrastruktúra, stratégiai elhelyezkedés — ideális logisztikai telephelyek, vasúti és autópálya-kapcsolatok.</p>
+    </div>
+  </section>
+
+  <!-- FEJLESZTÉSEK -->
+  <section id="developments" class="section" style="background:#111;color:#fff">
+    <div class="container">
+      <h2 style="color:var(--gold)">Fejlesztések Magyarországon</h2>
+      <div class="grid">
+        <div style="background:#1b1b1b;padding:20px;border-radius:10px"><h3 style="color:var(--gold);margin:0 0 8px">Debrecen</h3><p style="color:#ddd">Elektromobilitás, akkumulátorgyártás.</p></div>
+        <div style="background:#1b1b1b;padding:20px;border-radius:10px"><h3 style="color:var(--gold);margin:0 0 8px">Győr</h3><p style="color:#ddd">Nyugat-magyar ipari bővülés.</p></div>
+        <div style="background:#1b1b1b;padding:20px;border-radius:10px"><h3 style="color:var(--gold);margin:0 0 8px">Záhony & Szeged</h3><p style="color:#ddd">Intermodális kapuk.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÁMOGATÁSOK -->
+  <section id="investor-support" class="section" style="background:#f5f5f5">
+    <div class="container">
+      <h2>Támogatások és tanácsadás</h2>
+      <div class="grid">
+        <div style="background:#fff;padding:18px;border-radius:10px"><h4>Beruházási támogatások</h4><p>Hazai és EU-s források.</p></div>
+        <div style="background:#fff;padding:18px;border-radius:10px"><h4>Engedélyezés</h4><p>Ütemezés és projektmenedzsment.</p></div>
+        <div style="background:#fff;padding:18px;border-radius:10px"><h4>Energetika</h4><p>Energetikai tervezés és kapacitás.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED -->
   <section id="featured" class="section">
     <div class="container">
-      <h2 style="margin:0 0 18px">Zászlóshajó projektjeink</h2>
+      <h2>Zászlóshajó projektjeink</h2>
       <div id="featured-grid" class="grid">
-
-        <!-- Statikus (garantált) Gyöngyös card — biztosan meg fog jelenni -->
+        <!-- statikus Gyöngyös card biztosan megjelenik -->
         <article class="card" data-featured-id="gyongyos-161ha">
           <img src="/uploads/gyongyos-hero.jpg" alt="Gyöngyös — 161 ha" loading="lazy" decoding="async">
           <div class="body">
-            <h3 style="font-size:20px;margin:4px 0 8px">Gyöngyös — 161 ha ipari terület</h3>
-            <p style="color:var(--muted);margin:0 0 10px">M3: 3,5 km • 50 MW kiépítve • iparvágány mellett • 1,61M m² előkészítve</p>
+            <h3>Gyöngyös — 161 ha ipari terület</h3>
+            <p style="color:var(--muted)">M3: 3,5 km • 50 MW kiépítve • iparvágány</p>
             <div style="margin-top:8px">
               <span class="badge badge-road">🛣️ Autópálya-közeli</span>
               <span class="badge badge-rail">🚄 Vasút</span>
             </div>
-            <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-              <a href="#project-gyongyos-161ha" class="btn btn-gold">Részletes lap</a>
-              <a href="/uploads/gyongyos-presentation.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Prospektus</a>
+            <div style="margin-top:12px;display:flex;gap:8px">
+              <a class="btn btn-gold" href="#project-gyongyos-161ha">Részletes lap</a>
+              <a class="btn btn-ghost" href="/uploads/gyongyos-presentation.pdf" target="_blank">Prospektus</a>
             </div>
           </div>
         </article>
-
-        <!-- Dinamikus többi featured kártya (JS tölti be) -->
       </div>
     </div>
   </section>
@@ -118,212 +143,124 @@
   <!-- PORTFÓLIÓ -->
   <section id="portfolio" class="section">
     <div class="container">
-      <h2 style="margin:0 0 12px">Rail-Ready portfólió</h2>
-      <p style="margin:0 0 16px;color:var(--muted)">Válogatott ipari telkek — vasúti lehetőséggel vagy autópálya-közeli elhelyezkedéssel.</p>
-      <div id="portfolio-grid" class="grid" aria-live="polite"></div>
+      <h2>Portfólió</h2>
+      <div id="portfolio-grid" class="grid"></div>
     </div>
   </section>
 
-  <!-- GYÖNGYÖS projekt szekció (egy fájlban — ide ugrik a featured kártya linkje) -->
-  <section id="project-gyongyos-161ha" class="section" style="background:#fafafa;padding-bottom:64px">
+  <!-- GYÖNGYÖS részletes (ugrás target) -->
+  <section id="project-gyongyos-161ha" class="section" style="background:#fafafa">
     <div class="container">
-      <h2 style="margin:0 0 12px">Gyöngyös — 161 ha ipari terület</h2>
-
-      <div class="project-hero" style="align-items:start;">
+      <h2>Gyöngyös — 161 ha</h2>
+      <div class="project-hero">
         <div>
-          <div class="bg" style="background-image:url('/uploads/gyongyos-hero.jpg');height:420px;border-radius:10px;margin-bottom:12px"></div>
-          <p style="font-size:16px;color:#444;line-height:1.6">
-            1,61M m² előkészített ipari terület, M3 autópályától 3,5 km-re. <strong>50 MW kiépítve</strong> a telekhatáron, bővíthető 100–150 MW-ig; földgáz bővíthető akár 30 000 m³/óra. Átminősítés és rendezési terv elkészült, lőszermentesítés elvégezve, vasúti csatlakozás tervezve.
-          </p>
-
-          <h3 style="margin-top:18px">Infrastrukturális részletek</h3>
-          <ul style="color:#444;line-height:1.7">
-            <li>Beépíthetőség: max. 50% (~800 000 m²), max. ép.mag. 25 m (technológiai 46 m).</li>
-            <li>Víz és szennyvíz: telekhatáron csatlakozás, bővíthető több ezer m³/napra.</li>
-            <li>Optikai kábel telekhatáron; további kapacitás biztosítható.</li>
-            <li>Előkészítettség: geodéziai raszter, talajvizsgálat, régészeti dokumentáció.</li>
-          </ul>
+          <div class="bg" style="background-image:url('/uploads/gyongyos-hero.jpg');height:340px;border-radius:10px;margin-bottom:12px"></div>
+          <p>1,61M m² előkészített terület, 50 MW kiépítve, gáz akár 30 000 m³/óra, átminősítés kész, lőszermentesítés elvégezve.</p>
         </div>
-
         <aside>
-          <div style="background:#fff;border-radius:8px;padding:14px;border:1px solid #eee">
-            <h4>Gyors kapcsolat</h4>
-            <p style="color:var(--muted)">Harai Tamás<br><a href="mailto:harai.tamas@harai.hu">harai.tamas@harai.hu</a><br>+36 30 971 3836</p>
-            <div style="margin-top:12px">
-              <a class="btn btn-gold" href="mailto:harai.tamas@harai.hu">Kapcsolatfelvétel</a>
-            </div>
+          <div style="background:#fff;padding:14px;border-radius:10px;border:1px solid #eee">
+            <h4>Kapcsolat</h4>
+            <p class="meta">Harai Tamás<br><a href="mailto:harai.tamas@harai.hu">harai.tamas@harai.hu</a><br>+36 30 971 3836</p>
           </div>
         </aside>
       </div>
 
-      <h3 style="margin-top:26px;margin-bottom:12px">Galéria</h3>
+      <h3 style="margin-top:20px">Galéria</h3>
       <div class="grid">
-        <div class="card"><img src="/uploads/gyongyos-1.jpg" alt="Gyongyos"><div class="body"><p class="meta">Látványterv 1</p></div></div>
-        <div class="card"><img src="/uploads/gyongyos-2.jpg" alt="Gyongyos"><div class="body"><p class="meta">Látványterv 2</p></div></div>
-        <div class="card"><img src="/uploads/gyongyos-3.jpg" alt="Gyongyos"><div class="body"><p class="meta">Látványterv 3</p></div></div>
-        <div class="card"><img src="/uploads/gyongyos-4.jpg" alt="Gyongyos"><div class="body"><p class="meta">Légi felvétel</p></div></div>
+        <div class="card"><img src="/uploads/gyongyos-1.jpg" alt="Gyongyos 1"><div class="body"><p class="meta">Látványterv 1</p></div></div>
+        <div class="card"><img src="/uploads/gyongyos-2.jpg" alt="Gyongyos 2"><div class="body"><p class="meta">Látványterv 2</p></div></div>
+        <div class="card"><img src="/uploads/gyongyos-3.jpg" alt="Gyongyos 3"><div class="body"><p class="meta">Látványterv 3</p></div></div>
+        <div class="card"><img src="/uploads/gyongyos-4.jpg" alt="Gyongyos 4"><div class="body"><p class="meta">Légi felvétel</p></div></div>
       </div>
-
-      <p style="margin-top:18px"><a class="btn btn-ghost" href="/uploads/gyongyos-presentation.pdf" target="_blank" rel="noopener">Letöltés: teljes prospektus (PDF)</a></p>
-    </div>
-  </section>
-
-  <!-- ÚTVONALAK -->
-  <section id="routes" class="section" style="border-top:1px solid #eee;background:#fff;">
-    <div class="container">
-      <h2 style="margin:0 0 12px">Útvonalak & folyosók</h2>
-      <p style="max-width:800px">Magyarország kelet–nyugati híd szerepére építve — kulcsfontosságú folyosók és intermodális lehetőségek.</p>
     </div>
   </section>
 
   <!-- HÍREK -->
-  <section id="news" style="background:#111;color:white;padding:64px 20px;text-align:center;">
-    <h2 style="font-size:2.2rem;color:var(--gold);margin-bottom:32px;font-weight:600;">Hírek és elemzések</h2>
-    <div id="news-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;max-width:1100px;margin:0 auto"></div>
+  <section id="news" class="section" style="background:#111;color:#fff">
+    <div class="container">
+      <h2 style="color:var(--gold)">Hírek és elemzések</h2>
+      <div id="news-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px"></div>
+    </div>
   </section>
 
-  <!-- KAPCSOLAT -->
+  <!-- ÚTVONALAK -->
+  <section id="routes" class="section" style="background:#fff;border-top:1px solid #eee">
+    <div class="container">
+      <h2>Útvonalak & Folyosók</h2>
+      <ul>
+        <li>TR → BG/RO → <strong>HU</strong> → AT/DE/IT</li>
+        <li>Kaukázus/KZ → AZ/GE → TR → BG/RO → <strong>HU</strong> → EU</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
   <section id="contact" class="section" style="background:#fff;border-top:1px solid #eee">
     <div class="container">
-      <h2 style="margin:0 0 8px">Kapcsolat</h2>
-      <p style="margin:6px 0">Harai Tamás · <a href="mailto:harai.tamas@harai.hu">harai.tamas@harai.hu</a> · <a href="tel:+36309713836">+36 30 971 3836</a></p>
+      <h2>Kapcsolat</h2>
+      <p>Harai Tamás · <a href="mailto:harai.tamas@harai.hu">harai.tamas@harai.hu</a></p>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer" style="border-top:1px solid #eee;padding:18px 0">
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center">
+  <footer style="border-top:1px solid #eee;padding:18px 0">
+    <div class="container" style="display:flex;justify-content:space-between;">
       <span>© iparingatlan.com — Rail-Ready</span>
-      <a href="#hero">Vissza az elejére ↑</a>
+      <a href="#hero">Vissza ↑</a>
     </div>
   </footer>
 
   <!-- SCRIPTS -->
   <script>
-    /* util */
-    function escapeHtml(s){ if(!s) return ''; return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+    function escapeHtml(s){ if(!s) return ''; return String(s).replace(/[&<>"']/g, m=> ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]); }
+    async function safeFetchJSON(url){ try{ const r=await fetch(url,{cache:'no-store'}); if(!r.ok) throw new Error('HTTP '+r.status); return await r.json(); }catch(e){ console.error('JSON load error',url,e); return null; } }
+    window.addEventListener('load', function(){ setTimeout(()=>{const s=document.getElementById('splash-screen'); if(s){ s.classList.add('fade-out'); setTimeout(()=>s.style.display='none',600); }},900); });
 
-    /* splash */
-    window.addEventListener('load', function(){
-      setTimeout(function(){ const s=document.getElementById('splash-screen'); if(s){ s.classList.add('fade-out'); setTimeout(()=>s.style.display='none',600); } },900);
-    });
+    /* ticker minimal */
+    (function(){ const kws=["Adatközpontnak kiváló terület","Autópálya-közeli","Vasúti iparvágányok","Ipari áram (MW)"]; const t=document.createElement('div'); t.className='ticker'; t.style.padding='6px 0'; t.style.color='#FFD700'; t.innerHTML='<div style="display:flex;gap:18px">'+kws.map(k=>`<span>${escapeHtml(k)}</span>`).join('•')+'</div>'; document.querySelector('#hero .content').appendChild(t); })();
 
-    /* safe fetch */
-    async function safeFetchJSON(url){
-      try{
-        const r = await fetch(url,{cache:'no-store'});
-        if(!r.ok) throw new Error('HTTP '+r.status);
-        return await r.json();
-      }catch(e){
-        console.error('JSON load error:',url,e);
-        return null;
-      }
-    }
+    /* FEATURED dynamic loader (adds other featured besides static Gyongyos) */
+    (async function(){
+      const items = await safeFetchJSON('portfolio.hu.json');
+      if(!items||!Array.isArray(items)) return;
+      const grid=document.getElementById('featured-grid');
+      items.filter(p=>p.featured).forEach(p=>{
+        if(document.querySelector(`[data-featured-id="${p.id}"]`)) return;
+        const rawMain = (Array.isArray(p.gallery)&&p.gallery[0])||p.main_image||p.image||'gallery-rail-1.jpg';
+        const main = (rawMain && (rawMain.startsWith('http')||rawMain.startsWith('/')))? rawMain : '/uploads/'+rawMain;
+        const div=document.createElement('article'); div.className='card'; div.setAttribute('data-featured-id',p.id||'');
+        div.innerHTML = `<img src="${main}" alt="${escapeHtml(p.title||'')}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/uploads/gallery-rail-1.jpg'"><div class="body"><h3>${escapeHtml(p.title||'')}</h3><p style="color:var(--muted)">${escapeHtml(p.short_description||'')}</p><div style="margin-top:8px">${p.rail_access?'<span class="badge badge-rail">🚄 Vasút</span>':''}<span class="badge badge-road">🛣️ Autópálya-közeli</span></div><div style="margin-top:12px;display:flex;gap:8px"><a class="btn btn-gold" href="#project-${p.id}">Részletes lap</a>${p.brochure_pdf?`<a class="btn btn-ghost" href="/uploads/${p.brochure_pdf}" target="_blank">Prospektus</a>`:''}</div></div>`;
+        grid.appendChild(div);
+      });
+    })();
 
-    /* ticker init */
-    (function initTicker(){
-      const keywords=["Adatközpontnak kiváló terület","Fejlesztési terület","Európai optikai gerinchálózat közelében","Vasúti iparvágánnyal rendelkező telkek","M0 körgyűrű melletti logisztikai zónák","Autópálya-lehajtónál fekvő területek","Intermodális kapacitás","Ipari áram (MW) elérhető","Bővíthető, egybenyitható telkek","Kelet–nyugati elosztó pozíció","TEN-T kapcsolódás","Gyors kivitelezési lehetőség"];
-      for(let i=keywords.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [keywords[i],keywords[j]]=[keywords[j],keywords[i]]; }
-      const track=document.querySelector('#hero-ticker .ticker-track');
-      if(!track){
-        // create minimal ticker if missing
-        const ticker = document.createElement('div'); ticker.id='hero-ticker'; ticker.innerHTML='<div class="ticker-track">'+keywords.join(' • ') + '</div>'; document.getElementById('hero').appendChild(ticker);
+    /* PORTFOLIO loader */
+    (async function(){
+      const items=await safeFetchJSON('portfolio.hu.json'); const grid=document.getElementById('portfolio-grid'); if(!grid) return;
+      if(!items||!Array.isArray(items)){ grid.innerHTML='<p style="color:var(--muted)">A portfólió jelenleg nem elérhető.</p>'; return; }
+      grid.innerHTML='';
+      items.forEach(p=>{
+        const rawMain = (Array.isArray(p.gallery)&&p.gallery[0])||p.main_image||p.image||'gallery-rail-1.jpg';
+        const main = (rawMain && (rawMain.startsWith('http')||rawMain.startsWith('/')))? rawMain : '/uploads/'+rawMain;
+        const title=escapeHtml(p.title||'');
+        const html=`<article class="card"><img src="${main}" alt="${title}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/uploads/gallery-rail-1.jpg'"><div class="body"><h3>${title}</h3>${p.city?`<p><strong>Város:</strong> ${escapeHtml(p.city)}</p>`:''}${p.size_ha?`<p><strong>Terület:</strong> ${escapeHtml(String(p.size_ha))} ha</p>`:''}<div style="margin-top:8px">${p.rail_access?'<span class="badge badge-rail">🚄 Vasút</span>':''}<span class="badge badge-road">🛣️ Autópálya-közeli</span></div><div style="margin-top:12px;display:flex;gap:8px"><a class="btn btn-gold" href="mailto:harai.tamas@harai.hu?subject=Érdeklődés%20—%20${encodeURIComponent(p.title||'')}">Érdekel</a>${p.video?`<a class="btn btn-ghost" href="${p.video}" target="_blank">▶ Videó</a>`:''}</div></div></article>`;
+        grid.insertAdjacentHTML('beforeend',html);
+      });
+    })();
+
+    /* NEWS loader with fallback sample (so news always appear) */
+    (async function(){
+      const items=await safeFetchJSON('hirek.json'); const grid=document.getElementById('news-grid'); if(!grid) return;
+      if(!items||!Array.isArray(items)){
+        // static fallback example (keeps site feeling full)
+        grid.innerHTML = `<article class="news-card"><div style="padding:18px;"><h3 style="color:var(--gold)">Friss hírek</h3><p style="color:#ddd">Hamarosan friss hírek és elemzések.</p></div></article>`;
         return;
       }
-      track.innerHTML = keywords.map(k=>`<span>${escapeHtml(k)}</span>`).join('<span style="opacity:.4;">•</span>');
-    })();
-
-    /* ---------- FEATURED (dynamic) ---------- */
-    (async function loadFeatured(){
-      const items = await safeFetchJSON('portfolio.hu.json');
-      const grid = document.getElementById('featured-grid');
-      if(!grid) return;
-      if(!items || !Array.isArray(items)) return; // nothing to append
-      // skip items already present by data-featured-id
-      items.filter(p => p.featured).forEach(p=>{
-        if(document.querySelector(`[data-featured-id="${p.id}"]`)) return; // skip if static exists
-        const rawMain = (Array.isArray(p.gallery) && p.gallery[0]) || p.main_image || p.image || 'gallery-rail-1.jpg';
-        const main = (rawMain && (rawMain.startsWith('http') || rawMain.startsWith('/'))) ? rawMain : '/uploads/' + rawMain;
-        const title = escapeHtml(p.title || 'Ismeretlen');
-        const short = escapeHtml(p.short_description || p.city || '');
-        const id = p.id || '';
-        const badges = [];
-        badges.push('<span class="badge badge-road">🛣️ Autópálya-közeli</span>');
-        if(p.rail_access===true) badges.push('<span class="badge badge-rail">🚄 Vasút</span>');
-        const brochure = p.brochure_pdf ? `<a href="/uploads/${p.brochure_pdf}" class="btn btn-ghost" target="_blank" rel="noopener">Prospektus</a>` : '';
-        const card = document.createElement('article');
-        card.className='card';
-        card.setAttribute('data-featured-id', p.id || '');
-        card.innerHTML = `<img src="${main}" alt="${title}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/uploads/gallery-rail-1.jpg'">
-          <div class="body">
-            <h3 style="font-size:20px;margin:4px 0 8px">${title}</h3>
-            <p style="color:var(--muted);margin:0 0 10px">${short}</p>
-            <div style="margin-top:8px">${badges.join(' ')}</div>
-            <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-              <a href="#project-${p.id}" class="btn btn-gold">Részletes lap</a>
-              ${brochure}
-            </div>
-          </div>`;
-        grid.appendChild(card);
-      });
-    })();
-
-    /* ---------- PORTFOLIO ---------- */
-    (async function loadPortfolio(){
-      const items = await safeFetchJSON('portfolio.hu.json');
-      const grid = document.getElementById('portfolio-grid');
-      if(!grid) return;
-      if(!items || !Array.isArray(items)) { grid.innerHTML='<p style="color:var(--muted)">A portfólió jelenleg nem elérhető.</p>'; return; }
-      grid.innerHTML='';
-      const email='harai.tamas@harai.hu';
-      items.forEach(p=>{
-        const title = escapeHtml(p.title || 'Ismeretlen');
-        const rawMain = (Array.isArray(p.gallery) && p.gallery[0]) || p.main_image || p.image || 'gallery-rail-1.jpg';
-        const main = (rawMain && (rawMain.startsWith('http') || rawMain.startsWith('/'))) ? rawMain : '/uploads/' + rawMain;
-        const id = p.id || '';
-        const featuresHtml = Array.isArray(p.features) ? p.features.map(f=>`<span class="badge">${escapeHtml(f)}</span>`).join(' ') : '';
-        const badges = ['<span class="badge badge-road">🛣️ Autópálya-közeli</span>'];
-        if(p.rail_access===true) badges.push('<span class="badge badge-rail">🚄 Vasút</span>');
-        const mailtoBody = encodeURIComponent(`Tisztelt Cím!\n\nÉrdeklődöm az alábbi ingatlan iránt:\n\n${p.title || ''}\nAzonosító: ${id}\n\nKérem, vegyék fel velem a kapcsolatot.\n\nÜdvözlettel,`);
-        const mailto = `mailto:${email}?subject=${encodeURIComponent('Érdeklődés – '+(p.title||''))}&body=${mailtoBody}`;
-        const html = `<article class="card">
-          <img src="${main}" alt="${title}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/uploads/gallery-rail-1.jpg'">
-          <div class="body">
-            <h3 style="margin:4px 0 8px;font-size:18px">${title}</h3>
-            ${p.city?`<p style="margin:4px 0"><strong>Város:</strong> ${escapeHtml(p.city)}</p>`:''}
-            ${p.size_ha?`<p style="margin:4px 0"><strong>Terület:</strong> ${escapeHtml(String(p.size_ha))} ha</p>`:''}
-            ${p.energy_mw?`<p style="margin:4px 0"><strong>Energia:</strong> ${escapeHtml(String(p.energy_mw))} MW</p>`:''}
-            <div style="margin-top:8px">${badges.join(' ')}</div>
-            <div style="margin-top:8px">${featuresHtml}</div>
-            <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
-              <a href="${mailto}" class="btn btn-gold" style="padding:8px 12px;font-size:14px">Érdekel az ingatlan</a>
-              ${p.video?`<a href="${p.video}" target="_blank" rel="noopener" class="btn btn-ghost" style="padding:8px 12px;font-size:14px">▶ Videó</a>`:''}
-            </div>
-          </div>
-        </article>`;
-        grid.insertAdjacentHTML('beforeend', html);
-      });
-    })();
-
-    /* ---------- HÍREK ---------- */
-    (async function loadNews(){
-      const items = await safeFetchJSON('hirek.json');
-      const grid = document.getElementById('news-grid');
-      if(!grid) return;
-      if(!items || !Array.isArray(items)) return;
-      grid.innerHTML='';
-      items.forEach(n=>{
-        const title = escapeHtml(n.title||'');
-        const img = (n.image && (n.image.startsWith('http') || n.image.startsWith('/'))) ? n.image : '/uploads/' + (n.image || 'hero-rail.jpg');
-        const excerpt = escapeHtml(n.excerpt || (Array.isArray(n.body)? n.body[0].slice(0,160)+'...' : ''));
-        const card = document.createElement('article');
-        card.className='news-card';
-        card.innerHTML = `<img src="${img}" alt="${title}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/uploads/hero-rail.jpg'">
-          <div style="padding:18px;">
-            <h3 style="margin:0 0 8px;color:var(--gold)">${title}</h3>
-            <p style="margin:0 0 12px;color:#ddd">${excerpt}</p>
-            <a href="hirek.html#${n.id||''}" style="color:var(--gold);font-weight:700">Tovább olvasom →</a>
-          </div>`;
+      grid.innerHTML=''; items.forEach(n=>{
+        const title=escapeHtml(n.title||''); const img=(n.image && (n.image.startsWith('http')||n.image.startsWith('/')))? n.image : '/uploads/'+(n.image||'hero-rail.jpg');
+        const excerpt=escapeHtml(n.excerpt || (Array.isArray(n.body)? n.body[0].slice(0,160)+'...' : ''));
+        const card=document.createElement('article'); card.className='news-card';
+        card.innerHTML=`<img src="${img}" alt="${title}" loading="lazy" decoding="async"><div style="padding:18px;"><h3 style="color:var(--gold)">${title}</h3><p style="color:#ddd">${excerpt}</p><a href="hirek.html#${n.id||''}" style="color:var(--gold);font-weight:700">Tovább →</a></div>`;
         grid.appendChild(card);
       });
     })();
